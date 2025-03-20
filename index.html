@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noah Civilise | Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><a href="#hero">NC</a></div>
+                <ul class="nav-links">
+                    <li><a href="#experience" data-i18n="nav.experience">Expérience</a></li>
+                    <li><a href="#projects" data-i18n="nav.projects">Projets</a></li>
+                    <li><a href="#education" data-i18n="nav.education">Formation</a></li>
+                    <li><a href="#skills" data-i18n="nav.skills">Compétences</a></li>
+                    <li><a href="#interests" data-i18n="nav.interests">Centres d'intérêt</a></li>
+                </ul>
+                <div class="language-selector">
+                    <button id="fr-btn" class="lang-btn active">FR</button>
+                    <button id="en-btn" class="lang-btn">EN</button>
+                </div>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-picture">
+                    <img src="images/moi.jpg" alt="Noah Civilise">
+                </div>
+                <h1>Noah Civilise</h1>
+                <h2 data-i18n="hero.title">Étudiant en 3ᵉ année à EPITA, École d'ingénieurs en informatique</h2>
+                <p data-i18n="hero.description">Je recherche un stage de cinq à six mois en développement logiciel,
+                    Intelligence Artificielle ou Data
+                    Science (septembre 2025 – janvier 2026). Curieux, adaptable et motivé, je souhaite approfondir mes
+                    compétences en ingénierie logicielle et IA.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn secondary-btn" data-i18n="hero.cta">Voir mes projets</a>
+                </div>
+
+                <div class="download-cv">
+                    <p data-i18n="hero.cv.title">Télécharger mon CV:</p>
+                    <div class="cv-buttons">
+                        <a href="images/CV_Noah_Civilise_Dev.pdf" class="btn cv-btn" download>
+                            <i class="fas fa-download"></i> <span data-i18n="hero.cv.dev">Développeur Logiciel</span>
+                        </a>
+                        <a href="images/CV_Noah_Civilise_IA.pdf" class="btn cv-btn" download>
+                            <i class="fas fa-download"></i> <span data-i18n="hero.cv.ai">Intelligence
+                                Artificielle</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-info hero-contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:civilise.noah@gmail.com">civilise.noah@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <a href="tel:+33660399786">+33 6 60 39 97 86</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Paris / Île-de-France, Bordeaux</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <a href="https://www.linkedin.com/in/noah-civilise" target="_blank">Noah Civilise</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title" data-i18n="experience.title">Expérience professionnelle</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023–Présent</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="experience.tutor.title">Tuteur – BackToBasics, EPITA</h3>
+                        <ul>
+                            <li data-i18n="experience.tutor.item1">Tutorat en algorithmique, programmation et
+                                mathématiques</li>
+                            <li data-i18n="experience.tutor.item2">Planification de séances individuelles et en groupe
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="experience.dev.title">Développeur Web – Digi Activity, Paris</h3>
+                        <ul>
+                            <li data-i18n="experience.dev.item1">Création d'un site web avec HTML, CSS, Bootstrap</li>
+                            <li data-i18n="experience.dev.item2">Focus sur le design responsive et l'UX</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title" data-i18n="projects.title">Projets</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 data-i18n="projects.42sh.title">Interpréteur de Commandes Unix (42SH)</h3>
+                        <div class="project-tech">
+                            <span>C</span>
+                            <span>Git</span>
+                        </div>
+                        <p data-i18n="projects.42sh.desc">Développement d'un interpréteur de commandes Unix en C.
+                            Implémentation des fonctions telles
+                            que le parsing de commandes, la gestion de fichiers, la navigation dans les répertoires et
+                            la gestion des variables d'environnement.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 data-i18n="projects.3d.title">Jeu Multijoueur 3D</h3>
+                        <div class="project-tech">
+                            <span>C#</span>
+                            <span>C++</span>
+                            <span>Unity</span>
+                        </div>
+                        <p data-i18n="projects.3d.desc">Développement d'un jeu de tir multijoueur (FPS). Modélisation
+                            des environnements 3D et
+                            création de personnages jouables avec des animations fluides. Implémentation de la mécanique
+                            de tir, des systèmes de gestion des points de vie, des effets visuels pour les projectiles
+                            et d'un système de score.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 data-i18n="projects.tiger.title">Compilateur Tiger</h3>
+                        <div class="project-tech">
+                            <span>C++</span>
+                            <span>Git</span>
+                            <span>GitHub</span>
+                        </div>
+                        <p data-i18n="projects.tiger.desc">Développement d'un compilateur pour le langage Tiger (analyse
+                            lexicale, syntaxique,
+                            sémantique, génération de code)</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 data-i18n="projects.bazaar.title">EpiBazaar</h3>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>Git</span>
+                        </div>
+                        <p data-i18n="projects.bazaar.desc">Backend pour un jeu de gestion de ressources (microservices,
+                            API REST, Quarkus, Hibernate,
+                            Kafka pour l'asynchrone)</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 data-i18n="projects.carpool.title">Application de Covoiturage</h3>
+                        <div class="project-tech">
+                            <span>Java</span>
+                            <span>Git</span>
+                            <span>Scene Builder</span>
+                        </div>
+                        <p data-i18n="projects.carpool.desc">Développement d'une application de covoiturage en temps
+                            réel avec réservation, alertes, et
+                            une interface utilisateur intuitive. Intégration de fonctionnalités de géolocalisation et de
+                            notifications en temps réel pour améliorer l'expérience utilisateur.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 data-i18n="projects.ocr.title">OCR Résolution de Sudoku</h3>
+                        <div class="project-tech">
+                            <span>C</span>
+                            <span>Git</span>
+                        </div>
+                        <p data-i18n="projects.ocr.desc">Reconnaissance optique de caractères et résolution de Sudoku
+                            utilisant un réseau de neurones
+                            en C et traitement d'image</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title" data-i18n="education.title">Formation</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2022–Présent</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="education.epita.title">EPITA – École d'ingénieurs en informatique</h3>
+                        <p data-i18n="education.epita.desc">3ème année en ingénierie informatique</p>
+                        <p data-i18n="education.epita.location">Le Kremlin-Bicêtre</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2022–Présent</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="education.upec.title">Licence en Informatique</h3>
+                        <p data-i18n="education.upec.desc">Université Paris-Est Créteil (UPEC)</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 (prévu)</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="education.spain.title">Échange académique</h3>
+                        <p data-i18n="education.spain.desc">Universidad del País Vasco</p>
+                        <p data-i18n="education.spain.location">San Sebastián, Espagne</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2019–2022</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="education.bac.title">Baccalauréat Scientifique</h3>
+                        <p data-i18n="education.bac.desc">Lycée Descartes</p>
+                        <p data-i18n="education.bac.grade">Mention Très Bien avec les spécialités Mathématiques
+                            et NSI</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title" data-i18n="skills.title">Compétences</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3 data-i18n="skills.prog">Langages de programmation</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fab fa-java"></i> Java</div>
+                        <div class="skill-item"><i class="fab fa-python"></i> Python</div>
+                        <div class="skill-item"><i class="fas fa-code"></i> C</div>
+                        <div class="skill-item"><i class="fas fa-code"></i> C++</div>
+                        <div class="skill-item"><i class="fas fa-code"></i> C#</div>
+                        <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
+                        <div class="skill-item"><i class="fas fa-code"></i> R</div>
+                        <div class="skill-item"><i class="fas fa-terminal"></i> Bash</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 data-i18n="skills.tools">Outils de développement</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fas fa-desktop"></i> Scene Builder</div>
+                        <div class="skill-item"><i class="fas fa-edit"></i> IntelliJ</div>
+                        <div class="skill-item"><i class="fas fa-code"></i> VS Code</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 data-i18n="skills.methods">Méthodologies</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fas fa-project-diagram"></i> Agile</div>
+                        <div class="skill-item"><i class="fas fa-tasks"></i> Gestion de projet</div>
+                        <div class="skill-item"><i class="fab fa-git-alt"></i> Git/GitHub/GitLab</div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 data-i18n="skills.testing">Testing</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fas fa-vial"></i> <span data-i18n="skills.test.desc">Tests
+                                unitaires et fonctionnels (C, Python, Bash, Java)</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 data-i18n="skills.languages">Langues</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fas fa-flag"></i> <span data-i18n="skills.lang.fr">Français
+                                (natif)</span></div>
+                        <div class="skill-item"><i class="fas fa-flag"></i> <span data-i18n="skills.lang.en">Anglais
+                                (TOEIC 900/990)</span></div>
+                        <div class="skill-item"><i class="fas fa-flag"></i> <span data-i18n="skills.lang.es">Espagnol
+                                (B1)</span></div>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3 data-i18n="skills.soft">Soft skills</h3>
+                    <div class="skill-items">
+                        <div class="skill-item"><i class="fas fa-sync-alt"></i> <span
+                                data-i18n="skills.soft.adapt">Adaptabilité</span></div>
+                        <div class="skill-item"><i class="fas fa-users"></i> <span data-i18n="skills.soft.team">Travail
+                                d'équipe</span></div>
+                        <div class="skill-item"><i class="fas fa-user-cog"></i> <span
+                                data-i18n="skills.soft.auto">Autonomie</span></div>
+                        <div class="skill-item"><i class="fas fa-puzzle-piece"></i> <span
+                                data-i18n="skills.soft.problem">Résolution de problèmes</span></div>
+                        <div class="skill-item"><i class="fas fa-brain"></i> <span
+                                data-i18n="skills.soft.thinking">Pensée analytique</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="interests">
+        <div class="container">
+            <h2 class="section-title" data-i18n="interests.title">Centres d'intérêt</h2>
+            <div class="interests-container">
+                <div class="interest-item">
+                    <i class="fas fa-biking"></i>
+                    <p data-i18n="interests.bmx">BMX (compétitions, co-création d'une association pour les voyages en
+                        groupe et échanges
+                        culturels)</p>
+                </div>
+                <div class="interest-item">
+                    <i class="fas fa-globe-americas"></i>
+                    <p data-i18n="interests.travel">Voyages et culture</p>
+                </div>
+                <div class="interest-item">
+                    <i class="fas fa-flag-checkered"></i>
+                    <p data-i18n="interests.motorsports">Sports mécaniques (MotoGP, Formule 1)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/civilise-noah" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/noah-civilise" target="_blank"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <p data-i18n="footer.rights">© 2024 Noah Civilise. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script src="js/i18n.js"></script>
+</body>
+
+</html>
