@@ -294,11 +294,11 @@ nav {
 
 /* Profile Picture */
 .profile-picture {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     overflow: hidden;
-    margin: 0 auto 2.5rem;
+    margin: 10px auto 1.5rem;
     border: 4px solid white;
     box-shadow: 0 10px 30px rgba(0, 80, 213, 0.2);
     object-position: top;
@@ -346,7 +346,8 @@ nav {
     display: flex;
     align-items: center;
     background: linear-gradient(170deg, var(--light-gray) 70%, white 70%);
-    padding-top: 70px;
+    padding-top: 80px;
+    padding-bottom: 50px;
     position: relative;
     overflow: hidden;
 }
@@ -372,8 +373,8 @@ nav {
 }
 
 .hero-content h1 {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 0.7rem;
     color: var(--primary-dark);
     position: relative;
     display: inline-block;
@@ -391,22 +392,22 @@ nav {
 }
 
 .hero-content h2 {
-    font-size: 1.6rem;
-    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+    margin-bottom: 1.2rem;
     color: var(--secondary-color);
     font-weight: 500;
 }
 
 .hero-content p {
-    font-size: 1.2rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
     color: var(--text-light);
     text-align: justify;
     max-width: 700px;
     margin-left: auto;
     margin-right: auto;
     padding: 0 20px;
-    line-height: 1.8;
+    line-height: 1.6;
 }
 
 .cta-buttons {
@@ -1120,15 +1121,16 @@ footer .container {
 
 /* CV Download Buttons */
 .download-cv {
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
     text-align: center;
 }
 
 .download-cv p {
-    margin-bottom: 1.2rem;
+    margin-bottom: 0.8rem;
     color: var(--text-light);
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .cv-buttons {
@@ -1397,6 +1399,10 @@ footer .container {
     #experience .timeline-content {
         width: 100%;
     }
+
+    .hero-contact-info {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media screen and (max-width: 375px) {
@@ -1416,13 +1422,67 @@ footer .container {
 .hero-contact-info {
     width: 100%;
     display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    padding: 20px 0;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    padding: 15px;
+    position: relative;
+    z-index: 10;
 }
 
 .hero-contact-info .contact-item {
-    flex: 1 1 200px;
-    margin: 10px;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    background: var(--light-gray);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    flex: 1;
+    justify-content: center;
+}
+
+.hero-contact-info .contact-item:hover {
+    transform: translateY(-3px);
+    background: white;
+    box-shadow: var(--shadow);
+}
+
+.hero-contact-info .contact-item i {
+    font-size: 1.2rem;
+    margin-right: 10px;
+    color: var(--primary-color);
+    min-width: 20px;
     text-align: center;
+}
+
+.hero-contact-info .contact-item a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .hero-contact-info {
+        flex-wrap: wrap;
+    }
+
+    .hero-contact-info .contact-item {
+        flex: 1 1 45%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .hero-contact-info {
+        flex-direction: column;
+    }
+
+    .hero-contact-info .contact-item {
+        width: 100%;
+    }
 }
