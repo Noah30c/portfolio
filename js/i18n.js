@@ -47,7 +47,7 @@ const translations = {
         "skills.soft.team": "Travail d'équipe",
         "skills.soft.auto": "Autonomie",
         "skills.soft.problem": "Résolution de problèmes",
-        "skills.soft.thinking": "Pensée analytique",
+        "skills.methods.project": "Gestion de projet",
 
         "projects.title": "Projets",
         "projects.42sh.title": "Interpréteur de Commandes Unix (42SH)",
@@ -76,7 +76,8 @@ const translations = {
         "interests.travel": "Voyages et culture",
         "interests.motorsports": "Sports mécaniques (MotoGP, Formule 1)",
 
-        "footer.rights": "© 2024 Noah Civilise. Tous droits réservés."
+        "footer.rights": "© 2024 Noah Civilise. Tous droits réservés.",
+        "date.present": "Présent"
     },
     en: {
         "nav.about": "About",
@@ -125,7 +126,7 @@ const translations = {
         "skills.soft.team": "Teamwork",
         "skills.soft.auto": "Autonomy",
         "skills.soft.problem": "Problem solving",
-        "skills.soft.thinking": "Analytical thinking",
+        "skills.methods.project": "Project Management",
 
         "projects.title": "Projects",
         "projects.42sh.title": "Unix Command Interpreter (42SH)",
@@ -154,7 +155,8 @@ const translations = {
         "interests.travel": "Travel and culture",
         "interests.motorsports": "Motorsports (MotoGP, Formula 1)",
 
-        "footer.rights": "© 2024 Noah Civilise. All rights reserved."
+        "footer.rights": "© 2024 Noah Civilise. All rights reserved.",
+        "date.present": "Present"
     }
 };
 
