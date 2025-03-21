@@ -540,7 +540,7 @@ nav {
     align-items: flex-start;
     margin-bottom: 1rem;
     position: relative;
-    max-width: 900px;
+    max-width: 80%;
     width: 100%;
 }
 
@@ -570,7 +570,7 @@ nav {
     border-left: 4px solid var(--primary-color);
     width: 100%;
     z-index: 2;
-    margin-left: 70px;
+    /* margin-left: 70px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -873,7 +873,7 @@ nav {
 }
 
 #experience .timeline {
-    max-width: 900px;
+    max-width: 80%;
     margin: 0 auto;
     position: relative;
     z-index: 5;
@@ -927,7 +927,7 @@ nav {
     border-left: 4px solid var(--primary-color);
     width: 100%;
     z-index: 2;
-    margin-left: 70px;
+    /* margin-left: 70px; */
     display: flex;
     flex-direction: column;
     justify-content: center;
