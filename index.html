@@ -44,11 +44,10 @@
                     <img src="images/moi.jpg" alt="Noah Civilise">
                 </div>
                 <h1>Noah Civilise</h1>
-                <h2 data-i18n="hero.title">Étudiant en 3ᵉ année à EPITA, École d'ingénieurs en informatique</h2>
-                <p data-i18n="hero.description">Je recherche un stage de cinq à six mois en développement logiciel,
-                    Intelligence Artificielle ou Data
-                    Science (septembre 2025 – janvier 2026). Curieux, adaptable et motivé, je souhaite approfondir mes
-                    compétences en ingénierie logicielle et IA.</p>
+                <h2 data-i18n="hero.title">Étudiant en 5ᵉ année à EPITA, École d'ingénieurs en informatique</h2>
+                <p data-i18n="hero.description">Je recherche mon stage de fin d'études en Intelligence Artificielle ou en
+                    Traitement d'Image. Curieux, adaptable et motivé, je souhaite approfondir mes
+                    compétences dans ces domaines.</p>
                 <div class="cta-buttons">
                     <a href="#projects" class="btn secondary-btn" data-i18n="hero.cta">Voir mes projets</a>
                 </div>
@@ -93,6 +92,36 @@
             <h2 class="section-title" data-i18n="experience.title">Expérience professionnelle</h2>
             <div class="timeline">
                 <div class="timeline-item">
+                    <div class="timeline-date">Fév. 2026 – Fév. 2027</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="experience.vr.title">Ingénieur Réalité Virtuelle (WebXR) – Dassault Systèmes</h3>
+                        <ul>
+                            <li data-i18n="experience.vr.item1">Développement d'une expérience WebXR immersive et
+                                performante (Three.js, TypeScript, Vite)</li>
+                            <li data-i18n="experience.vr.item2">Implémentation d'un algorithme de "World Detection" pour
+                                la détection automatique des étages et calcul des zones de collision</li>
+                            <li data-i18n="experience.vr.item3">Conception d'une interface VR dynamique attachée au
+                                contrôleur avec navigation inter-étages</li>
+                            <li data-i18n="experience.vr.item4">Optimisation critique des performances via la mise en
+                                place de WebWorkers pour déporter les calculs lourds</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Sept. 2025 – Janv. 2026</div>
+                    <div class="timeline-content">
+                        <h3 data-i18n="experience.bpce.title">Data Science & Generative AI Intern – Groupe BPCE</h3>
+                        <ul>
+                            <li data-i18n="experience.bpce.item1">Pipeline RAG : automatisation de l'extraction
+                                d'informations sur des bilans PDF (SentenceTransformer, Qdrant, LLM, Pydantic)</li>
+                            <li data-i18n="experience.bpce.item2">Tableau de bord Power BI : conception d'un reporting
+                                interactif pour le suivi de règles expertes d'octroi de cautionnement</li>
+                            <li data-i18n="experience.bpce.item3">Automatisation de contrôles : outil packagé croisant
+                                extraction PDF, appel LLM et données Excel</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
                     <div class="timeline-date">2023–<span data-i18n="date.present">Présent</span></div>
                     <div class="timeline-content">
                         <h3 data-i18n="experience.tutor.title">Tuteur – BackToBasics, EPITA</h3>
@@ -122,6 +151,47 @@
         <div class="container">
             <h2 class="section-title" data-i18n="projects.title">Projets</h2>
             <div class="projects-grid">
+
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 data-i18n="projects.alpr.title">Automatic License Plate Recognition (ALPR)</h3>
+                        <div class="project-tech">
+                            <span>C++</span>
+                            <span>Python</span>
+                            <span>OpenCV</span>
+                            <span>Machine Learning</span>
+                        </div>
+                        <p data-i18n="projects.alpr.desc">Développement "from scratch" d'une pipeline de localisation automatique de plaques d'immatriculation sans Deep Learning. Prototypage en Python puis portage bas niveau en C++ pour l'optimisation (création d'une librairie sur-mesure MyCV, Machine Learning avec Random Forest, CI/CD). Traitement &lt; 380ms avec 93% d'exactitude lors du portage.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 data-i18n="projects.dermscan.title">DermScan (IA Médicale)</h3>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>OpenCV</span>
+                            <span>Scikit-Learn</span>
+                            <span>FastAPI</span>
+                            <span>RabbitMQ</span>
+                            <span>React</span>
+                            <span>Docker</span>
+                        </div>
+                        <p data-i18n="projects.dermscan.desc">Application distribuée d'aide au diagnostic dermatologique (règle ABCDE). Pipeline de vision par ordinateur (K-Means, PCA, moments de Hu) et Machine Learning (MLP, sensibilité &gt;85%) orienté explicabilité via des modèles experts. Architecture microservices asynchrones (FastAPI, RabbitMQ) avec CI/CD complète.</p>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-info">
+                        <h3 data-i18n="projects.gpgpu.title">Filtre GStreamer (GPGPU CUDA)</h3>
+                        <div class="project-tech">
+                            <span>C++</span>
+                            <span>CUDA</span>
+                            <span>GStreamer</span>
+                        </div>
+                        <p data-i18n="projects.gpgpu.desc">Optimisation GPGPU d'un filtre vidéo de détection de
+                            mouvement. Implémentation d'un pipeline de traitement temps réel avec accélération CUDA
+                            (CUDA Graphs, mémoire Pinned).</p>
+                    </div>
+                </div>
                 <div class="project-card">
                     <div class="project-info">
                         <h3 data-i18n="projects.42sh.title">Interpréteur de Commandes Unix (42SH)</h3>
@@ -213,7 +283,7 @@
                     <div class="timeline-date">2022–<span data-i18n="date.present">Présent</span></div>
                     <div class="timeline-content">
                         <h3 data-i18n="education.epita.title">EPITA – École d'ingénieurs en informatique</h3>
-                        <p data-i18n="education.epita.desc">3ème année en ingénierie informatique</p>
+                        <p data-i18n="education.epita.desc">5ème année en ingénierie informatique</p>
                         <p data-i18n="education.epita.location">Le Kremlin-Bicêtre</p>
                     </div>
                 </div>
