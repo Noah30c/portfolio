@@ -9,22 +9,20 @@ const translations = {
         "nav.interests": "Centres d'intérêt",
 
         "hero.title": "Étudiant en 5ᵉ année à EPITA, École d'ingénieurs en informatique",
-        "hero.description": "Je recherche mon stage de fin d'études en Intelligence Artificielle ou en Traitement d'Image. Curieux, adaptable et motivé, je souhaite approfondir mes compétences dans ces domaines.",
+        "hero.description": "Je recherche mon stage de fin d'études en Intelligence Artificielle ou en Traitement d'Image sur Bordeaux ou Paris. Curieux, adaptable et motivé, je souhaite approfondir mes compétences dans ces domaines.",
         "hero.cta": "Voir mes projets",
-        "hero.cv.title": "Télécharger mon CV:",
-        "hero.cv.dev": "Développeur Logiciel",
-        "hero.cv.ai": "Intelligence Artificielle",
+        "hero.cv.title": "Télécharger mon CV :",
+        "hero.cv.fr": "Version Française",
+        "hero.cv.en": "Version Anglaise",
 
         "about.title": "À propos",
-        "about.description": "Passionné par les technologies émergentes, je suis actuellement en 5ème année à l'EPITA. Mon expertise s'étend de la conception d'architectures logicielles à l'application de techniques d'intelligence artificielle et de traitement d'image pour résoudre des problèmes complexes. Particulièrement intéressé par le machine learning et l'IA, je m'investis dans des projets innovants qui combinent ces domaines. Mon parcours est porté par une curiosité insatiable et un désir constant d'améliorer mes compétences techniques en relevant de nouveaux défis. Je recherche activement mon stage de fin d'études dans le domaine de l'IA ou du traitement d'image.",
+        "about.description": "Passionné par les technologies émergentes, je suis actuellement en 5ème année à l'EPITA. Mon expertise s'étend de la conception d'architectures logicielles à l'application de techniques d'intelligence artificielle et de traitement d'image pour résoudre des problèmes complexes. Particulièrement intéressé par le machine learning et l'IA, je m'investis dans des projets innovants qui combinent ces domaines. Mon parcours est porté par une curiosité insatiable et un désir constant d'améliorer mes compétences techniques en relevant de nouveaux défis. Je recherche activement mon stage de fin d'études dans le domaine de l'IA ou du traitement d'image sur Bordeaux ou Paris.",
 
         "education.title": "Formation",
         "education.epita.title": "EPITA – École d'ingénieurs en informatique",
         "education.epita.desc": "5ème année en ingénierie informatique",
         "education.epita.location": "Le Kremlin-Bicêtre",
-        "education.upec.title": "Licence en Informatique",
-        "education.upec.desc": "Université Paris-Est Créteil (UPEC)",
-        "education.upec.grade": "Mention Très Bien",
+
         "education.spain.title": "Échange académique",
         "education.spain.desc": "Universidad del País Vasco",
         "education.spain.location": "San Sebastián, Espagne",
@@ -47,6 +45,8 @@ const translations = {
         "skills.soft.team": "Travail d'équipe",
         "skills.soft.auto": "Autonomie",
         "skills.soft.problem": "Résolution de problèmes",
+        "skills.misc": "Divers",
+        "skills.misc.license": "Permis A2 & B",
         "skills.methods.project": "Gestion de projet",
 
         "projects.title": "Projets",
@@ -82,9 +82,7 @@ const translations = {
         "experience.tutor.title": "Tuteur – BackToBasics, EPITA",
         "experience.tutor.item1": "Tutorat en algorithmique, programmation et mathématiques",
         "experience.tutor.item2": "Planification de séances individuelles et en groupe",
-        "experience.dev.title": "Développeur Web – Digi Activity, Paris",
-        "experience.dev.item1": "Création d'un site web avec HTML, CSS, Bootstrap",
-        "experience.dev.item2": "Focus sur le design responsive et l'UX",
+
 
         "interests.title": "Centres d'intérêt",
         "interests.bmx": "BMX (compétitions, co-création d'une association pour les voyages en groupe et échanges culturels)",
@@ -103,22 +101,20 @@ const translations = {
         "nav.interests": "Interests",
 
         "hero.title": "5th-year student at EPITA, Computer Science Engineering School",
-        "hero.description": "I am looking for my end-of-studies internship in Artificial Intelligence or Image Processing. Curious, adaptable, and motivated, I wish to deepen my skills in these fields.",
+        "hero.description": "I am looking for my end-of-studies internship in Artificial Intelligence or Image Processing in Bordeaux or Paris. Curious, adaptable, and motivated, I wish to deepen my skills in these fields.",
         "hero.cta": "View my projects",
         "hero.cv.title": "Download my CV:",
-        "hero.cv.dev": "Software Developer",
-        "hero.cv.ai": "Artificial Intelligence",
+        "hero.cv.fr": "French Version",
+        "hero.cv.en": "English Version",
 
         "about.title": "About",
-        "about.description": "As a passionate computer science student, I am currently in my 5th year at EPITA. My areas of interest include artificial intelligence, image processing, and data science. I am actively seeking my end-of-studies internship in AI or Image Processing.",
+        "about.description": "As a passionate computer science student, I am currently in my 5th year at EPITA. My areas of interest include artificial intelligence, image processing, and data science. I am actively seeking my end-of-studies internship in AI or Image Processing in Bordeaux or Paris.",
 
         "education.title": "Education",
         "education.epita.title": "EPITA – Computer Science Engineering School",
         "education.epita.desc": "5th year in Computer Science Engineering",
         "education.epita.location": "Le Kremlin-Bicêtre, France",
-        "education.upec.title": "Bachelor's Degree in Computer Science",
-        "education.upec.desc": "Paris-Est Créteil University (UPEC)",
-        "education.upec.grade": "High Honors",
+
         "education.spain.title": "Academic Exchange",
         "education.spain.desc": "University of the Basque Country",
         "education.spain.location": "San Sebastián, Spain",
@@ -140,7 +136,9 @@ const translations = {
         "skills.soft.adapt": "Adaptability",
         "skills.soft.team": "Teamwork",
         "skills.soft.auto": "Autonomy",
-        "skills.soft.problem": "Problem solving",
+        "skills.soft.problem": "Problem Solving",
+        "skills.misc": "Miscellaneous",
+        "skills.misc.license": "A2 & B Driving Licenses",
         "skills.methods.project": "Project Management",
 
         "projects.title": "Projects",
@@ -176,9 +174,7 @@ const translations = {
         "experience.tutor.title": "Tutor – BackToBasics, EPITA",
         "experience.tutor.item1": "Tutoring in algorithms, programming, and mathematics",
         "experience.tutor.item2": "Planning of individual and group sessions",
-        "experience.dev.title": "Web Developer – Digi Activity, Paris",
-        "experience.dev.item1": "Website creation with HTML, CSS, and Bootstrap",
-        "experience.dev.item2": "Focus on responsive design and UX",
+
 
         "interests.title": "Interests",
         "interests.bmx": "BMX (competitions, co-creation of an association for group travel and cultural exchange)",

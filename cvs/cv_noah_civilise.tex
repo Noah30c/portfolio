@@ -1,0 +1,154 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==========================================
+% PACKAGES
+% ==========================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+\usepackage[margin=1cm]{geometry} % Marges très fines pour tenir sur une page
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+% ==========================================
+% COULEURS & DESIGN
+% ==========================================
+% Couleur principale du CV (Bleu EPITA / Tech)
+\definecolor{primary}{RGB}{0, 80, 213} 
+\definecolor{darkgray}{RGB}{51, 51, 51}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    filecolor=primary,
+    urlcolor=primary,
+}
+
+% Format des titres de sections
+\titleformat{\section}{\large\bfseries\color{primary}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+% Espacement des listes ultra-compact
+\setlist[itemize]{leftmargin=1.5em, itemsep=0pt, topsep=1pt, parsep=0pt, partopsep=0pt}
+
+\begin{document}
+\pagestyle{empty} % Retire les numéros de page
+
+% ==========================================
+% EN-TÊTE
+% ==========================================
+\begin{center}
+    {\huge \textbf{Noah CIVILISE}}\\[2pt]
+    {\large \textbf{Étudiant en 5\textsuperscript{ème} année à EPITA -- Ingénierie Informatique}}\\[4pt]
+    
+    {\footnotesize
+    % Remplace par tes vraies informations
+    \ \textbullet\
+    \href{mailto:civilise.noah@gmail.com}{civilise.noah@gmail.com} \ \textbullet\ 
+    +33 6 60 39 97 86 \ \textbullet\ 
+    \href{https://www.linkedin.com/in/noah-civilise/}{LinkedIn} \ \textbullet\ 
+    \href{https://github.com/Noah30c}{GitHub} \ \textbullet\ 
+    \href{https://civilise-noah.onrender.com/}{Portfolio}
+    }
+\end{center}
+
+\vspace{0.2cm}
+
+% ==========================================
+% OBJECTIF
+% ==========================================
+\noindent
+\textbf{Objectif :} Je recherche un stage de fin d'études de 6 mois en Intelligence Artificielle ou en Traitement d'Image à partir de février 2027 sur Bordeaux ou Paris. Curieux, adaptable et motivé, je souhaite approfondir mes compétences dans ces domaines au sein d'un environnement stimulant.
+
+% ==========================================
+% EXPÉRIENCES PROFESSIONNELLES
+% ==========================================
+\section*{Expériences Professionnelles}
+
+\noindent
+\textbf{Projet de Fin d'Études (PFEE) -- Ingénieur Réalité Virtuelle} \hfill \textit{Fev 2026 - Présent} \\
+\textit{Dassault Systèmes} \\
+\textit{Conception d'un outil d'aide à la navigation (Minimap) en Réalité Virtuelle (WebXR) pour environnements 3D complexes.}
+\begin{itemize}
+    \item Développement WebXR (Three.js, TypeScript) d'une Minimap dynamique en réalité virtuelle.
+    \item Implémentation d'algorithmes 3D ("World Detection") et optimisation asynchrone via WebWorkers.
+\end{itemize}
+
+\vspace{0.1cm}
+\noindent
+\textbf{Data Science \& Generative AI Intern} \hfill \textit{Sept 2025 -- Janv 2026} \\
+\textit{Compagnie Européenne de Garanties et Cautions (Groupe BPCE)}
+\begin{itemize}
+    \item \textbf{Architecture RAG \& LLM} : Conception "from scratch" d'un pipeline d'extraction d'informations sur des centaines de bilans PDF (SentenceTransformer, Qdrant, LLM).
+    \item \textbf{Fiabilisation \& MLOps} : Validation stricte des données générées (JSON, Pydantic, Luhn) et suivi des métriques de confiance (77.1\%) sur interface Streamlit.
+    \item \textbf{Automatisation \& NLP} : Développement d'un outil de contrôle croisant données Excel et textes de PDF analysés par LLM (Gain de temps : >60\%).
+    \item \textbf{Industrialisation} : Déploiement d'exécutables autonomes (PyInstaller) pour s'affranchir des contraintes IT métier, et orchestration sur Dataiku.
+    \item \textbf{Business Intelligence} : Modélisation en étoile et tableau de bord Power BI (DAX) automatisant la détection des dérives des règles d'octroi de cautionnement.
+\end{itemize}
+
+\vspace{0.1cm}
+\noindent
+\textbf{Tuteur} \hfill \textit{2022 -- 2023} \\
+\textit{BackToBasics, EPITA}
+\begin{itemize}
+    \item Tutorat en algorithmique, programmation et mathématiques (séances individuelles et en groupe).
+\end{itemize}
+% ==========================================
+% PROJETS TECHNIQUES
+% ==========================================
+\section*{Projets Techniques}
+
+\noindent
+\textbf{Automatic License Plate Recognition (ALPR)} \hfill \textit{C++, Python, OpenCV, ML} \\
+Développement "from scratch" d'une pipeline de localisation de plaques d'immatriculation sans Deep Learning. Prototypage (Python) puis portage bas niveau (C++) pour l'optimisation (librairie MyCV, Random Forest, CI/CD). Traitement < 380ms avec 93\% d'exactitude.
+
+\vspace{0.1cm}
+\noindent
+\textbf{DermScan (IA Médicale)} \hfill \textit{Python, OpenCV, FastAPI, RabbitMQ, Docker} \\
+Application distribuée d'aide au diagnostic dermatologique (règle ABCDE). Pipeline de vision par ordinateur (K-Means, PCA) et Machine Learning (MLP, sensibilité >85\%) orienté explicabilité. Architecture microservices asynchrones avec CI/CD complète.
+
+\vspace{0.1cm}
+\noindent
+\textbf{Filtre GStreamer (GPGPU CUDA)} \hfill \textit{C++, CUDA, GStreamer} \\
+Optimisation GPGPU d'un filtre vidéo de détection de mouvement. Pipeline de traitement temps réel avec accélération CUDA (CUDA Graphs, mémoire Pinned).
+
+\vspace{0.1cm}
+\noindent
+\textbf{Interpréteur de Commandes Unix (42SH)} \hfill \textit{C} \\
+Développement d'un interpréteur de commandes Unix complet (parsing, gestion de fichiers, variables d'environnement).
+
+% ==========================================
+% FORMATION
+% ==========================================
+\section*{Formation}
+
+\noindent
+\textbf{EPITA – École d'ingénieurs en informatique} \hfill \textit{2022 -- 2027} \\
+5\textsuperscript{ème} année en ingénierie informatique - \textbf{GPA : 4.0} \hfill \textit{Le Kremlin-Bicêtre}
+
+\vspace{0.1cm}
+\noindent
+\textbf{Universidad del País Vasco} \hfill \textit{2024} \\
+Échange académique \hfill \textit{San Sebastián, 
+Espagne}
+
+\vspace{0.1cm}
+\noindent
+\textbf{Baccalauréat Scientifique} \hfill \textit{2019 -- 2022} \\
+Maths et NSI -- \textbf{Mention Très Bien} \hfill \textit{Montigny-Le-Bretonneux}
+% ==========================================
+% COMPÉTENCES
+% ==========================================
+\section*{Compétences}
+
+\begin{itemize}
+    \item \textbf{Langages :} C++, Python, TypeScript, Java, C, Bash, HTML/CSS
+    \item \textbf{Outils \& Frameworks :} OpenCV, React, FastAPI, Docker, RabbitMQ, CMake, Git, CI/CD
+    \item \textbf{Langues :} Anglais (TOEIC 900/990 - Courant), Espagnol (B1), Français (Natif)
+    \item \textbf{Savoir-être :} Adaptabilité, Travail d'équipe, Autonomie, Résolution de problèmes
+    \item \textbf{Divers :} Permis A2 \& B
+\end{itemize}
+
+\end{document}

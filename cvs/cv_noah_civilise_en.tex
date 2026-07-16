@@ -1,0 +1,154 @@
+\documentclass[10pt,a4paper]{article}
+
+% ==========================================
+% PACKAGES
+% ==========================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[margin=1cm]{geometry} % Thin margins to fit on one page
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+
+% ==========================================
+% COLORS & DESIGN
+% ==========================================
+% Main CV Color (EPITA Blue / Tech)
+\definecolor{primary}{RGB}{0, 80, 213} 
+\definecolor{darkgray}{RGB}{51, 51, 51}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    filecolor=primary,
+    urlcolor=primary,
+}
+
+% Section title format
+\titleformat{\section}{\large\bfseries\color{primary}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{8pt}{4pt}
+
+% Ultra-compact list spacing
+\setlist[itemize]{leftmargin=1.5em, itemsep=0pt, topsep=1pt, parsep=0pt, partopsep=0pt}
+
+\begin{document}
+\pagestyle{empty} % Remove page numbers
+
+% ==========================================
+% HEADER
+% ==========================================
+\begin{center}
+    {\huge \textbf{Noah CIVILISE}}\\[2pt]
+    {\large \textbf{5\textsuperscript{th}-year Student at EPITA -- Computer Science Engineering}}\\[4pt]
+    
+    {\footnotesize
+    \ \textbullet\
+    \href{mailto:civilise.noah@gmail.com}{civilise.noah@gmail.com} \ \textbullet\ 
+    +33 6 60 39 97 86 \ \textbullet\ 
+    \href{https://www.linkedin.com/in/noah-civilise/}{LinkedIn} \ \textbullet\ 
+    \href{https://github.com/Noah30c}{GitHub} \ \textbullet\ 
+    \href{https://civilise-noah.onrender.com/}{Portfolio}
+    }
+\end{center}
+
+\vspace{0.2cm}
+
+% ==========================================
+% OBJECTIVE
+% ==========================================
+\noindent
+\textbf{Objective:} Seeking a 6-month end-of-studies internship in Artificial Intelligence or Image Processing starting from February 2027 in Bordeaux or Paris. Curious, adaptable, and motivated, I wish to deepen my skills in these fields within a stimulating environment.
+
+% ==========================================
+% PROFESSIONAL EXPERIENCE
+% ==========================================
+\section*{Professional Experience}
+
+\noindent
+\textbf{Final Year Project (PFEE) -- Virtual Reality Engineer} \hfill \textit{Feb 2026 - Present} \\
+\textit{Dassault Systèmes} \\
+\textit{Design of a VR navigation tool (Minimap) for complex 3D environments (WebXR).}
+\begin{itemize}
+    \item Development of an immersive WebXR experience (Three.js, TypeScript) featuring a dynamic VR Minimap.
+    \item Implementation of 3D algorithms ("World Detection") and asynchronous optimization via WebWorkers.
+\end{itemize}
+
+\vspace{0.1cm}
+\noindent
+\textbf{Data Science \& Generative AI Intern} \hfill \textit{Sept 2025 -- Jan 2026} \\
+\textit{Compagnie Européenne de Garanties et Cautions (Groupe BPCE)}
+\begin{itemize}
+    \item \textbf{RAG Architecture \& LLMs}: "From scratch" design of an information extraction pipeline for hundreds of PDF balance sheets (SentenceTransformer, Qdrant, LLM).
+    \item \textbf{Reliability \& MLOps}: Strict validation of generated data (JSON, Pydantic, Luhn) and tracking of confidence metrics (77.1\%) on a Streamlit dashboard.
+    \item \textbf{Automation \& NLP}: Development of an invoice control tool cross-referencing Excel data with text extracted from PDFs analyzed by an LLM (Time saved: >60\%).
+    \item \textbf{Industrialization}: Autonomous deployment of the automation tool (PyInstaller) to bypass IT constraints, and data workflow orchestration on Dataiku.
+    \item \textbf{Business Intelligence}: Star schema data modeling and creation of a Power BI dashboard (DAX) to automatically detect drifts in bond granting rules.
+\end{itemize}
+
+\vspace{0.1cm}
+\noindent
+\textbf{Tutor} \hfill \textit{2022 -- 2023} \\
+\textit{BackToBasics, EPITA}
+\begin{itemize}
+    \item Tutoring in algorithms, programming, and mathematics (individual and group sessions).
+\end{itemize}
+
+% ==========================================
+% TECHNICAL PROJECTS
+% ==========================================
+\section*{Technical Projects}
+
+\noindent
+\textbf{Automatic License Plate Recognition (ALPR)} \hfill \textit{C++, Python, OpenCV, ML} \\
+"From scratch" development of an ALPR pipeline without Deep Learning. Prototyping (Python) and low-level porting (C++) for optimization (MyCV library, Random Forest, CI/CD). Processing < 380ms with 93\% accuracy.
+
+\vspace{0.1cm}
+\noindent
+\textbf{DermScan (Medical AI)} \hfill \textit{Python, OpenCV, FastAPI, RabbitMQ, Docker} \\
+Distributed dermatological diagnosis aid application (ABCDE rule). Computer vision pipeline (K-Means, PCA) and Machine Learning (MLP, sensitivity >85\%) focused on explainability. Asynchronous microservices architecture with full CI/CD.
+
+\vspace{0.1cm}
+\noindent
+\textbf{GStreamer Filter (GPGPU CUDA)} \hfill \textit{C++, CUDA, GStreamer} \\
+GPGPU optimization of a motion detection video filter. Real-time processing pipeline with CUDA acceleration (CUDA Graphs, Pinned memory).
+
+\vspace{0.1cm}
+\noindent
+\textbf{Unix Command Interpreter (42SH)} \hfill \textit{C} \\
+Complete Unix shell development in C (parsing, file management, environment variables).
+
+% ==========================================
+% EDUCATION
+% ==========================================
+\section*{Education}
+
+\noindent
+\textbf{EPITA – Computer Science Engineering School} \hfill \textit{2022 -- 2027} \\
+5\textsuperscript{th} year in Computer Science Engineering - \textbf{GPA: 4.0} \hfill \textit{Le Kremlin-Bicêtre, France}
+
+\vspace{0.1cm}
+\noindent
+\textbf{Universidad del País Vasco} \hfill \textit{2024} \\
+Academic Exchange \hfill \textit{San Sebastián, Spain}
+
+\vspace{0.1cm}
+\noindent
+\textbf{High School Diploma (Baccalaureate)} \hfill \textit{2019 -- 2022} \\
+Mathematics and Computer Science (NSI) -- \textbf{High Honors} \hfill \textit{Montigny-Le-Bretonneux, France}
+
+% ==========================================
+% SKILLS
+% ==========================================
+\section*{Skills}
+
+\begin{itemize}
+    \item \textbf{Languages:} C++, Python, TypeScript, Java, C, Bash, HTML/CSS
+    \item \textbf{Tools \& Frameworks:} OpenCV, React, FastAPI, Docker, RabbitMQ, CMake, Git, CI/CD
+    \item \textbf{Languages:} English (TOEIC 900/990 - Fluent), Spanish (B1), French (Native)
+    \item \textbf{Soft Skills:} Adaptability, Teamwork, Autonomy, Problem Solving
+    \item \textbf{Miscellaneous:} A2 \& B Driving Licenses
+\end{itemize}
+
+\end{document}

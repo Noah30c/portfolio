@@ -1,0 +1,36 @@
+name: Build LaTeX CV
+
+on:
+  push:
+    paths:
+      - 'cvs/*.tex'
+  workflow_dispatch:
+
+jobs:
+  build_and_commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        
+      - name: Compile LaTeX documents
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: |
+            cv_noah_civilise.tex
+            cv_noah_civilise_en.tex
+          working_directory: cvs/
+          
+      - name: Rename PDFs for website links
+        run: |
+          cd cvs
+          mv cv_noah_civilise.pdf CV_Noah_Civilise_FR.pdf
+          mv cv_noah_civilise_en.pdf CV_Noah_Civilise_EN.pdf
+          
+      - name: Commit compiled PDFs
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Auto-compile LaTeX CVs to PDF"
+          file_pattern: "cvs/*.pdf"
