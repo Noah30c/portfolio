@@ -1,22 +1,20 @@
 \documentclass[10pt,a4paper]{article}
 
-% ==========================================
-% PACKAGES
-% ==========================================
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage[english]{babel}
-\usepackage[margin=1cm]{geometry} % Thin margins to fit on one page
+\usepackage[margin=0.9cm]{geometry} % Marges fines pour tenir sur une page
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
+\usepackage{fontawesome5} % For icons
 
-% ==========================================
-% COLORS & DESIGN
-% ==========================================
-% Main CV Color (EPITA Blue / Tech)
-\definecolor{primary}{RGB}{0, 80, 213} 
+% Serif Font (classic academic style)
+\usepackage{lmodern}
+
+% Colors
+\definecolor{primary}{RGB}{35, 75, 145} % Classic dark blue
 \definecolor{darkgray}{RGB}{51, 51, 51}
 
 \hypersetup{
@@ -26,12 +24,15 @@
     urlcolor=primary,
 }
 
-% Section title format
-\titleformat{\section}{\large\bfseries\color{primary}}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{8pt}{4pt}
+% Section title format (Small Caps + line)
+\titleformat{\section}{\large\scshape\color{primary}}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0pt}{6pt}{3pt}
 
-% Ultra-compact list spacing
+% List spacing
 \setlist[itemize]{leftmargin=1.5em, itemsep=0pt, topsep=1pt, parsep=0pt, partopsep=0pt}
+
+% Custom separator
+\newcommand{\separator}{ \ | \ }
 
 \begin{document}
 \pagestyle{empty} % Remove page numbers
@@ -39,27 +40,25 @@
 % ==========================================
 % HEADER
 % ==========================================
-\begin{center}
-    {\huge \textbf{Noah CIVILISE}}\\[2pt]
-    {\large \textbf{5\textsuperscript{th}-year Student at EPITA -- Computer Science Engineering}}\\[4pt]
-    
-    {\footnotesize
-    \ \textbullet\
-    \href{mailto:civilise.noah@gmail.com}{civilise.noah@gmail.com} \ \textbullet\ 
-    +33 6 60 39 97 86 \ \textbullet\ 
-    \href{https://www.linkedin.com/in/noah-civilise/}{LinkedIn} \ \textbullet\ 
-    \href{https://github.com/Noah30c}{GitHub} \ \textbullet\ 
-    \href{https://civilise-noah.onrender.com/}{Portfolio}
-    }
-\end{center}
+\noindent
+{\Huge \textbf{\textcolor{primary}{Noah CIVILISE}}}\\[2pt]
+{\footnotesize
+\faPhone \ +33 6 60 39 97 86 \separator
+\faMapMarker \ Bordeaux / Paris \separator
+\faEnvelope \ \href{mailto:civilise.noah@gmail.com}{civilise.noah@gmail.com} \separator
+\faLinkedin \ \href{https://www.linkedin.com/in/noah-civilise/}{noah-civilise} \separator
+\faGithub \ \href{https://github.com/Noah30c}{Noah30c}
+}\\[2pt]
+{\large 5\textsuperscript{th}-year Student at EPITA -- Computer Science Engineering}
 
-\vspace{0.2cm}
+\vspace{0.1cm}
 
 % ==========================================
 % OBJECTIVE
 % ==========================================
+\section*{Objective}
 \noindent
-\textbf{Objective:} Seeking a 6-month end-of-studies internship in Artificial Intelligence or Image Processing starting from February 2027 in Bordeaux or Paris. Curious, adaptable, and motivated, I wish to deepen my skills in these fields within a stimulating environment.
+Seeking a 6-month end-of-studies internship in Artificial Intelligence or Image Processing starting from February 2027 in Bordeaux or Paris. Curious, adaptable, and motivated, I wish to deepen my skills in these fields within a stimulating environment.
 
 % ==========================================
 % PROFESSIONAL EXPERIENCE
@@ -68,17 +67,18 @@
 
 \noindent
 \textbf{Final Year Project (PFEE) -- Virtual Reality Engineer} \hfill \textit{Feb 2026 - Present} \\
-\textit{Dassault Systèmes} \\
+\textit{\textbf{Dassault Systèmes}} \\
 \textit{Design of a VR navigation tool (Minimap) for complex 3D environments (WebXR).}
 \begin{itemize}
     \item Development of an immersive WebXR experience (Three.js, TypeScript) featuring a dynamic VR Minimap.
     \item Implementation of 3D algorithms ("World Detection") and asynchronous optimization via WebWorkers.
 \end{itemize}
 
-\vspace{0.1cm}
+\vspace{0.15cm}
+
 \noindent
 \textbf{Data Science \& Generative AI Intern} \hfill \textit{Sept 2025 -- Jan 2026} \\
-\textit{Compagnie Européenne de Garanties et Cautions (Groupe BPCE)}
+\textit{\textbf{Compagnie Européenne de Garanties et Cautions (Groupe BPCE)}}
 \begin{itemize}
     \item \textbf{RAG Architecture \& LLMs}: "From scratch" design of an information extraction pipeline for hundreds of PDF balance sheets (SentenceTransformer, Qdrant, LLM).
     \item \textbf{Reliability \& MLOps}: Strict validation of generated data (JSON, Pydantic, Luhn) and tracking of confidence metrics (77.1\%) on a Streamlit dashboard.
@@ -87,9 +87,10 @@
     \item \textbf{Business Intelligence}: Star schema data modeling and creation of a Power BI dashboard (DAX) to automatically detect drifts in bond granting rules.
 \end{itemize}
 
-\vspace{0.1cm}
+\vspace{0.15cm}
+
 \noindent
-\textbf{Tutor} \hfill \textit{2022 -- 2023} \\
+\textbf{Tutor} \hfill \textit{2022 -- 2025} \\
 \textit{BackToBasics, EPITA}
 \begin{itemize}
     \item Tutoring in algorithms, programming, and mathematics (individual and group sessions).
@@ -104,17 +105,17 @@
 \textbf{Automatic License Plate Recognition (ALPR)} \hfill \textit{C++, Python, OpenCV, ML} \\
 "From scratch" development of an ALPR pipeline without Deep Learning. Prototyping (Python) and low-level porting (C++) for optimization (MyCV library, Random Forest, CI/CD). Processing < 380ms with 93\% accuracy.
 
-\vspace{0.1cm}
+
 \noindent
 \textbf{DermScan (Medical AI)} \hfill \textit{Python, OpenCV, FastAPI, RabbitMQ, Docker} \\
 Distributed dermatological diagnosis aid application (ABCDE rule). Computer vision pipeline (K-Means, PCA) and Machine Learning (MLP, sensitivity >85\%) focused on explainability. Asynchronous microservices architecture with full CI/CD.
 
-\vspace{0.1cm}
+
 \noindent
 \textbf{GStreamer Filter (GPGPU CUDA)} \hfill \textit{C++, CUDA, GStreamer} \\
 GPGPU optimization of a motion detection video filter. Real-time processing pipeline with CUDA acceleration (CUDA Graphs, Pinned memory).
 
-\vspace{0.1cm}
+
 \noindent
 \textbf{Tiger Compiler} \hfill \textit{C++, Flex/Bison, LLVM} \\
 Team development of a complete compiler for the object-oriented Tiger language. Modular architecture: lexical/syntactic analysis, semantic verification, and code generation (LLVM IR). Implementation of code optimizations (inlining, escape analysis).
@@ -128,12 +129,14 @@ Team development of a complete compiler for the object-oriented Tiger language. 
 \textbf{EPITA – Computer Science Engineering School} \hfill \textit{2022 -- 2027} \\
 5\textsuperscript{th} year in Computer Science Engineering - \textbf{GPA: 4.0} \hfill \textit{Le Kremlin-Bicêtre, France}
 
-\vspace{0.1cm}
+
+
 \noindent
 \textbf{Universidad del País Vasco} \hfill \textit{2024} \\
 Academic Exchange \hfill \textit{San Sebastián, Spain}
 
-\vspace{0.1cm}
+
+
 \noindent
 \textbf{High School Diploma (Baccalaureate)} \hfill \textit{2019 -- 2022} \\
 Mathematics and Computer Science (NSI) -- \textbf{High Honors} \hfill \textit{Montigny-Le-Bretonneux, France}
@@ -143,12 +146,11 @@ Mathematics and Computer Science (NSI) -- \textbf{High Honors} \hfill \textit{Mo
 % ==========================================
 \section*{Skills}
 
-\begin{itemize}
-    \item \textbf{Languages:} C++, Python, TypeScript, Java, C, Bash, HTML/CSS
-    \item \textbf{Tools \& Frameworks:} OpenCV, React, FastAPI, Docker, RabbitMQ, CMake, Git, CI/CD
-    \item \textbf{Languages:} English (TOEIC 900/990 - Fluent), Spanish (B1), French (Native)
-    \item \textbf{Soft Skills:} Adaptability, Teamwork, Autonomy, Problem Solving
-    \item \textbf{Miscellaneous:} A2 \& B Driving Licenses
-\end{itemize}
+\noindent
+\textbf{Languages:} C++, C, C\#, Python, JS, Java, Bash, HTML/CSS \\
+\textbf{Tools \& Frameworks:} OpenCV, React, FastAPI, Docker, RabbitMQ, CMake, Git, CI/CD \\
+\textbf{Languages:} English (TOEIC 900/990 - Fluent), Spanish (B1), French (Native) \\
+\textbf{Soft Skills:} Adaptability, Teamwork, Autonomy, Problem Solving \\
+\textbf{Miscellaneous:} A2 \& B Driving Licenses
 
 \end{document}
