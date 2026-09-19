@@ -332,7 +332,7 @@ nav {
     height: 100%;
     object-fit: cover;
     display: block;
-    object-position: 0 -20px;
+    object-position: 0 0px;
     transition: transform 0.5s ease;
 }
 
