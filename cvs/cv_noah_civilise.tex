@@ -9,6 +9,7 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{fontawesome5} % Pour les icônes
+\usepackage{graphicx} % Pour inclure des images
 
 % Police Serif (standard LaTeX, très académique)
 \usepackage{lmodern}
@@ -41,6 +42,7 @@
 % EN-TÊTE
 % ==========================================
 \noindent
+\begin{minipage}[t]{0.75\textwidth}
 {\Huge \textbf{\textcolor{primary}{Noah CIVILISE}}}\\[2pt]
 {\footnotesize
 \faPhone \ +33 6 60 39 97 86 \separator
@@ -50,6 +52,14 @@
 \faGithub \ \href{https://github.com/Noah30c}{Noah30c}
 }\\[2pt]
 {\large Étudiant en 5\textsuperscript{ème} année à EPITA -- Ingénierie Informatique}
+\end{minipage}%
+\begin{minipage}[t]{0.25\textwidth}
+\vspace{-0.7cm}
+\raggedleft
+% L'option trim prend 4 valeurs : gauche, bas, droite, haut.
+% Ajuste ces valeurs (en cm ou pt) pour rogner selon ton besoin.
+\includegraphics[trim=0 70cm 0 20cm, clip, width=2.5cm]{../images/moi.jpg}
+\end{minipage}
 
 \vspace{0.1cm}
 
