@@ -1,203 +1,247 @@
-// Translations
+// Translations for Noah Civilise 3D Portfolio (Cockpit Edition with 3D Spatial Carousel)
 const translations = {
     fr: {
-        "nav.about": "À propos",
+        "nav.profile": "Profil",
+        "nav.experience": "Expérience",
+        "nav.projects": "Projets",
         "nav.education": "Formation",
         "nav.skills": "Compétences",
-        "nav.projects": "Projets",
-        "nav.experience": "Expérience",
         "nav.interests": "Centres d'intérêt",
 
-        "hero.title": "Étudiant en 5ᵉ année à EPITA, École d'ingénieurs en informatique",
-        "hero.description": "Je recherche mon stage de fin d'études en Intelligence Artificielle ou en Traitement d'Image sur Bordeaux ou Paris. Curieux, adaptable et motivé, je souhaite approfondir mes compétences dans ces domaines.",
-        "hero.cta": "Voir mes projets",
-        "hero.cv.title": "Télécharger mon CV :",
-        "hero.cv.fr": "Version Française",
-        "hero.cv.en": "Version Anglaise",
+        "hero.badge": "Ingénieur en IA, Vision par ordinateur et traitement d'image",
+        "hero.title": "Étudiant en 5ᵉ année à EPITA",
+        "hero.subtitle": "Intelligence Artificielle • Vision par Ordinateur • Traitement d'Image • Rendu & GPU",
+        "hero.description": "Je recherche mon stage de fin d'études de 6 mois en Intelligence Artificielle ou en Traitement d'Image à partir de février 2027 sur Bordeaux ou Paris. Curieux, adaptable et motivé, je conçois des systèmes performants alliant rendu temps réel, vision algorithmique et architectures d'IA modernes.",
+        "hero.cta": "Découvrir mes projets",
+        "hero.cta.exp": "Mon parcours",
+        "hero.cv.title": "CV à télécharger :",
+        "hero.cv.fr": "Aperçu CV (FR)",
+        "hero.cv.en": "Aperçu CV (EN)",
+        "hero.stat.school": "EPITA – Majeure IMAGE",
+        "hero.stat.gpa": "GPA : 4.0 / 4.0",
+        "hero.stat.internship": "Stage : Fév 2027 (6 mois)",
+        "hero.stat.location": "Bordeaux / Paris",
 
-        "about.title": "À propos",
-        "about.description": "Passionné par les technologies émergentes, je suis actuellement en 5ème année à l'EPITA. Mon expertise s'étend de la conception d'architectures logicielles à l'application de techniques d'intelligence artificielle et de traitement d'image pour résoudre des problèmes complexes. Particulièrement intéressé par le machine learning et l'IA, je m'investis dans des projets innovants qui combinent ces domaines. Mon parcours est porté par une curiosité insatiable et un désir constant d'améliorer mes compétences techniques en relevant de nouveaux défis. Je recherche activement mon stage de fin d'études dans le domaine de l'IA ou du traitement d'image sur Bordeaux ou Paris.",
+        "experience.title": "Expérience Professionnelle",
+        "experience.vr.title": "Projet de Fin d'Études (PFEE) – Ingénieur Réalité Virtuelle",
+        "experience.vr.company": "Dassault Systèmes",
+        "experience.vr.subtitle": "Outil d'aide à la navigation (Minimap) en Réalité Virtuelle (WebXR) pour environnements 3D complexes.",
+        "experience.vr.item1": "Développement WebXR immersif et fluide à 90 FPS (Three.js, TypeScript, Vite) pour visualiser et interagir avec des maquettes industrielles.",
+        "experience.vr.item2": "Implémentation d'un algorithme de 'World Detection' pour la détection automatique des étages et calcul des zones de collision 3D.",
+        "experience.vr.item3": "Conception d'une interface VR dynamique attachée au contrôleur avec navigation inter-étages et minimap 3D temps réel.",
+        "experience.vr.item4": "Optimisation des performances critiques via WebWorkers pour déporter les calculs géométriques lourds.",
 
-        "education.title": "Formation",
+        "experience.bpce.title": "Data Science & Generative AI Intern",
+        "experience.bpce.company": "Compagnie Européenne de Garanties et Cautions (Groupe BPCE)",
+        "experience.bpce.subtitle": "Architecture RAG, fiabilisation MLOps et automatisation d'analyses financières.",
+        "experience.bpce.item1": "Architecture RAG & LLM from scratch sur des bilans PDF (SentenceTransformer, Qdrant, LLM, Pydantic).",
+        "experience.bpce.item2": "Fiabilisation MLOps : validation stricte des données générées (JSON, Pydantic, Luhn) et métriques de confiance (77.1%) sur interface Streamlit.",
+        "experience.bpce.item3": "Automatisation & NLP : outil de contrôle croisant données Excel et bilans PDF analysés par LLM (>60% de gain de temps).",
+        "experience.bpce.item4": "Industrialisation : exécutables autonomes (PyInstaller), orchestration Dataiku et reporting Power BI (DAX).",
+
+        "experience.tutor.title": "Tuteur en Informatique & Mathématiques",
+        "experience.tutor.company": "BackToBasics – EPITA",
+        "experience.tutor.subtitle": "Accompagnement pédagogique et transmission technique.",
+        "experience.tutor.item1": "Tutorat en algorithmique avancée, programmation (C, C++, Python) et mathématiques pour étudiants de premier cycle.",
+        "experience.tutor.item2": "Planification d'ateliers individuels et collectifs, revues de code et méthodologie de résolution de problèmes.",
+
+        "projects.title": "Projets & Réalisations",
+        "projects.filter.all": "Tous les projets (9)",
+        "projects.filter.ai": "IA & Vision",
+        "projects.filter.vr": "WebXR & Rendu",
+        "projects.filter.sys": "Systèmes & C++",
+        "projects.carousel.hint": "Faites glisser ou naviguez avec les flèches pour faire défiler • Cliquez au centre pour inspecter",
+        "projects.carousel.viewDetails": "Inspecter le projet",
+        "projects.modal.close": "Fermer",
+        "projects.modal.stack": "Technologies & Outils",
+        "projects.modal.impact": "Points Clés & Résultats Techniques",
+
+        "projects.alpr.title": "Automatic License Plate Recognition (ALPR)",
+        "projects.alpr.desc": "Pipeline from scratch de détection de plaques sans Deep Learning. Prototypage Python et portage C++ optimisé (librairie MyCV, Random Forest, CI/CD). Traitement < 380ms avec 93% d'exactitude.",
+
+        "projects.dermscan.title": "DermScan (IA Médicale)",
+        "projects.dermscan.desc": "Application d'aide au diagnostic dermatologique (règle ABCDE). Pipeline vision (K-Means, PCA, moments de Hu) et ML (MLP, sensibilité >85%) explicable via modèles experts (FastAPI, RabbitMQ, Docker).",
+
+        "projects.gpgpu.title": "Filtre GStreamer (GPGPU CUDA)",
+        "projects.gpgpu.desc": "Optimisation GPGPU d'un filtre vidéo de détection de mouvement. Traitement flux temps réel accéléré par CUDA (CUDA Graphs, mémoire Pinned, transferts asynchrones zero-copy).",
+
+        "projects.3d.title": "Jeu Multijoueur FPS (Unity)",
+        "projects.3d.desc": "FPS multijoueur sous Unity avec modélisation d'environnements, animations de personnages, physique balistique, synchronisation réseau et gestion dynamique des scores.",
+
+        "projects.tiger.title": "Compilateur Tiger (LLVM)",
+        "projects.tiger.desc": "Compilateur complet pour le langage objet Tiger : analyse lexico-syntaxique (Flex/Bison), vérification sémantique et génération LLVM IR optimisée (inlining, escape analysis).",
+
+        "projects.42sh.title": "Interpréteur de Commandes Unix (42SH)",
+        "projects.42sh.desc": "Shell Unix POSIX complet en C : parsing AST, gestion de jobs et processus, redirections, pipelines, subshells et variables d'environnement.",
+
+        "projects.bazaar.title": "EpiBazaar",
+        "projects.bazaar.desc": "Backend distribué pour simulation économique multijoueur. Microservices avec Quarkus, Hibernate, API REST et streaming d'événements asynchrones Apache Kafka.",
+
+        "projects.carpool.title": "Application de Covoiturage",
+        "projects.carpool.desc": "Plateforme temps réel de covoiturage avec géolocalisation, alertes interactives et interface dynamique développée en Java avec Scene Builder.",
+
+        "projects.ocr.title": "OCR & Résolution de Sudoku",
+        "projects.ocr.desc": "Reconnaissance optique de caractères et résolution automatique de grilles avec réseau de neurones from scratch en C et filtres de traitement d'image.",
+
+        "education.title": "Formation Académique",
         "education.epita.title": "EPITA – École d'ingénieurs en informatique",
-        "education.epita.desc": "5ème année en ingénierie informatique",
-        "education.epita.location": "Le Kremlin-Bicêtre",
+        "education.epita.desc": "5ᵉ année – Majeure IMAGE (Traitement d’images, vision par ordinateur, deep learning, IA, calcul GPU)",
+        "education.epita.grade": "GPA : 4.0 / 4.0",
+        "education.epita.location": "Le Kremlin-Bicêtre, France",
 
-        "education.spain.title": "Échange académique",
-        "education.spain.desc": "Universidad del País Vasco",
+        "education.spain.title": "Échange académique international",
+        "education.spain.desc": "Universidad del País Vasco – Faculté d'informatique",
         "education.spain.location": "San Sebastián, Espagne",
+
         "education.bac.title": "Baccalauréat Scientifique",
         "education.bac.desc": "Lycée Descartes",
         "education.bac.grade": "Mention Très Bien avec les spécialités Mathématiques et NSI",
 
-        "skills.title": "Compétences",
+        "skills.title": "Compétences & Technologies",
         "skills.prog": "Langages de programmation",
-        "skills.tools": "Outils de développement",
-        "skills.methods": "Méthodologies",
-        "skills.testing": "Testing",
-        "skills.test.desc": "Tests unitaires et fonctionnels (C, Python, Bash, Java)",
+        "skills.tools": "3D, Vision & IA",
+        "skills.methods": "Méthodologies & MLOps",
+        "skills.testing": "Testing & Qualité",
         "skills.languages": "Langues",
-        "skills.lang.fr": "Français (natif)",
-        "skills.lang.en": "Anglais (TOEIC 900/990)",
-        "skills.lang.es": "Espagnol (B1)",
         "skills.soft": "Soft skills",
-        "skills.soft.adapt": "Adaptabilité",
-        "skills.soft.team": "Travail d'équipe",
-        "skills.soft.auto": "Autonomie",
-        "skills.soft.problem": "Résolution de problèmes",
-        "skills.misc": "Divers",
-        "skills.misc.license": "Permis A2 & B",
-        "skills.methods.project": "Gestion de projet",
 
-        "projects.title": "Projets",
-        "projects.alpr.title": "Automatic License Plate Recognition (ALPR)",
-        "projects.alpr.desc": "Développement \"from scratch\" d'une pipeline de localisation automatique de plaques d'immatriculation sans Deep Learning. Prototypage en Python puis portage bas niveau en C++ pour l'optimisation (création d'une librairie sur-mesure MyCV, Machine Learning avec Random Forest, CI/CD). Traitement < 380ms avec 93% d'exactitude lors du portage.",
-        "projects.tiger.title": "Compilateur Tiger",
-        "projects.tiger.desc": "Développement en équipe d'un compilateur complet pour le langage objet Tiger. Architecture modulaire : analyse lexico-syntaxique, vérification sémantique et génération de code (LLVM IR). Implémentation d'optimisations (inlining, analyse d'échappement).",
-        "projects.42sh.title": "Interpréteur de Commandes Unix (42SH)",
-        "projects.42sh.desc": "Développement d'un interpréteur de commandes Unix en C. Implémentation des fonctions telles que le parsing de commandes, la gestion de fichiers, la navigation dans les répertoires et la gestion des variables d'environnement.",
-        "projects.3d.title": "Jeu Multijoueur 3D",
-        "projects.3d.desc": "Développement d'un jeu de tir multijoueur (FPS). Modélisation des environnements 3D et création de personnages jouables avec des animations fluides. Implémentation de la mécanique de tir, des systèmes de gestion des points de vie, des effets visuels pour les projectiles et d'un système de score.",
-        "projects.bazaar.title": "EpiBazaar",
-        "projects.bazaar.desc": "Backend pour un jeu de gestion de ressources (microservices, API REST, Quarkus, Hibernate, Kafka pour l'asynchrone)",
-        "projects.carpool.title": "Application de Covoiturage",
-        "projects.carpool.desc": "Développement d'une application de covoiturage en temps réel avec réservation, alertes, et une interface utilisateur intuitive. Intégration de fonctionnalités de géolocalisation et de notifications en temps réel pour améliorer l'expérience utilisateur.",
-        "projects.ocr.title": "OCR Résolution de Sudoku",
-        "projects.ocr.desc": "Reconnaissance optique de caractères et résolution de Sudoku utilisant un réseau de neurones en C et traitement d'image",
-        "projects.dermscan.title": "DermScan (IA Médicale)",
-        "projects.dermscan.desc": "Application distribuée d'aide au diagnostic dermatologique (règle ABCDE). Pipeline de vision par ordinateur (K-Means, PCA, moments de Hu) et Machine Learning (MLP, sensibilité >85%) orienté explicabilité via des modèles experts. Architecture microservices asynchrones (FastAPI, RabbitMQ) avec CI/CD complète.",
-        "projects.gpgpu.title": "Filtre GStreamer (GPGPU CUDA)",
-        "projects.gpgpu.desc": "Optimisation GPGPU d'un filtre vidéo de détection de mouvement. Implémentation d'un pipeline de traitement temps réel avec accélération CUDA (CUDA Graphs, mémoire Pinned).",
+        "interests.title": "Centres d'Intérêt",
+        "interests.bmx.title": "BMX",
+        "interests.bmx": "Pratique en compétition, co-fondateur d'une association sportive pour les voyages de groupe et échanges culturels.",
+        "interests.travel.title": "Voyages & Culture",
+        "interests.travel": "Exploration internationale, ouverture d'esprit et curiosité intellectuelle.",
+        "interests.motorsports.title": "Sports Mécaniques",
+        "interests.motorsports": "Passionné de MotoGP et Formule 1 (télémétrie, aérodynamique et ingénierie de pointe).",
 
-        "experience.title": "Expérience professionnelle",
-        "experience.vr.title": "Ingénieur Réalité Virtuelle (WebXR) – Dassault Systèmes",
-        "experience.vr.item1": "Développement d'une expérience WebXR immersive et performante (Three.js, TypeScript, Vite)",
-        "experience.vr.item2": "Implémentation d'un algorithme de \"World Detection\" pour la détection automatique des étages et calcul des zones de collision",
-        "experience.vr.item3": "Conception d'une interface VR dynamique attachée au contrôleur avec navigation inter-étages",
-        "experience.vr.item4": "Optimisation critique des performances via la mise en place de WebWorkers pour déporter les calculs lourds",
-        "experience.bpce.title": "Data Science & Generative AI Intern – Groupe BPCE",
-        "experience.bpce.item1": "Pipeline RAG : automatisation de l'extraction d'informations sur des bilans PDF (SentenceTransformer, Qdrant, LLM, Pydantic)",
-        "experience.bpce.item2": "Tableau de bord Power BI : conception d'un reporting interactif pour le suivi de règles expertes d'octroi de cautionnement",
-        "experience.bpce.item3": "Automatisation de contrôles : outil packagé croisant extraction PDF, appel LLM et données Excel",
-        "experience.tutor.title": "Tuteur – BackToBasics, EPITA",
-        "experience.tutor.item1": "Tutorat en algorithmique, programmation et mathématiques",
-        "experience.tutor.item2": "Planification de séances individuelles et en groupe",
-
-
-        "interests.title": "Centres d'intérêt",
-        "interests.bmx": "BMX (compétitions, co-création d'une association pour les voyages en groupe et échanges culturels)",
-        "interests.travel": "Voyages et culture",
-        "interests.motorsports": "Sports mécaniques (MotoGP, Formule 1)",
-
-        "footer.rights": "© 2024 Noah Civilise. Tous droits réservés.",
-        "date.present": "Présent"
+        "footer.rights": "© 2026 Noah Civilise • Conçu avec Three.js & WebGL 3D.",
+        "footer.hint": "Navigation rapide :"
     },
     en: {
-        "nav.about": "About",
+        "nav.profile": "Profile",
+        "nav.experience": "Experience",
+        "nav.projects": "Projects",
         "nav.education": "Education",
         "nav.skills": "Skills",
-        "nav.projects": "Projects",
-        "nav.experience": "Experience",
         "nav.interests": "Interests",
 
-        "hero.title": "5th-year student at EPITA, Computer Science Engineering School",
-        "hero.description": "I am looking for my end-of-studies internship in Artificial Intelligence or Image Processing in Bordeaux or Paris. Curious, adaptable, and motivated, I wish to deepen my skills in these fields.",
-        "hero.cta": "View my projects",
-        "hero.cv.title": "Download my CV:",
-        "hero.cv.fr": "French Version",
-        "hero.cv.en": "English Version",
-
-        "about.title": "About",
-        "about.description": "As a passionate computer science student, I am currently in my 5th year at EPITA. My areas of interest include artificial intelligence, image processing, and data science. I am actively seeking my end-of-studies internship in AI or Image Processing in Bordeaux or Paris.",
-
-        "education.title": "Education",
-        "education.epita.title": "EPITA – Computer Science Engineering School",
-        "education.epita.desc": "5th year in Computer Science Engineering",
-        "education.epita.location": "Le Kremlin-Bicêtre, France",
-
-        "education.spain.title": "Academic Exchange",
-        "education.spain.desc": "University of the Basque Country",
-        "education.spain.location": "San Sebastián, Spain",
-        "education.bac.title": "Scientific Baccalaureate",
-        "education.bac.desc": "Descartes High School",
-        "education.bac.grade": "High Honors with Mathematics and NSI specialties",
-
-        "skills.title": "Skills",
-        "skills.prog": "Programming Languages",
-        "skills.tools": "Development Tools",
-        "skills.methods": "Methodologies",
-        "skills.testing": "Testing",
-        "skills.test.desc": "Unit & functional testing (C, Python, Bash, Java)",
-        "skills.languages": "Languages",
-        "skills.lang.fr": "French (native)",
-        "skills.lang.en": "English (TOEIC 900/990)",
-        "skills.lang.es": "Spanish (B1)",
-        "skills.soft": "Soft skills",
-        "skills.soft.adapt": "Adaptability",
-        "skills.soft.team": "Teamwork",
-        "skills.soft.auto": "Autonomy",
-        "skills.soft.problem": "Problem Solving",
-        "skills.misc": "Miscellaneous",
-        "skills.misc.license": "A2 & B Driving Licenses",
-        "skills.methods.project": "Project Management",
-
-        "projects.title": "Projects",
-        "projects.alpr.title": "Automatic License Plate Recognition (ALPR)",
-        "projects.alpr.desc": "From scratch development of an automatic license plate localization pipeline without Deep Learning. Prototyping in Python followed by low-level C++ porting for optimization (creation of a custom MyCV library, Machine Learning with Random Forest, CI/CD). Processing time < 380ms with 93% porting accuracy.",
-        "projects.tiger.title": "Tiger Compiler",
-        "projects.tiger.desc": "Team development of a complete compiler for the object-oriented Tiger language. Modular architecture: lexical/syntactic analysis, semantic verification, and code generation (LLVM IR). Implementation of code optimizations (inlining, escape analysis).",
-        "projects.42sh.title": "Unix Command Interpreter (42SH)",
-        "projects.42sh.desc": "Development of a Unix command interpreter in C. Implementation of functions such as command parsing, file management, directory navigation, and environment variable management.",
-        "projects.3d.title": "3D Multiplayer Game",
-        "projects.3d.desc": "Development of a multiplayer first-person shooter (FPS). Modeling of 3D environments and creation of playable characters with fluid animations. Implementation of shooting mechanics, health management systems, visual effects for projectiles, and a scoring system.",
-        "projects.bazaar.title": "EpiBazaar",
-        "projects.bazaar.desc": "Backend for a resource management game (microservices, REST APIs, Quarkus, Hibernate, Kafka for asynchronous processing)",
-        "projects.carpool.title": "Carpooling Application",
-        "projects.carpool.desc": "Development of a real-time carpooling application with booking, alerts, and an intuitive user interface. Integration of geolocation features and real-time notifications to enhance user experience.",
-        "projects.ocr.title": "OCR Sudoku Solver",
-        "projects.ocr.desc": "Optical Character Recognition and Sudoku solving using a C-based neural network and image processing",
-        "projects.dermscan.title": "DermScan (Medical AI)",
-        "projects.dermscan.desc": "Distributed dermoscopic diagnostic aid application (ABCDE rule). Computer vision pipeline (K-Means, PCA, Hu moments) and Machine Learning (MLP, sensitivity >85%) focused on explainability via expert models. Asynchronous microservices architecture (FastAPI, RabbitMQ) with full CI/CD.",
-        "projects.gpgpu.title": "GStreamer Filter (GPGPU CUDA)",
-        "projects.gpgpu.desc": "GPGPU optimization of a motion detection video filter. Implementation of a real-time processing pipeline with CUDA acceleration (CUDA Graphs, Pinned memory).",
+        "hero.badge": "Engineer in AI, Computer Vision & Image Processing",
+        "hero.title": "5th-year student at EPITA",
+        "hero.subtitle": "Artificial Intelligence • Computer Vision • Image Processing • Rendering & GPU",
+        "hero.description": "I am seeking my 6-month end-of-studies internship in Artificial Intelligence or Image Processing starting February 2027 in Bordeaux or Paris. Curious, adaptable, and motivated, I engineer high-performance systems combining real-time rendering, computer vision, and modern AI architectures.",
+        "hero.cta": "Explore Projects",
+        "hero.cta.exp": "My Background",
+        "hero.cv.title": "Download Resume:",
+        "hero.cv.fr": "French Resume (Preview)",
+        "hero.cv.en": "English Resume (Preview)",
+        "hero.stat.school": "EPITA – IMAGE Major",
+        "hero.stat.gpa": "GPA: 4.0 / 4.0",
+        "hero.stat.internship": "Internship: Feb 2027 (6 mo.)",
+        "hero.stat.location": "Bordeaux / Paris",
 
         "experience.title": "Professional Experience",
-        "experience.vr.title": "Virtual Reality Engineer (WebXR) – Dassault Systèmes",
-        "experience.vr.item1": "Development of an immersive and high-performance WebXR experience (Three.js, TypeScript, Vite)",
-        "experience.vr.item2": "Implementation of a 'World Detection' algorithm for automatic floor detection and collision zone calculation",
-        "experience.vr.item3": "Design of a dynamic VR interface attached to the controller with inter-floor navigation",
-        "experience.vr.item4": "Critical performance optimization through the implementation of WebWorkers to offload heavy computations",
-        "experience.bpce.title": "Data Science & Generative AI Intern – Groupe BPCE",
-        "experience.bpce.item1": "RAG Pipeline: automated extraction of information from PDF balance sheets (SentenceTransformer, Qdrant, LLM, Pydantic)",
-        "experience.bpce.item2": "Power BI Dashboard: design of an interactive reporting tool for monitoring expert bond granting rules",
-        "experience.bpce.item3": "Control automation: packaged tool combining PDF extraction, LLM calls, and Excel data",
-        "experience.tutor.title": "Tutor – BackToBasics, EPITA",
-        "experience.tutor.item1": "Tutoring in algorithms, programming, and mathematics",
-        "experience.tutor.item2": "Planning of individual and group sessions",
+        "experience.vr.title": "End-of-Studies Project (PFEE) – Virtual Reality Engineer",
+        "experience.vr.company": "Dassault Systèmes",
+        "experience.vr.subtitle": "VR navigation assistance tool (Minimap) in WebXR for complex 3D industrial scenes.",
+        "experience.vr.item1": "Immersive 90 FPS WebXR development (Three.js, TypeScript, Vite) for interacting with large-scale 3D engineering models.",
+        "experience.vr.item2": "Implementation of a 'World Detection' 3D algorithm for automatic floor detection and collision boundary calculation.",
+        "experience.vr.item3": "Dynamic VR interface attached to the controller with real-time inter-floor navigation and 3D minimap.",
+        "experience.vr.item4": "Critical performance optimizations via WebWorkers to offload heavy geometrical computations.",
 
+        "experience.bpce.title": "Data Science & Generative AI Intern",
+        "experience.bpce.company": "Compagnie Européenne de Garanties et Cautions (Groupe BPCE)",
+        "experience.bpce.subtitle": "RAG architecture, MLOps validation, and financial analysis automation.",
+        "experience.bpce.item1": "From-scratch RAG & LLM pipeline on PDF balance sheets (SentenceTransformer, Qdrant, LLM, Pydantic).",
+        "experience.bpce.item2": "MLOps reliability: strict structured output validation (JSON, Pydantic, Luhn) and confidence monitoring (77.1%) on Streamlit.",
+        "experience.bpce.item3": "Automation & NLP: engineered validation tool cross-checking Excel datasets against LLM-analyzed PDF reports (>60% time savings).",
+        "experience.bpce.item4": "Industrialization: packaged standalone executables (PyInstaller), Dataiku orchestration, and Power BI dashboards.",
 
-        "interests.title": "Interests",
-        "interests.bmx": "BMX (competitions, co-creation of an association for group travel and cultural exchange)",
-        "interests.travel": "Travel and culture",
-        "interests.motorsports": "Motorsports (MotoGP, Formula 1)",
+        "experience.tutor.title": "Computer Science & Mathematics Tutor",
+        "experience.tutor.company": "BackToBasics – EPITA",
+        "experience.tutor.subtitle": "Academic mentoring and technical pedagogy.",
+        "experience.tutor.item1": "Tutoring in advanced algorithms, programming (C, C++, Python), and mathematics for undergraduate engineering students.",
+        "experience.tutor.item2": "Organizing individual and group workshops, code reviews, and problem-solving methodology.",
 
-        "footer.rights": "© 2024 Noah Civilise. All rights reserved.",
-        "date.present": "Present"
+        "projects.title": "Projects & Realizations",
+        "projects.filter.all": "All Projects (9)",
+        "projects.filter.ai": "AI & Vision",
+        "projects.filter.vr": "WebXR & Rendering",
+        "projects.filter.sys": "Systems & C++",
+        "projects.carousel.hint": "Drag or navigate with arrows to browse • Click center card to inspect",
+        "projects.carousel.viewDetails": "Inspect Project",
+        "projects.modal.close": "Close",
+        "projects.modal.stack": "Technologies & Tools",
+        "projects.modal.impact": "Key Technical Highlights & Results",
+
+        "projects.alpr.title": "Automatic License Plate Recognition (ALPR)",
+        "projects.alpr.desc": "From-scratch license plate detection and recognition pipeline without Deep Learning. Prototyped in Python and ported to low-level optimized C++ (custom MyCV library, Random Forest, CI/CD). Latency < 380ms with 93% accuracy.",
+
+        "projects.dermscan.title": "DermScan (Medical AI)",
+        "projects.dermscan.desc": "Dermoscopic diagnostic aid app (ABCDE rule). Vision pipeline (K-Means, PCA, Hu moments) and ML (MLP, >85% sensitivity) focused on explainability (FastAPI, RabbitMQ, Docker).",
+
+        "projects.gpgpu.title": "GStreamer Filter (GPGPU CUDA)",
+        "projects.gpgpu.desc": "GPGPU motion detection video filter optimization. Real-time streaming pipeline powered by CUDA acceleration (CUDA Graphs, Pinned memory, zero-copy async transfers).",
+
+        "projects.3d.title": "Multiplayer FPS Game (Unity)",
+        "projects.3d.desc": "Multiplayer FPS game in Unity: custom environment modeling, fluid character animations, shooting raycast physics, and networked synchronization.",
+
+        "projects.tiger.title": "Tiger Compiler (LLVM)",
+        "projects.tiger.desc": "Complete compiler for the object-oriented Tiger language: Lexer/Parser with Flex/Bison, semantic verification, and optimized LLVM IR generation.",
+
+        "projects.42sh.title": "Unix Command Interpreter (42SH)",
+        "projects.42sh.desc": "POSIX-compliant Unix shell in C: AST parser, job control, piping, I/O redirection, subshells, and custom builtins.",
+
+        "projects.bazaar.title": "EpiBazaar",
+        "projects.bazaar.desc": "Distributed backend for economic simulation game. Microservices built with Quarkus, Hibernate, REST APIs, and asynchronous event streaming via Apache Kafka.",
+
+        "projects.carpool.title": "Carpooling Application",
+        "projects.carpool.desc": "Real-time carpooling platform with booking system, geolocation, interactive alerts, and UI built with Java and Scene Builder.",
+
+        "projects.ocr.title": "OCR & Sudoku Solver",
+        "projects.ocr.desc": "Optical character recognition and automated Sudoku puzzle solver using a custom C neural network and digital image filtering.",
+
+        "education.title": "Academic Education",
+        "education.epita.title": "EPITA – School of Computer Engineering",
+        "education.epita.desc": "5th year – Major in IMAGE (Image processing & synthesis, computer vision, deep learning, AI, GPU computing)",
+        "education.epita.grade": "GPA: 4.0 / 4.0",
+        "education.epita.location": "Le Kremlin-Bicêtre, France",
+
+        "education.spain.title": "International Academic Exchange",
+        "education.spain.desc": "Universidad del País Vasco – Faculty of Computer Science",
+        "education.spain.location": "San Sebastián, Spain",
+
+        "education.bac.title": "Scientific Baccalaureate",
+        "education.bac.desc": "Lycée Descartes",
+        "education.bac.grade": "Highest Honors (Mention Très Bien) with Mathematics and Computer Science",
+
+        "skills.title": "Skills & Technologies",
+        "skills.prog": "Programming Languages",
+        "skills.tools": "3D, Vision & AI",
+        "skills.methods": "Methodologies & MLOps",
+        "skills.testing": "Testing & Code Quality",
+        "skills.languages": "Languages",
+        "skills.soft": "Soft Skills",
+
+        "interests.title": "Interests & Passions",
+        "interests.bmx.title": "BMX",
+        "interests.bmx": "Competitive riding, co-founder of a sports association organizing group expeditions and cultural exchanges.",
+        "interests.travel.title": "Travel & Cultures",
+        "interests.travel": "Global exploration, open-mindedness, and intellectual curiosity.",
+        "interests.motorsports.title": "Motorsports",
+        "interests.motorsports": "Passionate about MotoGP & Formula 1 (telemetry, aerodynamics, and high-performance engineering).",
+
+        "footer.rights": "© 2026 Noah Civilise • Powered by Three.js & WebGL 3D.",
+        "footer.hint": "Quick navigation:"
     }
 };
 
-// Set the default language
 let currentLanguage = 'fr';
 
-// Function to update content based on selected language
 function updateContent(lang) {
     currentLanguage = lang;
 
-    // Update all elements with data-i18n attribute
     document.querySelectorAll('[data-i18n]').forEach(element => {
         const key = element.getAttribute('data-i18n');
-        if (translations[lang][key]) {
-            // Handle special cases
+        if (translations[lang] && translations[lang][key]) {
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 if (element.getAttribute('placeholder')) {
                     element.setAttribute('placeholder', translations[lang][key]);
@@ -210,27 +254,29 @@ function updateContent(lang) {
         }
     });
 
-    // Update language buttons
     document.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.classList.remove('active');
+        btn.classList.toggle('active', btn.id === `${lang}-btn`);
     });
-    document.getElementById(lang + '-btn').classList.add('active');
 
-    // Store the language preference
     localStorage.setItem('preferredLanguage', lang);
 }
 
-// Initialize language from localStorage or default to French
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', () => {
     const savedLanguage = localStorage.getItem('preferredLanguage') || 'fr';
     updateContent(savedLanguage);
 
-    // Set up language switch buttons
-    document.getElementById('fr-btn').addEventListener('click', function () {
-        updateContent('fr');
-    });
+    const frBtn = document.getElementById('fr-btn');
+    const enBtn = document.getElementById('en-btn');
 
-    document.getElementById('en-btn').addEventListener('click', function () {
-        updateContent('en');
-    });
-}); 
+    if (frBtn) {
+        frBtn.addEventListener('click', () => {
+            updateContent('fr');
+        });
+    }
+
+    if (enBtn) {
+        enBtn.addEventListener('click', () => {
+            updateContent('en');
+        });
+    }
+});

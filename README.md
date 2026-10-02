@@ -1,48 +1,39 @@
-# Portfolio de Noah Civilise
+# Portfolio Interactif de Noah Civilise
 
-Un site web portfolio personnel, moderne et responsive, mettant en avant les compétences, l'éducation, les projets et les expériences professionnelles.
+Portfolio immersif développé avec **Three.js**, **WebGL** et une interface **Cockpit unifiée** avec **Carrousel Spatial Circulaire** en glassmorphism haute lisibilité. Met en avant l'expertise d'**Ingénieur en IA, Vision par ordinateur et Traitement d'image**, alliant intelligence artificielle, vision algorithmique, calcul haute performance (CUDA / GPGPU) et rendu graphique temps réel.
 
-## Structure du projet
+---
 
-- `index.html` - Le fichier HTML principal contenant la structure du site
-- `css/styles.css` - Feuille de style CSS pour la mise en page et le design
-- `js/script.js` - JavaScript pour la navigation mobile et les interactions
-- `images/` - Dossier pour stocker les images (à ajouter selon besoin)
+## 🌟 Fonctionnalités Clés
 
-## Utilisation
+1. **Carrousel Spatial Circulaire des Projets** :
+   - Les 9 réalisations techniques sont présentées sous forme de **dalles flottantes en arc de cercle spatial** (perspective 1200px avec profondeur `translateZ` et rotation `rotateY`).
+   - **Boucle infinie fluide** : le défilement boucle naturellement du dernier au premier projet sans interruption.
+   - **Navigation tactile et souris** : drag fluide avec inertie, flèches latérales, navigation au clavier (<kbd>←</kbd> / <kbd>→</kbd>).
+   - **Filtres thématiques instantanés** : *Tous les projets*, *IA & Vision*, *WebXR & Rendu*, *Systèmes & C++*.
 
-1. Ouvrez simplement le fichier `index.html` dans un navigateur web pour voir le site.
-2. Le site est entièrement responsive et s'adapte aux appareils mobiles.
+2. **Fiche d'Inspection Technique (Modal Glassmorphic)** :
+   - Clic sur la dalle centrale pour inspecter l'architecture : métriques de performance (**`< 380ms, 93% d'exactitude`**, **`CUDA Graphs zero-copy`**, **`LLVM IR`**, etc.), description contextuelle, stack technique et points d'innovations.
 
-## Modifier le contenu
+3. **Mode Clair / Mode Sombre (High Readability)** :
+   - Bouton de bascule intuitif dans l'en-tête (soleil / lune) avec mémorisation des préférences (`localStorage`).
+   - Mode clair spécialement calibré avec contrastes soignés (`#0f172a`, cartes immaculées, éclairage et brume Three.js adaptés) pour un confort de lecture optimal.
 
-### Modification du texte
+4. **Moteur 3D WebGL Three.js en Arrière-Plan** :
+   - Fond spatial avec nébuleuse stellaire et objets géométriques subtils synchronisés avec les onglets.
+   - Voile d'atténuation adaptatif (`.hub-backdrop-veil`) pour préserver une lisibilité textuelle absolue.
 
-Pour modifier le contenu textuel, ouvrez le fichier `index.html` dans un éditeur de texte et modifiez les sections correspondantes :
+5. **Sélecteur de Thèmes Cosmiques** :
+   - 3 ambiances cosmiques (*Cyber Néon*, *Matrix Émeraude*, *Quantum Ambre*).
 
-- Informations personnelles : Modifiez les balises concernées dans les sections "hero" et "about"
-- Expérience, éducation, projets : Ajoutez, supprimez ou modifiez les éléments de timeline ou les cartes projets
+6. **Bilingue Français / Anglais** avec mémorisation de préférence.
 
-### Modification du style
+---
 
-Pour modifier l'apparence du site :
+## 🚀 Utilisation & Déploiement
 
-1. Ouvrez le fichier `css/styles.css`
-2. Les variables CSS (couleurs, polices, etc.) sont définies au début du fichier dans le sélecteur `:root`
-3. Modifiez ces variables pour changer le thème de couleur global
-
-### Ajout d'une nouvelle section
-
-Pour ajouter une nouvelle section au portfolio :
-
-1. Créez une nouvelle section dans `index.html` en suivant le modèle des sections existantes
-2. Ajoutez un lien vers cette section dans la navigation
-3. Ajoutez les styles CSS correspondants dans `styles.css` si nécessaire
-
-## Fonctionnalités
-
-- Design responsive qui s'adapte à tous les appareils
-- Navigation fluide avec défilement doux
-- Menu mobile pour les petits écrans
-- Formulaire de contact (simulation)
-- Mise en page moderne avec sections bien définies 
+Ouvrez simplement `index.html` ou lancez :
+```bash
+python3 -m http.server 4242
+```
+Puis rendez-vous sur `http://localhost:4242`.
