@@ -25,25 +25,22 @@ const translations = {
         "experience.title": "Expérience Professionnelle",
         "experience.vr.title": "Projet de Fin d'Études (PFEE) – Ingénieur Réalité Virtuelle",
         "experience.vr.company": "Dassault Systèmes",
-        "experience.vr.subtitle": "Outil d'aide à la navigation (Minimap) en Réalité Virtuelle (WebXR) pour environnements 3D complexes.",
-        "experience.vr.item1": "Développement WebXR immersif et fluide à 90 FPS (Three.js, TypeScript, Vite) pour visualiser et interagir avec des maquettes industrielles.",
-        "experience.vr.item2": "Implémentation d'un algorithme de 'World Detection' pour la détection automatique des étages et calcul des zones de collision 3D.",
-        "experience.vr.item3": "Conception d'une interface VR dynamique attachée au contrôleur avec navigation inter-étages et minimap 3D temps réel.",
-        "experience.vr.item4": "Optimisation des performances critiques via WebWorkers pour déporter les calculs géométriques lourds.",
+        "experience.vr.subtitle": "Conception d'une Minimap WebXR interactive pour maquettes 3D industrielles complexes.",
+        "experience.vr.item1": "Développement WebXR fluide à <strong>90 FPS</strong> (Three.js, TypeScript, Vite) pour l'exploration de maquettes CAO.",
+        "experience.vr.item2": "Algorithmes de <strong>World Detection</strong> (détection d'étages, volumes de collision) et calculs asynchrones via <strong>WebWorkers</strong>.",
 
         "experience.bpce.title": "Data Science & Generative AI Intern",
-        "experience.bpce.company": "Compagnie Européenne de Garanties et Cautions (Groupe BPCE)",
-        "experience.bpce.subtitle": "Architecture RAG, fiabilisation MLOps et automatisation d'analyses financières.",
-        "experience.bpce.item1": "Architecture RAG & LLM from scratch sur des bilans PDF (SentenceTransformer, Qdrant, LLM, Pydantic).",
-        "experience.bpce.item2": "Fiabilisation MLOps : validation stricte des données générées (JSON, Pydantic, Luhn) et métriques de confiance (77.1%) sur interface Streamlit.",
-        "experience.bpce.item3": "Automatisation & NLP : outil de contrôle croisant données Excel et bilans PDF analysés par LLM (>60% de gain de temps).",
-        "experience.bpce.item4": "Industrialisation : exécutables autonomes (PyInstaller), orchestration Dataiku et reporting Power BI (DAX).",
+        "experience.bpce.company": "Groupe BPCE (CEGC)",
+        "experience.bpce.subtitle": "Pipeline RAG from scratch, fiabilisation MLOps et automatisation d'analyses financières.",
+        "experience.bpce.item1": "Architecture <strong>RAG & LLM</strong> from scratch sur des centaines de bilans PDF (SentenceTransformer, Qdrant, Pydantic).",
+        "experience.bpce.item2": "Fiabilisation MLOps : validation stricte des données et suivi des métriques de confiance (<strong>77.1%</strong>) sur Streamlit.",
+        "experience.bpce.item3": "Automatisation NLP de contrôles bilans/Excel (<strong>&gt;60% de gain de temps</strong>) et orchestration Dataiku.",
 
         "experience.tutor.title": "Tuteur en Informatique & Mathématiques",
         "experience.tutor.company": "BackToBasics – EPITA",
-        "experience.tutor.subtitle": "Accompagnement pédagogique et transmission technique.",
-        "experience.tutor.item1": "Tutorat en algorithmique avancée, programmation (C, C++, Python) et mathématiques pour étudiants de premier cycle.",
-        "experience.tutor.item2": "Planification d'ateliers individuels et collectifs, revues de code et méthodologie de résolution de problèmes.",
+        "experience.tutor.subtitle": "Accompagnement pédagogique et transmission technique aux étudiants de premier cycle.",
+        "experience.tutor.item1": "Tutorat individuel et collectif en algorithmique avancée, structures de données et programmation (C, C++, Python).",
+        "experience.tutor.item2": "Animation d'ateliers méthodologiques, revues de code et préparation aux projets d'ingénierie.",
 
         "projects.title": "Projets & Réalisations",
         "projects.filter.all": "Tous les projets (9)",
@@ -113,7 +110,7 @@ const translations = {
         "interests.motorsports.title": "Sports Mécaniques",
         "interests.motorsports": "Passionné de MotoGP et Formule 1 (télémétrie, aérodynamique et ingénierie de pointe).",
 
-        "footer.rights": "© 2026 Noah Civilise • Conçu avec Three.js & WebGL 3D.",
+        "footer.rights": "© 2026 Noah Civilise • Tous droits réservés.",
         "footer.hint": "Navigation rapide :"
     },
     en: {
@@ -141,25 +138,22 @@ const translations = {
         "experience.title": "Professional Experience",
         "experience.vr.title": "End-of-Studies Project (PFEE) – Virtual Reality Engineer",
         "experience.vr.company": "Dassault Systèmes",
-        "experience.vr.subtitle": "VR navigation assistance tool (Minimap) in WebXR for complex 3D industrial scenes.",
-        "experience.vr.item1": "Immersive 90 FPS WebXR development (Three.js, TypeScript, Vite) for interacting with large-scale 3D engineering models.",
-        "experience.vr.item2": "Implementation of a 'World Detection' 3D algorithm for automatic floor detection and collision boundary calculation.",
-        "experience.vr.item3": "Dynamic VR interface attached to the controller with real-time inter-floor navigation and 3D minimap.",
-        "experience.vr.item4": "Critical performance optimizations via WebWorkers to offload heavy geometrical computations.",
+        "experience.vr.subtitle": "Design of an interactive WebXR VR Minimap for complex industrial CAD scenes.",
+        "experience.vr.item1": "Smooth <strong>90 FPS</strong> WebXR development (Three.js, TypeScript, Vite) for engineering model visualization.",
+        "experience.vr.item2": "3D <strong>World Detection</strong> algorithms (floor detection, collision boundaries) with async compute offloaded to <strong>WebWorkers</strong>.",
 
         "experience.bpce.title": "Data Science & Generative AI Intern",
-        "experience.bpce.company": "Compagnie Européenne de Garanties et Cautions (Groupe BPCE)",
-        "experience.bpce.subtitle": "RAG architecture, MLOps validation, and financial analysis automation.",
-        "experience.bpce.item1": "From-scratch RAG & LLM pipeline on PDF balance sheets (SentenceTransformer, Qdrant, LLM, Pydantic).",
-        "experience.bpce.item2": "MLOps reliability: strict structured output validation (JSON, Pydantic, Luhn) and confidence monitoring (77.1%) on Streamlit.",
-        "experience.bpce.item3": "Automation & NLP: engineered validation tool cross-checking Excel datasets against LLM-analyzed PDF reports (>60% time savings).",
-        "experience.bpce.item4": "Industrialization: packaged standalone executables (PyInstaller), Dataiku orchestration, and Power BI dashboards.",
+        "experience.bpce.company": "Groupe BPCE (CEGC)",
+        "experience.bpce.subtitle": "From-scratch RAG pipeline, MLOps validation, and financial analysis automation.",
+        "experience.bpce.item1": "Engineered from-scratch <strong>RAG & LLM</strong> pipeline on hundreds of PDF balance sheets (SentenceTransformer, Qdrant, Pydantic).",
+        "experience.bpce.item2": "MLOps reliability: strict structured validation and confidence metric tracking (<strong>77.1%</strong>) on a Streamlit dashboard.",
+        "experience.bpce.item3": "NLP automated control cross-referencing Excel & PDF reports (<strong>&gt;60% time savings</strong>) with Dataiku orchestration.",
 
         "experience.tutor.title": "Computer Science & Mathematics Tutor",
         "experience.tutor.company": "BackToBasics – EPITA",
-        "experience.tutor.subtitle": "Academic mentoring and technical pedagogy.",
-        "experience.tutor.item1": "Tutoring in advanced algorithms, programming (C, C++, Python), and mathematics for undergraduate engineering students.",
-        "experience.tutor.item2": "Organizing individual and group workshops, code reviews, and problem-solving methodology.",
+        "experience.tutor.subtitle": "Academic mentoring and technical pedagogy for undergraduate engineering students.",
+        "experience.tutor.item1": "Individual and group tutoring in advanced algorithms, data structures, and low-level programming (C, C++, Python).",
+        "experience.tutor.item2": "Methodological workshops, code reviews, and problem-solving coaching for engineering projects.",
 
         "projects.title": "Projects & Realizations",
         "projects.filter.all": "All Projects (9)",
@@ -229,7 +223,7 @@ const translations = {
         "interests.motorsports.title": "Motorsports",
         "interests.motorsports": "Passionate about MotoGP & Formula 1 (telemetry, aerodynamics, and high-performance engineering).",
 
-        "footer.rights": "© 2026 Noah Civilise • Powered by Three.js & WebGL 3D.",
+        "footer.rights": "© 2026 Noah Civilise • All rights reserved.",
         "footer.hint": "Quick navigation:"
     }
 };
@@ -249,7 +243,12 @@ function updateContent(lang) {
                     element.value = translations[lang][key];
                 }
             } else {
-                element.textContent = translations[lang][key];
+                const val = translations[lang][key];
+                if (/<[a-z][\s\S]*>/i.test(val)) {
+                    element.innerHTML = val;
+                } else {
+                    element.textContent = val;
+                }
             }
         }
     });

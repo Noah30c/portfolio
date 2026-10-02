@@ -27,8 +27,8 @@
         <div class="header-inner">
             <div class="brand-wrapper">
                 <div class="logo">
-                    <a href="#profile" data-goto-tab="profile">
-                        <span class="logo-bracket">[</span> NC <span class="logo-bracket">]</span>
+                    <a href="#profile" data-goto-tab="profile" class="logo-link">
+                        <span class="logo-monogram">NC</span>
                     </a>
                 </div>
                 <div class="brand-title">
@@ -37,12 +37,10 @@
             </div>
 
             <div class="header-actions">
-                <!-- Cosmic Theme Selector -->
-                <div class="theme-selector" title="Changer le thème cosmique">
-                    <button class="theme-btn active" data-theme="cyber" title="Cyber Néon"></button>
-                    <button class="theme-btn" data-theme="emerald" title="Matrix Émeraude"></button>
-                    <button class="theme-btn" data-theme="quantum" title="Quantum Ambre"></button>
-                </div>
+                <!-- Direct GitHub Link -->
+                <a href="https://github.com/Noah30c" target="_blank" rel="noopener noreferrer" class="header-icon-link" title="GitHub • Noah30c">
+                    <i class="fab fa-github"></i>
+                </a>
 
                 <!-- Light / Dark Mode Toggle -->
                 <button id="theme-mode-toggle" class="theme-mode-btn" title="Passer en mode clair" aria-label="Basculer le mode clair ou sombre">
@@ -61,10 +59,10 @@
     <!-- Main Cockpit Viewport -->
     <main class="cockpit-wrapper">
         <div class="cockpit-container">
-            <!-- Cockpit Hub Navigation Tabs -->
+            <!-- Hub Navigation Tabs -->
             <nav class="hub-nav-bar" role="tablist">
                 <button class="hub-tab active" data-tab="profile" role="tab" aria-selected="true">
-                    <i class="fas fa-user-astronaut"></i>
+                    <i class="fas fa-user"></i>
                     <span data-i18n="nav.profile">Profil</span>
                 </button>
                 <button class="hub-tab" data-tab="projects" role="tab" aria-selected="false">
@@ -447,7 +445,7 @@
                 <div id="panel-experience" class="hub-panel" role="tabpanel" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-briefcase"></i> <span data-i18n="experience.title">Expérience Professionnelle</span></h2>
-                        <span class="panel-badge">EXP.01</span>
+                        <span class="panel-badge">PARCOURS</span>
                     </div>
 
                     <div class="exp-timeline-list">
@@ -461,21 +459,18 @@
                                 <span class="exp-period">Fév. 2026 – Fév. 2027</span>
                             </div>
                             <div class="exp-focus" data-i18n="experience.vr.subtitle">
-                                Outil d'aide à la navigation (Minimap) en Réalité Virtuelle (WebXR) pour environnements 3D complexes.
+                                Conception d'une Minimap WebXR interactive pour maquettes 3D industrielles complexes.
                             </div>
                             <ul class="exp-bullets">
-                                <li data-i18n="experience.vr.item1">Développement WebXR immersif et fluide à <strong>90 FPS</strong> (Three.js, TypeScript, Vite) pour visualiser et interagir avec des maquettes industrielles.</li>
-                                <li data-i18n="experience.vr.item2">Implémentation d'un algorithme de "World Detection" pour la détection automatique des étages et calcul des zones de collision 3D.</li>
-                                <li data-i18n="experience.vr.item3">Conception d'une interface VR dynamique attachée au contrôleur avec navigation inter-étages et minimap 3D temps réel.</li>
-                                <li data-i18n="experience.vr.item4">Optimisation des performances critiques via <strong>WebWorkers</strong> pour déporter les calculs géométriques lourds.</li>
+                                <li data-i18n="experience.vr.item1">Développement WebXR fluide à <strong>90 FPS</strong> (Three.js, TypeScript, Vite) pour l'exploration de maquettes CAO.</li>
+                                <li data-i18n="experience.vr.item2">Algorithmes de <strong>World Detection</strong> (détection d'étages, volumes de collision) et calculs asynchrones via <strong>WebWorkers</strong>.</li>
                             </ul>
                             <div class="exp-tags">
                                 <span class="tech-tag">Three.js</span>
                                 <span class="tech-tag">WebXR</span>
                                 <span class="tech-tag">TypeScript</span>
-                                <span class="tech-tag">Vite</span>
                                 <span class="tech-tag">WebWorkers</span>
-                                <span class="tech-tag">World Detection</span>
+                                <span class="tech-tag">Vite</span>
                             </div>
                         </div>
 
@@ -484,26 +479,25 @@
                             <div class="exp-card-header">
                                 <div>
                                     <div class="exp-role-title" data-i18n="experience.bpce.title">Data Science & Generative AI Intern</div>
-                                    <div class="exp-company"><i class="fas fa-landmark"></i> <span data-i18n="experience.bpce.company">Compagnie Européenne de Garanties et Cautions (Groupe BPCE)</span></div>
+                                    <div class="exp-company"><i class="fas fa-landmark"></i> <span data-i18n="experience.bpce.company">Groupe BPCE (CEGC)</span></div>
                                 </div>
                                 <span class="exp-period">Sept. 2025 – Janv. 2026</span>
                             </div>
                             <div class="exp-focus" data-i18n="experience.bpce.subtitle">
-                                Architecture RAG, fiabilisation MLOps et automatisation d'analyses financières.
+                                Pipeline RAG from scratch, fiabilisation MLOps et automatisation d'analyses financières.
                             </div>
                             <ul class="exp-bullets">
-                                <li data-i18n="experience.bpce.item1">Architecture <strong>RAG & LLM</strong> from scratch sur des bilans PDF (SentenceTransformer, Qdrant, LLM, Pydantic).</li>
-                                <li data-i18n="experience.bpce.item2">Fiabilisation MLOps : validation stricte des données générées (JSON, Pydantic, Luhn) et métriques de confiance (<strong>77.1%</strong>) sur interface Streamlit.</li>
-                                <li data-i18n="experience.bpce.item3">Automatisation & NLP : outil de contrôle croisant données Excel et bilans PDF analysés par LLM (<strong>&gt;60% de gain de temps</strong>).</li>
-                                <li data-i18n="experience.bpce.item4">Industrialisation : exécutables autonomes (PyInstaller), orchestration Dataiku et reporting Power BI (DAX).</li>
+                                <li data-i18n="experience.bpce.item1">Architecture <strong>RAG & LLM</strong> from scratch sur des centaines de bilans PDF (SentenceTransformer, Qdrant, Pydantic).</li>
+                                <li data-i18n="experience.bpce.item2">Fiabilisation MLOps : validation stricte des données et suivi des métriques de confiance (<strong>77.1%</strong>) sur Streamlit.</li>
+                                <li data-i18n="experience.bpce.item3">Automatisation NLP de contrôles bilans/Excel (<strong>&gt;60% de gain de temps</strong>) et orchestration Dataiku.</li>
                             </ul>
                             <div class="exp-tags">
                                 <span class="tech-tag">Python</span>
                                 <span class="tech-tag">RAG / LLM</span>
                                 <span class="tech-tag">Qdrant</span>
-                                <span class="tech-tag">Streamlit</span>
-                                <span class="tech-tag">Power BI</span>
                                 <span class="tech-tag">MLOps</span>
+                                <span class="tech-tag">Dataiku</span>
+                                <span class="tech-tag">Streamlit</span>
                             </div>
                         </div>
 
@@ -517,16 +511,16 @@
                                 <span class="exp-period">2022 – 2025</span>
                             </div>
                             <div class="exp-focus" data-i18n="experience.tutor.subtitle">
-                                Accompagnement pédagogique et transmission technique.
+                                Accompagnement pédagogique et transmission technique aux étudiants de premier cycle.
                             </div>
                             <ul class="exp-bullets">
-                                <li data-i18n="experience.tutor.item1">Tutorat en algorithmique avancée, programmation (C, C++, Python) et mathématiques pour étudiants de premier cycle.</li>
-                                <li data-i18n="experience.tutor.item2">Planification d'ateliers individuels et collectifs, revues de code et méthodologie de résolution de problèmes.</li>
+                                <li data-i18n="experience.tutor.item1">Tutorat individuel et collectif en algorithmique avancée, structures de données et programmation (C, C++, Python).</li>
+                                <li data-i18n="experience.tutor.item2">Animation d'ateliers méthodologiques, revues de code et préparation aux projets d'ingénierie.</li>
                             </ul>
                             <div class="exp-tags">
-                                <span class="tech-tag">Algorithmique</span>
                                 <span class="tech-tag">C / C++</span>
                                 <span class="tech-tag">Python</span>
+                                <span class="tech-tag">Algorithmique</span>
                                 <span class="tech-tag">Mathématiques</span>
                             </div>
                         </div>
@@ -537,7 +531,7 @@
                 <div id="panel-education" class="hub-panel" role="tabpanel" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-graduation-cap"></i> <span data-i18n="education.title">Formation Académique</span></h2>
-                        <span class="panel-badge">EDU.03</span>
+                        <span class="panel-badge">DIPLÔME</span>
                     </div>
 
                     <div class="edu-cards-grid">
@@ -576,7 +570,7 @@
                 <div id="panel-skills" class="hub-panel" role="tabpanel" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-layer-group"></i> <span data-i18n="skills.title">Compétences & Technologies</span></h2>
-                        <span class="panel-badge">SKL.04</span>
+                        <span class="panel-badge">EXPERTISE</span>
                     </div>
 
                     <div class="skills-compact-grid">
@@ -646,7 +640,7 @@
 
                         <!-- Soft Skills -->
                         <div class="skill-category-card">
-                            <h3 data-i18n="skills.soft"><i class="fas fa-user-astronaut"></i> Soft Skills</h3>
+                            <h3 data-i18n="skills.soft"><i class="fas fa-users"></i> Soft Skills</h3>
                             <div class="skill-items-wrap">
                                 <span class="skill-chip"><i class="fas fa-sync-alt"></i> Adaptabilité</span>
                                 <span class="skill-chip"><i class="fas fa-users"></i> Travail d'équipe</span>
@@ -661,7 +655,7 @@
                 <div id="panel-interests" class="hub-panel" role="tabpanel" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-compass"></i> <span data-i18n="interests.title">Centres d'Intérêt</span></h2>
-                        <span class="panel-badge">INT.05</span>
+                        <span class="panel-badge">ENGAGEMENT</span>
                     </div>
 
                     <div class="interests-grid">
@@ -697,7 +691,7 @@
     <!-- Compact Footer -->
     <footer class="cockpit-footer">
         <div class="footer-inner">
-            <p data-i18n="footer.rights">© 2026 Noah Civilise • Conçu avec Three.js & WebGL.</p>
+            <p data-i18n="footer.rights">© 2026 Noah Civilise • Tous droits réservés.</p>
             <div class="keyboard-hint">
                 <span data-i18n="footer.hint">Navigation rapide :</span>
                 <kbd>←</kbd> <kbd>→</kbd> ou touches <kbd>1</kbd> à <kbd>6</kbd>
