@@ -31,7 +31,7 @@
                         <span class="logo-monogram">NC</span>
                     </a>
                 </div>
-                <div class="brand-title">
+                <div class="brand-title" data-i18n="header.brand">
                     <strong>Noah Civilise</strong> • EPITA 5ᵉ Année
                 </div>
             </div>
@@ -94,9 +94,12 @@
                     <div class="profile-cockpit-layout">
                         <!-- Left Avatar & Metrics -->
                         <div class="profile-card-left">
-                            <div class="profile-avatar-wrap">
+                            <a href="https://www.linkedin.com/in/noah-civilise" target="_blank" rel="noopener noreferrer" class="profile-avatar-wrap" title="Voir mon profil LinkedIn (nouvel onglet)" data-i18n-title="profile.avatar.title">
                                 <img src="images/moi-3.jpg" alt="Noah Civilise">
-                            </div>
+                                <span class="avatar-linkedin-badge" aria-label="Profil LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </span>
+                            </a>
 
                             <div class="status-indicator">
                                 <span class="pulse-dot"></span>
@@ -153,14 +156,14 @@
 
                             <!-- Fast Contact Bar -->
                             <div class="contact-chips-row">
-                                <div class="contact-chip" data-copy="civilise.noah@gmail.com" title="Cliquer pour copier l'email">
+                                <a href="mailto:civilise.noah@gmail.com" class="contact-chip" title="Envoyer un email à civilise.noah@gmail.com" data-i18n-title="profile.contact.email">
                                     <i class="fas fa-envelope"></i>
                                     <span>civilise.noah@gmail.com</span>
-                                </div>
-                                <div class="contact-chip" data-copy="+33660399786" title="Cliquer pour copier le numéro">
+                                </a>
+                                <a href="tel:+33660399786" class="contact-chip" title="Appeler le +33 6 60 39 97 86" data-i18n-title="profile.contact.phone">
                                     <i class="fas fa-phone"></i>
                                     <span>+33 6 60 39 97 86</span>
-                                </div>
+                                </a>
                                 <a href="https://www.linkedin.com/in/noah-civilise" target="_blank" rel="noopener noreferrer" class="contact-chip">
                                     <i class="fab fa-linkedin"></i>
                                     <span>LinkedIn</span>
@@ -178,7 +181,7 @@
                 <div id="panel-projects" class="hub-panel" role="tabpanel" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-layer-group"></i> <span data-i18n="projects.title">Projets & Réalisations</span></h2>
-                        <span class="panel-badge">RÉALISATIONS</span>
+                        <span class="panel-badge" data-i18n="panel.badge.projects">RÉALISATIONS</span>
                     </div>
 
                     <!-- Category Filters -->
@@ -194,10 +197,10 @@
                     <!-- 3D Spatial Carousel Stage -->
                     <div class="carousel-3d-stage">
                         <!-- Navigation Arrows -->
-                        <button id="carousel-prev" class="carousel-arrow-btn" aria-label="Projet précédent">
+                        <button id="carousel-prev" class="carousel-arrow-btn" aria-label="Projet précédent" data-i18n-aria="carousel.prev">
                             <i class="fas fa-chevron-left"></i>
                         </button>
-                        <button id="carousel-next" class="carousel-arrow-btn" aria-label="Projet suivant">
+                        <button id="carousel-next" class="carousel-arrow-btn" aria-label="Projet suivant" data-i18n-aria="carousel.next">
                             <i class="fas fa-chevron-right"></i>
                         </button>
 
@@ -211,7 +214,7 @@
                                         <span class="card-category-badge">Vision & C++</span>
                                     </div>
                                     <h3 data-i18n="projects.alpr.title">Automatic License Plate Recognition</h3>
-                                    <div class="card-metric-highlight">&lt; 380ms • 93% d'exactitude</div>
+                                    <div class="card-metric-highlight" data-i18n="projects.alpr.metric">&lt; 380ms • 93% d'exactitude</div>
                                     <div class="card-tech-pills">
                                         <span>C++</span>
                                         <span>OpenCV</span>
@@ -236,7 +239,7 @@
                                         <span class="card-category-badge">Medical AI</span>
                                     </div>
                                     <h3 data-i18n="projects.dermscan.title">DermScan (IA Médicale)</h3>
-                                    <div class="card-metric-highlight">Sensibilité &gt; 85% • Règle ABCDE</div>
+                                    <div class="card-metric-highlight" data-i18n="projects.dermscan.metric">Sensibilité &gt; 85% • Règle ABCDE</div>
                                     <div class="card-tech-pills">
                                         <span>Python</span>
                                         <span>OpenCV</span>
@@ -261,7 +264,7 @@
                                         <span class="card-category-badge">GPGPU & CUDA</span>
                                     </div>
                                     <h3 data-i18n="projects.gpgpu.title">Filtre GStreamer (CUDA)</h3>
-                                    <div class="card-metric-highlight">CUDA Graphs • Pinned Mem</div>
+                                    <div class="card-metric-highlight" data-i18n="projects.gpgpu.metric">CUDA Graphs • Pinned Mem</div>
                                     <div class="card-tech-pills">
                                         <span>C++</span>
                                         <span>CUDA</span>
@@ -283,10 +286,10 @@
                                 <div>
                                     <div class="card-top-row">
                                         <div class="card-icon-box"><i class="fas fa-gamepad"></i></div>
-                                        <span class="card-category-badge">Moteur Unity</span>
+                                        <span class="card-category-badge" data-i18n="projects.category.unity">Moteur Unity</span>
                                     </div>
                                     <h3 data-i18n="projects.3d.title">Jeu Multijoueur FPS (Unity)</h3>
-                                    <div class="card-metric-highlight">Physique Temps Réel • Sync Réseau UDP</div>
+                                    <div class="card-metric-highlight" data-i18n="projects.3d.metric">Physique Temps Réel • Sync Réseau UDP</div>
                                     <div class="card-tech-pills">
                                         <span>C#</span>
                                         <span>C++</span>
@@ -311,7 +314,7 @@
                                         <span class="card-category-badge">Compilers</span>
                                     </div>
                                     <h3 data-i18n="projects.tiger.title">Compilateur Tiger (LLVM)</h3>
-                                    <div class="card-metric-highlight">LLVM IR • Optimisations AST</div>
+                                    <div class="card-metric-highlight" data-i18n="projects.tiger.metric">LLVM IR • Optimisations AST</div>
                                     <div class="card-tech-pills">
                                         <span>C++</span>
                                         <span>LLVM IR</span>
@@ -336,7 +339,7 @@
                                         <span class="card-category-badge">Unix POSIX</span>
                                     </div>
                                     <h3 data-i18n="projects.42sh.title">Interpréteur Unix (42SH)</h3>
-                                    <div class="card-metric-highlight">POSIX • Job Control & AST</div>
+                                    <div class="card-metric-highlight" data-i18n="projects.42sh.metric">POSIX • Job Control & AST</div>
                                     <div class="card-tech-pills">
                                         <span>C</span>
                                         <span>POSIX</span>
@@ -361,7 +364,7 @@
                                         <span class="card-category-badge">Microservices</span>
                                     </div>
                                     <h3 data-i18n="projects.bazaar.title">EpiBazaar</h3>
-                                    <div class="card-metric-highlight">Streaming Kafka • Quarkus</div>
+                                    <div class="card-metric-highlight" data-i18n="projects.bazaar.metric">Streaming Kafka • Quarkus</div>
                                     <div class="card-tech-pills">
                                         <span>Java</span>
                                         <span>Quarkus</span>
@@ -386,7 +389,7 @@
                                         <span class="card-category-badge">Java Desktop</span>
                                     </div>
                                     <h3 data-i18n="projects.carpool.title">Application de Covoiturage</h3>
-                                    <div class="card-metric-highlight">Temps réel • Géolocalisation</div>
+                                    <div class="card-metric-highlight" data-i18n="projects.carpool.metric">Temps réel • Géolocalisation</div>
                                     <div class="card-tech-pills">
                                         <span>Java</span>
                                         <span>Scene Builder</span>
@@ -410,7 +413,7 @@
                                         <span class="card-category-badge">Neural Net</span>
                                     </div>
                                     <h3 data-i18n="projects.ocr.title">OCR & Résolution de Sudoku</h3>
-                                    <div class="card-metric-highlight">Neural Net en C • Traitement d'Image</div>
+                                    <div class="card-metric-highlight" data-i18n="projects.ocr.metric">Neural Net en C • Traitement d'Image</div>
                                     <div class="card-tech-pills">
                                         <span>C</span>
                                         <span>Neural Net</span>
@@ -445,7 +448,7 @@
                 <div id="panel-experience" class="hub-panel" role="tabpanel" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-briefcase"></i> <span data-i18n="experience.title">Expérience Professionnelle</span></h2>
-                        <span class="panel-badge">PARCOURS</span>
+                        <span class="panel-badge" data-i18n="panel.badge.experience">PARCOURS</span>
                     </div>
 
                     <div class="exp-timeline-list">
@@ -456,7 +459,7 @@
                                     <div class="exp-role-title" data-i18n="experience.vr.title">Projet de Fin d'Études (PFEE) – Ingénieur Réalité Virtuelle</div>
                                     <div class="exp-company"><i class="fas fa-building"></i> <span data-i18n="experience.vr.company">Dassault Systèmes</span></div>
                                 </div>
-                                <span class="exp-period">Fév. 2026 – Fév. 2027</span>
+                                <span class="exp-period" data-i18n="experience.vr.period">Fév. 2026 – Fév. 2027</span>
                             </div>
                             <div class="exp-focus" data-i18n="experience.vr.subtitle">
                                 Conception d'une Minimap WebXR interactive pour maquettes 3D industrielles complexes.
@@ -481,7 +484,7 @@
                                     <div class="exp-role-title" data-i18n="experience.bpce.title">Data Science & Generative AI Intern</div>
                                     <div class="exp-company"><i class="fas fa-landmark"></i> <span data-i18n="experience.bpce.company">Groupe BPCE (CEGC)</span></div>
                                 </div>
-                                <span class="exp-period">Sept. 2025 – Janv. 2026</span>
+                                <span class="exp-period" data-i18n="experience.bpce.period">Sept. 2025 – Janv. 2026</span>
                             </div>
                             <div class="exp-focus" data-i18n="experience.bpce.subtitle">
                                 Pipeline RAG from scratch, fiabilisation MLOps et automatisation d'analyses financières.
@@ -508,7 +511,7 @@
                                     <div class="exp-role-title" data-i18n="experience.tutor.title">Tuteur en Informatique & Mathématiques</div>
                                     <div class="exp-company"><i class="fas fa-graduation-cap"></i> <span data-i18n="experience.tutor.company">BackToBasics – EPITA</span></div>
                                 </div>
-                                <span class="exp-period">2022 – 2025</span>
+                                <span class="exp-period" data-i18n="experience.tutor.period">2022 – 2025</span>
                             </div>
                             <div class="exp-focus" data-i18n="experience.tutor.subtitle">
                                 Accompagnement pédagogique et transmission technique aux étudiants de premier cycle.
@@ -520,8 +523,8 @@
                             <div class="exp-tags">
                                 <span class="tech-tag">C / C++</span>
                                 <span class="tech-tag">Python</span>
-                                <span class="tech-tag">Algorithmique</span>
-                                <span class="tech-tag">Mathématiques</span>
+                                <span class="tech-tag" data-i18n="experience.tutor.tag.algo">Algorithmique</span>
+                                <span class="tech-tag" data-i18n="experience.tutor.tag.math">Mathématiques</span>
                             </div>
                         </div>
                     </div>
@@ -531,7 +534,7 @@
                 <div id="panel-education" class="hub-panel" role="tabpanel" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-graduation-cap"></i> <span data-i18n="education.title">Formation Académique</span></h2>
-                        <span class="panel-badge">DIPLÔME</span>
+                        <span class="panel-badge" data-i18n="panel.badge.education">DIPLÔME</span>
                     </div>
 
                     <div class="edu-cards-grid">
@@ -570,13 +573,13 @@
                 <div id="panel-skills" class="hub-panel" role="tabpanel" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-layer-group"></i> <span data-i18n="skills.title">Compétences & Technologies</span></h2>
-                        <span class="panel-badge">EXPERTISE</span>
+                        <span class="panel-badge" data-i18n="panel.badge.skills">EXPERTISE</span>
                     </div>
 
                     <div class="skills-compact-grid">
                         <!-- Langages -->
                         <div class="skill-category-card">
-                            <h3 data-i18n="skills.prog"><i class="fas fa-code"></i> Langages de programmation</h3>
+                            <h3><i class="fas fa-code"></i> <span data-i18n="skills.prog">Langages de programmation</span></h3>
                             <div class="skill-items-wrap">
                                 <span class="skill-chip"><i class="fas fa-code"></i> C++</span>
                                 <span class="skill-chip"><i class="fab fa-python"></i> Python</span>
@@ -592,7 +595,7 @@
 
                         <!-- 3D / Vision / IA -->
                         <div class="skill-category-card">
-                            <h3 data-i18n="skills.tools"><i class="fas fa-vr-cardboard"></i> 3D, Vision & IA</h3>
+                            <h3><i class="fas fa-vr-cardboard"></i> <span data-i18n="skills.tools">3D, Vision & IA</span></h3>
                             <div class="skill-items-wrap">
                                 <span class="skill-chip"><i class="fas fa-cube"></i> Three.js / WebXR</span>
                                 <span class="skill-chip"><i class="fas fa-eye"></i> OpenCV</span>
@@ -607,7 +610,7 @@
 
                         <!-- MLOps & Méthodes -->
                         <div class="skill-category-card">
-                            <h3 data-i18n="skills.methods"><i class="fas fa-cogs"></i> Méthodologies & MLOps</h3>
+                            <h3><i class="fas fa-cogs"></i> <span data-i18n="skills.methods">Méthodologies & MLOps</span></h3>
                             <div class="skill-items-wrap">
                                 <span class="skill-chip"><i class="fab fa-docker"></i> Docker</span>
                                 <span class="skill-chip"><i class="fab fa-git-alt"></i> Git / GitHub / GitLab</span>
@@ -619,33 +622,33 @@
 
                         <!-- Testing -->
                         <div class="skill-category-card">
-                            <h3 data-i18n="skills.testing"><i class="fas fa-vial"></i> Testing & Qualité</h3>
+                            <h3><i class="fas fa-vial"></i> <span data-i18n="skills.testing">Testing & Qualité</span></h3>
                             <div class="skill-items-wrap">
-                                <span class="skill-chip"><i class="fas fa-check-circle"></i> Tests unitaires C/C++</span>
+                                <span class="skill-chip"><i class="fas fa-check-circle"></i> <span data-i18n="skills.chip.unittests">Tests unitaires C/C++</span></span>
                                 <span class="skill-chip"><i class="fas fa-check-circle"></i> Pytest</span>
                                 <span class="skill-chip"><i class="fas fa-check-circle"></i> JUnit</span>
-                                <span class="skill-chip"><i class="fas fa-check-circle"></i> Intégration continue</span>
+                                <span class="skill-chip"><i class="fas fa-check-circle"></i> <span data-i18n="skills.chip.ci">Intégration continue</span></span>
                             </div>
                         </div>
 
                         <!-- Langues -->
                         <div class="skill-category-card">
-                            <h3 data-i18n="skills.languages"><i class="fas fa-language"></i> Langues</h3>
+                            <h3><i class="fas fa-language"></i> <span data-i18n="skills.languages">Langues</span></h3>
                             <div class="skill-items-wrap">
-                                <span class="skill-chip"><i class="fas fa-flag"></i> Français (natif)</span>
-                                <span class="skill-chip"><i class="fas fa-flag"></i> Anglais (TOEIC 900/990)</span>
-                                <span class="skill-chip"><i class="fas fa-flag"></i> Espagnol (B1)</span>
+                                <span class="skill-chip"><i class="fas fa-flag"></i> <span data-i18n="skills.chip.french">Français (natif)</span></span>
+                                <span class="skill-chip"><i class="fas fa-flag"></i> <span data-i18n="skills.chip.english">Anglais (TOEIC 900/990)</span></span>
+                                <span class="skill-chip"><i class="fas fa-flag"></i> <span data-i18n="skills.chip.spanish">Espagnol (B1)</span></span>
                             </div>
                         </div>
 
                         <!-- Soft Skills -->
                         <div class="skill-category-card">
-                            <h3 data-i18n="skills.soft"><i class="fas fa-users"></i> Soft Skills</h3>
+                            <h3><i class="fas fa-users"></i> <span data-i18n="skills.soft">Soft Skills</span></h3>
                             <div class="skill-items-wrap">
-                                <span class="skill-chip"><i class="fas fa-sync-alt"></i> Adaptabilité</span>
-                                <span class="skill-chip"><i class="fas fa-users"></i> Travail d'équipe</span>
-                                <span class="skill-chip"><i class="fas fa-user-cog"></i> Autonomie</span>
-                                <span class="skill-chip"><i class="fas fa-puzzle-piece"></i> Résolution de problèmes</span>
+                                <span class="skill-chip"><i class="fas fa-sync-alt"></i> <span data-i18n="skills.chip.adaptability">Adaptabilité</span></span>
+                                <span class="skill-chip"><i class="fas fa-users"></i> <span data-i18n="skills.chip.teamwork">Travail d'équipe</span></span>
+                                <span class="skill-chip"><i class="fas fa-user-cog"></i> <span data-i18n="skills.chip.autonomy">Autonomie</span></span>
+                                <span class="skill-chip"><i class="fas fa-puzzle-piece"></i> <span data-i18n="skills.chip.problemsolving">Résolution de problèmes</span></span>
                             </div>
                         </div>
                     </div>
@@ -655,7 +658,7 @@
                 <div id="panel-interests" class="hub-panel" role="tabpanel" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-compass"></i> <span data-i18n="interests.title">Centres d'Intérêt</span></h2>
-                        <span class="panel-badge">ENGAGEMENT</span>
+                        <span class="panel-badge" data-i18n="panel.badge.interests">ENGAGEMENT</span>
                     </div>
 
                     <div class="interests-grid">
@@ -692,10 +695,6 @@
     <footer class="cockpit-footer">
         <div class="footer-inner">
             <p data-i18n="footer.rights">© 2026 Noah Civilise • Tous droits réservés.</p>
-            <div class="keyboard-hint">
-                <span data-i18n="footer.hint">Navigation rapide :</span>
-                <kbd>←</kbd> <kbd>→</kbd> ou touches <kbd>1</kbd> à <kbd>6</kbd>
-            </div>
         </div>
     </footer>
 

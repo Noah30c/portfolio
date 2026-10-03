@@ -36,7 +36,11 @@ function initThemeMode() {
             if (icon) {
                 icon.className = isLight ? 'fas fa-moon' : 'fas fa-sun';
             }
-            toggleBtn.setAttribute('title', isLight ? 'Passer en mode sombre' : 'Passer en mode clair');
+            const currentLang = localStorage.getItem('preferredLanguage') || 'fr';
+            const title = isLight
+                ? (currentLang === 'en' ? 'Switch to dark mode' : 'Passer en mode sombre')
+                : (currentLang === 'en' ? 'Switch to light mode' : 'Passer en mode clair');
+            toggleBtn.setAttribute('title', title);
         }
 
         if (window.portfolio3D) {
@@ -342,148 +346,289 @@ function init3DProjectsCarousel() {
 }
 
 /* -------------------------------------------------------------
- * 4. DETAILED PROJECT INSPECTION MODAL
+ * 4. DETAILED PROJECT INSPECTION MODAL (Bilingual FR/EN)
  * ----------------------------------------------------------- */
 const projectDetailsData = {
-    alpr: {
-        title: "Automatic License Plate Recognition (ALPR)",
-        category: "Computer Vision & Bas Niveau",
-        badge: "C++ / Machine Learning",
-        icon: "fas fa-car",
-        metric: "Traitement < 380ms • 93% d'exactitude",
-        context: "Développement from scratch d'une pipeline complète de localisation automatique de plaques d'immatriculation sans recourir à des réseaux neuronaux lourds, pour une exécution ultra-rapide sur cibles embarquées.",
-        stack: ["C++", "Python", "OpenCV", "Random Forest", "CMake", "CI/CD"],
-        highlights: [
-            "Conception d'une bibliothèque sur-mesure 'MyCV' optimisant les convolutions matricielles et seuillages morphologiques.",
-            "Prototypage algorithmique en Python puis portage bas niveau et vectorisation en C++.",
-            "Classifieur Machine Learning Random Forest entraîné sur descripteurs de contours et contrastes locaux.",
-            "Pipeline d'intégration continue CI/CD avec banc de tests de non-régression sur dataset diversifié."
-        ]
+    fr: {
+        alpr: {
+            title: "Automatic License Plate Recognition (ALPR)",
+            category: "Computer Vision & Bas Niveau",
+            badge: "C++ / Machine Learning",
+            icon: "fas fa-car",
+            metric: "Traitement < 380ms • 93% d'exactitude",
+            context: "Développement from scratch d'une pipeline complète de localisation automatique de plaques d'immatriculation sans recourir à des réseaux neuronaux lourds, pour une exécution ultra-rapide sur cibles embarquées.",
+            stack: ["C++", "Python", "OpenCV", "Random Forest", "CMake", "CI/CD"],
+            highlights: [
+                "Conception d'une bibliothèque sur-mesure 'MyCV' optimisant les convolutions matricielles et seuillages morphologiques.",
+                "Prototypage algorithmique en Python puis portage bas niveau et vectorisation en C++.",
+                "Classifieur Machine Learning Random Forest entraîné sur descripteurs de contours et contrastes locaux.",
+                "Pipeline d'intégration continue CI/CD avec banc de tests de non-régression sur dataset diversifié."
+            ]
+        },
+        dermscan: {
+            title: "DermScan (IA Médicale)",
+            category: "Intelligence Artificielle & Santé",
+            badge: "Vision / Microservices",
+            icon: "fas fa-heartbeat",
+            metric: "Sensibilité > 85% • Règle ABCDE explicable",
+            context: "Application distribuée d'aide au diagnostic précoce des lésions dermatologiques mélanocytaires, privilégiant l'explicabilité médicale par rapport aux modèles 'boîte noire'.",
+            stack: ["Python", "OpenCV", "Scikit-Learn", "FastAPI", "RabbitMQ", "React", "Docker"],
+            highlights: [
+                "Pipeline de vision par ordinateur extrayant les descripteurs morphologiques (K-Means, PCA, moments invariants de Hu).",
+                "Classification par Multi-Layer Perceptron (MLP) pondéré atteignant plus de 85% de sensibilité clinique.",
+                "Architecture microservices asynchrone avec files de messages RabbitMQ pour absorber les pics de charge.",
+                "Conteneurisation Docker complète et API REST FastAPI documentée (Swagger / OpenAPI)."
+            ]
+        },
+        gpgpu: {
+            title: "Filtre GStreamer (GPGPU CUDA)",
+            category: "Calcul Haute Performance (HPC)",
+            badge: "CUDA / GStreamer",
+            icon: "fas fa-microchip",
+            metric: "Accélération CUDA Graphs • Mémoire Pinned zero-copy",
+            context: "Optimisation massive d'un filtre vidéo de détection de mouvement temps réel au sein d'un pipeline multimédia GStreamer en déportant les calculs matriciels sur GPU NVIDIA.",
+            stack: ["C++", "CUDA", "GStreamer", "CUDA Graphs", "Zero-Copy", "Pinned Memory"],
+            highlights: [
+                "Implémentation de kernels CUDA personnalisés pour la soustraction de fond et le calcul de flux optique.",
+                "Utilisation des CUDA Graphs pour réduire la latence de lancement des kernels à l'échelle du microseconde.",
+                "Gestion avancée de la mémoire paginée (Pinned Host Memory) pour des transferts asynchrones ultra-rapides.",
+                "Intégration d'un plugin GStreamer natif compatible avec des flux vidéo haute cadence."
+            ]
+        },
+        fps3d: {
+            title: "Jeu Multijoueur FPS (Unity)",
+            category: "Jeux Vidéo & Réseau",
+            badge: "Unity / C# / Réseau",
+            icon: "fas fa-gamepad",
+            metric: "Moteur physique temps réel • Synchronisation réseau UDP",
+            context: "Développement d'un jeu de tir multijoueur à la première personne (FPS) avec synchronisation d'état réseau et modélisation spatiale dynamique.",
+            stack: ["C#", "C++", "Unity", "Network Sync", "Shader Graph", "Blender"],
+            highlights: [
+                "Modélisation et texturation des environnements et personnages avec animations cinématiques fluides.",
+                "Système balistique avec calcul de trajectoire de projectiles et raycasting précis pour les collisions.",
+                "Architecture réseau client-serveur avec compensation du lag et interpolation des positions distantes.",
+                "Gestion des états de jeu, scores dynamiques et effets visuels de particules."
+            ]
+        },
+        tiger: {
+            title: "Compilateur Tiger (LLVM)",
+            category: "Génie Logiciel & Théorie des Langages",
+            badge: "C++ / LLVM IR",
+            icon: "fas fa-code-branch",
+            metric: "Génération LLVM IR • Optimisations d'échappement",
+            context: "Conception complète en équipe d'un compilateur moderne pour le langage orienté objet Tiger, de la grammaire lexicale jusqu'au code machine exécutable.",
+            stack: ["C++", "LLVM IR", "Flex", "Bison", "AST", "Architecture Modulaire"],
+            highlights: [
+                "Analyse lexico-syntaxique avec Flex/Bison produisant un arbre de syntaxe abstraite (AST) typé.",
+                "Vérification sémantique complète (typage statique, gestion des portées lexicales, classes et héritage).",
+                "Génération de code intermédiaire LLVM IR optimisé.",
+                "Passes d'optimisation avancées : inlining de fonctions et analyse d'échappement des variables."
+            ]
+        },
+        shell42: {
+            title: "Interpréteur de Commandes Unix (42SH)",
+            category: "Systèmes d'Exploitation",
+            badge: "C / POSIX",
+            icon: "fas fa-terminal",
+            metric: "Conforme POSIX • Gestion de jobs & AST",
+            context: "Développement en langage C d'un interpréteur de commandes Unix complet et conforme aux spécifications standard POSIX.",
+            stack: ["C", "POSIX", "AST Parser", "Job Control", "Pipes", "Subshells"],
+            highlights: [
+                "Lexer/parser récursif avec construction d'un arbre d'exécution syntaxique robuste.",
+                "Gestion complète des processus en arrière-plan, signaux Unix et contrôle des jobs (fg, bg).",
+                "Redirections d'entrées/sorties complexes, pipes en cascade et gestion des subshells.",
+                "Expansion des variables d'environnement, alias et builtins internes (cd, exit, history)."
+            ]
+        },
+        bazaar: {
+            title: "EpiBazaar",
+            category: "Systèmes Distribués",
+            badge: "Java / Kafka / Microservices",
+            icon: "fas fa-network-wired",
+            metric: "Microservices asynchrones • Streaming Apache Kafka",
+            context: "Architecture backend distribuée pour un jeu de simulation économique en temps réel avec synchronisation d'inventaires et de transactions.",
+            stack: ["Java", "Quarkus", "Hibernate", "Apache Kafka", "Docker", "REST API"],
+            highlights: [
+                "Découpage en microservices spécialisés (authentification, boutique, inventaire, joueur).",
+                "Communication asynchrone 'Event-Driven' via des topics Apache Kafka garantissant la cohérence des données.",
+                "Framework Quarkus pour des temps de démarrage instantanés et une empreinte mémoire minimale.",
+                "Tests d'intégration automatisés et persistance relationnelle avec Hibernate ORM."
+            ]
+        },
+        carpool: {
+            title: "Application de Covoiturage",
+            category: "Applications Logicielles",
+            badge: "Java / Desktop",
+            icon: "fas fa-route",
+            metric: "Temps réel • Géolocalisation & Réservation",
+            context: "Conception d'une application de covoiturage temps réel pour la communauté étudiante avec réservation instantanée, alertes de trajets et tableau de bord.",
+            stack: ["Java", "JavaFX", "Scene Builder", "SQLite", "Notifications"],
+            highlights: [
+                "Interface dynamique développée sous JavaFX et Scene Builder respectant le pattern MVC.",
+                "Calcul d'itinéraires et mise en relation automatique entre conducteurs et passagers.",
+                "Système de notifications et d'alertes temps réel sur les changements d'horaires.",
+                "Persistance locale sécurisée et gestion des profils utilisateurs avec évaluations."
+            ]
+        },
+        ocr: {
+            title: "OCR & Résolution de Sudoku",
+            category: "Vision & Réseaux de Neurones",
+            badge: "C / Deep Learning from Scratch",
+            icon: "fas fa-brain",
+            metric: "Perceptron multicouche en C • Détection de grille",
+            context: "Projet complet d'intelligence artificielle alliant traitement d'image matriciel et réseau de neurones from scratch en C pour résoudre une grille de Sudoku photographiée.",
+            stack: ["C", "Réseau de Neurones", "Traitement d'Image", "Backpropagation", "Backtracking"],
+            highlights: [
+                "Filtres de binarisation adaptative, détection de lignes de Hough et redressement de perspective.",
+                "Perceptron multicouche codé from scratch en pur C avec rétropropagation du gradient pour la reconnaissance des chiffres.",
+                "Algorithme de résolution automatique par backtracking optimisé résolvant la grille en quelques millisecondes.",
+                "Incrustation en réalité augmentée de la solution directement sur l'image source."
+            ]
+        }
     },
-    dermscan: {
-        title: "DermScan (IA Médicale)",
-        category: "Intelligence Artificielle & Santé",
-        badge: "Vision / Microservices",
-        icon: "fas fa-heartbeat",
-        metric: "Sensibilité > 85% • Règle ABCDE explicable",
-        context: "Application distribuée d'aide au diagnostic précoce des lésions dermatologiques mélanocytaires, privilégiant l'explicabilité médicale par rapport aux modèles 'boîte noire'.",
-        stack: ["Python", "OpenCV", "Scikit-Learn", "FastAPI", "RabbitMQ", "React", "Docker"],
-        highlights: [
-            "Pipeline de vision par ordinateur extrayant les descripteurs morphologiques (K-Means, PCA, moments invariants de Hu).",
-            "Classification par Multi-Layer Perceptron (MLP) pondéré atteignant plus de 85% de sensibilité clinique.",
-            "Architecture microservices asynchrone avec files de messages RabbitMQ pour absorber les pics de charge.",
-            "Conteneurisation Docker complète et API REST FastAPI documentée (Swagger / OpenAPI)."
-        ]
-    },
-    gpgpu: {
-        title: "Filtre GStreamer (GPGPU CUDA)",
-        category: "Calcul Haute Performance (HPC)",
-        badge: "CUDA / GStreamer",
-        icon: "fas fa-microchip",
-        metric: "Accélération CUDA Graphs • Mémoire Pinned zero-copy",
-        context: "Optimisation massive d'un filtre vidéo de détection de mouvement temps réel au sein d'un pipeline multimédia GStreamer en déportant les calculs matriciels sur GPU NVIDIA.",
-        stack: ["C++", "CUDA", "GStreamer", "CUDA Graphs", "Zero-Copy", "Pinned Memory"],
-        highlights: [
-            "Implémentation de kernels CUDA personnalisés pour la soustraction de fond et le calcul de flux optique.",
-            "Utilisation des CUDA Graphs pour réduire la latence de lancement des kernels à l'échelle du microseconde.",
-            "Gestion avancée de la mémoire paginée (Pinned Host Memory) pour des transferts asynchrones ultra-rapides.",
-            "Intégration d'un plugin GStreamer natif compatible avec des flux vidéo haute cadence."
-        ]
-    },
-    fps3d: {
-        title: "Jeu Multijoueur FPS (Unity)",
-        category: "Jeux Vidéo & Réseau",
-        badge: "Unity / C# / Réseau",
-        icon: "fas fa-gamepad",
-        metric: "Moteur physique temps réel • Synchronisation réseau UDP",
-        context: "Développement d'un jeu de tir multijoueur à la première personne (FPS) avec synchronisation d'état réseau et modélisation spatiale dynamique.",
-        stack: ["C#", "C++", "Unity", "Network Sync", "Shader Graph", "Blender"],
-        highlights: [
-            "Modélisation et texturation des environnements et personnages avec animations cinématiques fluides.",
-            "Système balistique avec calcul de trajectoire de projectiles et raycasting précis pour les collisions.",
-            "Architecture réseau client-serveur avec compensation du lag et interpolation des positions distantes.",
-            "Gestion des états de jeu, scores dynamiques et effets visuels de particules."
-        ]
-    },
-    tiger: {
-        title: "Compilateur Tiger (LLVM)",
-        category: "Génie Logiciel & Théorie des Langages",
-        badge: "C++ / LLVM IR",
-        icon: "fas fa-code-branch",
-        metric: "Génération LLVM IR • Optimisations d'échappement",
-        context: "Conception complète en équipe d'un compilateur moderne pour le langage orienté objet Tiger, de la grammaire lexicale jusqu'au code machine exécutable.",
-        stack: ["C++", "LLVM IR", "Flex", "Bison", "AST", "Architecture Modulaire"],
-        highlights: [
-            "Analyse lexico-syntaxique avec Flex/Bison produisant un arbre de syntaxe abstraite (AST) typé.",
-            "Vérification sémantique complète (typage statique, gestion des portées lexicales, classes et héritage).",
-            "Génération de code intermédiaire LLVM IR optimisé.",
-            "Passes d'optimisation avancées : inlining de fonctions et analyse d'échappement des variables."
-        ]
-    },
-    shell42: {
-        title: "Interpréteur de Commandes Unix (42SH)",
-        category: "Systèmes d'Exploitation",
-        badge: "C / POSIX",
-        icon: "fas fa-terminal",
-        metric: "Conforme POSIX • Gestion de jobs & AST",
-        context: "Développement en langage C d'un interpréteur de commandes Unix complet et conforme aux spécifications standard POSIX.",
-        stack: ["C", "POSIX", "AST Parser", "Job Control", "Pipes", "Subshells"],
-        highlights: [
-            "Lexer/parser récursif avec construction d'un arbre d'exécution syntaxique robuste.",
-            "Gestion complète des processus en arrière-plan, signaux Unix et contrôle des jobs (fg, bg).",
-            "Redirections d'entrées/sorties complexes, pipes en cascade et gestion des subshells.",
-            "Expansion des variables d'environnement, alias et builtins internes (cd, exit, history)."
-        ]
-    },
-    bazaar: {
-        title: "EpiBazaar",
-        category: "Systèmes Distribués",
-        badge: "Java / Kafka / Microservices",
-        icon: "fas fa-network-wired",
-        metric: "Microservices asynchrones • Streaming Apache Kafka",
-        context: "Architecture backend distribuée pour un jeu de simulation économique en temps réel avec synchronisation d'inventaires et de transactions.",
-        stack: ["Java", "Quarkus", "Hibernate", "Apache Kafka", "Docker", "REST API"],
-        highlights: [
-            "Découpage en microservices spécialisés (authentification, boutique, inventaire, joueur).",
-            "Communication asynchrone 'Event-Driven' via des topics Apache Kafka garantissant la cohérence des données.",
-            "Framework Quarkus pour des temps de démarrage instantanés et une empreinte mémoire minimale.",
-            "Tests d'intégration automatisés et persistance relationnelle avec Hibernate ORM."
-        ]
-    },
-    carpool: {
-        title: "Application de Covoiturage",
-        category: "Applications Logicielles",
-        badge: "Java / Desktop",
-        icon: "fas fa-route",
-        metric: "Temps réel • Géolocalisation & Réservation",
-        context: "Conception d'une application de covoiturage temps réel pour la communauté étudiante avec réservation instantanée, alertes de trajets et tableau de bord.",
-        stack: ["Java", "JavaFX", "Scene Builder", "SQLite", "Notifications"],
-        highlights: [
-            "Interface dynamique développée sous JavaFX et Scene Builder respectant le pattern MVC.",
-            "Calcul d'itinéraires et mise en relation automatique entre conducteurs et passagers.",
-            "Système de notifications et d'alertes temps réel sur les changements d'horaires.",
-            "Persistance locale sécurisée et gestion des profils utilisateurs avec évaluations."
-        ]
-    },
-    ocr: {
-        title: "OCR & Résolution de Sudoku",
-        category: "Vision & Réseaux de Neurones",
-        badge: "C / Deep Learning from Scratch",
-        icon: "fas fa-brain",
-        metric: "Perceptron multicouche en C • Détection de grille",
-        context: "Projet complet d'intelligence artificielle alliant traitement d'image matriciel et réseau de neurones from scratch en C pour résoudre une grille de Sudoku photographiée.",
-        stack: ["C", "Réseau de Neurones", "Traitement d'Image", "Backpropagation", "Backtracking"],
-        highlights: [
-            "Filtres de binarisation adaptative, détection de lignes de Hough et redressement de perspective.",
-            "Perceptron multicouche codé from scratch en pur C avec rétropropagation du gradient pour la reconnaissance des chiffres.",
-            "Algorithme de résolution automatique par backtracking optimisé résolvant la grille en quelques millisecondes.",
-            "Incrustation en réalité augmentée de la solution directement sur l'image source."
-        ]
+    en: {
+        alpr: {
+            title: "Automatic License Plate Recognition (ALPR)",
+            category: "Computer Vision & Low-Level Systems",
+            badge: "C++ / Machine Learning",
+            icon: "fas fa-car",
+            metric: "Processing < 380ms • 93% accuracy",
+            context: "From-scratch engineering of an automatic license plate recognition pipeline without heavy deep neural nets, designed for ultra-low latency execution on constrained embedded hardware.",
+            stack: ["C++", "Python", "OpenCV", "Random Forest", "CMake", "CI/CD"],
+            highlights: [
+                "Architected custom 'MyCV' library optimizing low-level 2D convolutions and morphological filters.",
+                "Rapid algorithmic prototyping in Python followed by highly vectorized C++ implementation.",
+                "Trained Random Forest machine learning classifier on localized edge features and gradient contrasts.",
+                "Automated continuous integration CI/CD with unit regression test suites on challenging real-world plates."
+            ]
+        },
+        dermscan: {
+            title: "DermScan (Medical AI)",
+            category: "Artificial Intelligence & Healthcare",
+            badge: "Vision / Microservices",
+            icon: "fas fa-heartbeat",
+            metric: "Sensitivity > 85% • Explainable ABCDE Rule",
+            context: "Distributed diagnostic assistant for early detection of melanocytic skin lesions, emphasizing clinical explainability and transparency over black-box deep learning models.",
+            stack: ["Python", "OpenCV", "Scikit-Learn", "FastAPI", "RabbitMQ", "React", "Docker"],
+            highlights: [
+                "Clinical computer vision pipeline extracting standard dermatological features (K-Means, PCA, Hu invariant moments).",
+                "Weighted Multi-Layer Perceptron (MLP) classification attaining over 85% clinical diagnostic sensitivity.",
+                "Asynchronous microservices architecture with RabbitMQ queues handling heavy image processing spikes.",
+                "Comprehensive Dockerization and clean REST API documented via OpenAPI / Swagger."
+            ]
+        },
+        gpgpu: {
+            title: "GStreamer Filter (GPGPU CUDA)",
+            category: "High Performance Computing (HPC)",
+            badge: "CUDA / GStreamer",
+            icon: "fas fa-microchip",
+            metric: "CUDA Graphs acceleration • Zero-copy pinned memory",
+            context: "Massive speedup of a real-time motion detection video filter within a GStreamer multimedia pipeline by delegating intensive 2D image matrix computations to NVIDIA GPUs.",
+            stack: ["C++", "CUDA", "GStreamer", "CUDA Graphs", "Zero-Copy", "Pinned Memory"],
+            highlights: [
+                "Authored custom CUDA kernels for background subtraction and optical flow motion estimation.",
+                "Leveraged CUDA Graphs to minimize kernel launch overhead down to single-digit microsecond latency.",
+                "Fine-grained memory management using Pinned Host Memory for zero-copy async transfers.",
+                "Native GStreamer C++ plugin integration seamlessly supporting high-framerate industrial video streams."
+            ]
+        },
+        fps3d: {
+            title: "Multiplayer FPS Game (Unity)",
+            category: "Video Games & Networking",
+            badge: "Unity / C# / Networking",
+            icon: "fas fa-gamepad",
+            metric: "Real-time physics • UDP network synchronization",
+            context: "Full-scale development of a networked first-person shooter in Unity featuring client-side prediction, dynamic 3D level environments, and responsive weapon mechanics.",
+            stack: ["C#", "C++", "Unity", "Network Sync", "Shader Graph", "Blender"],
+            highlights: [
+                "3D environment and character modeling in Blender with fluid kinematic animation state machines.",
+                "Custom ballistic raycasting and projectile trajectory simulator for accurate combat hit registration.",
+                "Authoritative UDP networking architecture with client interpolation and lag compensation.",
+                "Live match scoreboard, reactive spatial sound design, and custom particle VFX."
+            ]
+        },
+        tiger: {
+            title: "Tiger Compiler (LLVM)",
+            category: "Software Engineering & Language Theory",
+            badge: "C++ / LLVM IR",
+            icon: "fas fa-code-branch",
+            metric: "LLVM IR generation • Escape analysis optimizations",
+            context: "Collaborative development of a production-quality compiler for the object-oriented Tiger programming language, translating source code to optimized machine binaries.",
+            stack: ["C++", "LLVM IR", "Flex", "Bison", "AST", "Modular Architecture"],
+            highlights: [
+                "Lexical and grammatical parsing using Flex/Bison generating a strongly typed abstract syntax tree (AST).",
+                "Full semantic analysis verifying type safety, lexical scopes, and single inheritance hierarchies.",
+                "Clean translation to intermediate LLVM IR representation targeting modern CPU architectures.",
+                "Implemented advanced compiler optimization passes including function inlining and escape analysis."
+            ]
+        },
+        shell42: {
+            title: "Unix Command Interpreter (42SH)",
+            category: "Operating Systems",
+            badge: "C / POSIX",
+            icon: "fas fa-terminal",
+            metric: "POSIX compliant • Job control & AST parsing",
+            context: "Engineered from scratch in C a POSIX-compliant Unix command-line shell capable of complex process management, command pipelines, and interactive terminal workflows.",
+            stack: ["C", "POSIX", "AST Parser", "Job Control", "Pipes", "Subshells"],
+            highlights: [
+                "Recursive-descent lexer and parser producing an expressive abstract syntax tree.",
+                "Robust multitasking job control handling background tasks, signals, and fg/bg process switching.",
+                "Arbitrary file descriptor redirections, multi-stage piped pipelines, and isolated subshells.",
+                "Environment variable expansion, path resolution, and integrated shell builtins."
+            ]
+        },
+        bazaar: {
+            title: "EpiBazaar",
+            category: "Distributed Systems",
+            badge: "Java / Kafka / Microservices",
+            icon: "fas fa-network-wired",
+            metric: "Asynchronous microservices • Apache Kafka streaming",
+            context: "Scalable event-driven backend system for a multiplayer market simulation managing high-throughput transactions, currency exchanges, and real-time inventory updates.",
+            stack: ["Java", "Quarkus", "Hibernate", "Apache Kafka", "Docker", "REST API"],
+            highlights: [
+                "Decoupled microservices architecture separating authentication, market engine, and inventory services.",
+                "Event-driven messaging via Apache Kafka topics guaranteeing eventual consistency across services.",
+                "Sub-second container startup times and negligible memory overhead powered by Quarkus framework.",
+                "Automated end-to-end integration tests and relational data persistence using Hibernate ORM."
+            ]
+        },
+        carpool: {
+            title: "Carpooling Application",
+            category: "Desktop Software",
+            badge: "Java / Desktop",
+            icon: "fas fa-route",
+            metric: "Real-time • Geolocation & Booking",
+            context: "End-to-end desktop carpooling platform built for student communities, featuring route discovery, automated driver-passenger matching, and live schedule notifications.",
+            stack: ["Java", "JavaFX", "Scene Builder", "SQLite", "Notifications"],
+            highlights: [
+                "Modern, responsive graphical user interface built with JavaFX and Scene Builder following MVC architecture.",
+                "Automated geographic matching algorithm computing closest pickup points along driver routes.",
+                "Instant system alerts and dynamic notifications informing users of itinerary alterations.",
+                "Reliable embedded SQLite database persistence with encrypted credential handling."
+            ]
+        },
+        ocr: {
+            title: "OCR & Sudoku Solver",
+            category: "Vision & Neural Networks",
+            badge: "C / Deep Learning from Scratch",
+            icon: "fas fa-brain",
+            metric: "C multilayer perceptron • Grid detection & AR overlay",
+            context: "Holistic artificial intelligence project combining digital image processing filters with a from-scratch C neural network to detect, crop, recognize, and solve Sudoku puzzles from photos.",
+            stack: ["C", "Neural Network", "Image Processing", "Backpropagation", "Backtracking"],
+            highlights: [
+                "Autonomous vision pipeline applying adaptive grayscale thresholding, Hough transform, and perspective unwarping.",
+                "Handcrafted Multi-Layer Perceptron in pure C with backpropagation achieving high accuracy digit recognition.",
+                "Optimized recursive backtracking solver solving arbitrary valid 9x9 grids in under a millisecond.",
+                "Augmented reality overlay rendering the computed solution directly back onto the original photo perspective."
+            ]
+        }
     }
 };
 
 function openProjectModal(projectId) {
-    const data = projectDetailsData[projectId];
+    const currentLang = localStorage.getItem('preferredLanguage') || 'fr';
+    const langDict = projectDetailsData[currentLang] || projectDetailsData.fr;
+    const data = langDict[projectId];
     if (!data) return;
 
     let modal = document.getElementById('project-detail-modal');
@@ -494,12 +639,16 @@ function openProjectModal(projectId) {
         document.body.appendChild(modal);
     }
 
+    const closeLabel = currentLang === 'en' ? 'Close' : 'Fermer';
+    const stackTitle = currentLang === 'en' ? 'Technologies & Tools' : 'Technologies & Outils';
+    const highlightsTitle = currentLang === 'en' ? 'Key Technical Highlights & Results' : 'Points Clés & Innovations Techniques';
+
     const techPills = data.stack.map(s => `<span class="modal-tech-pill">${s}</span>`).join('');
     const highlights = data.highlights.map(h => `<li><i class="fas fa-check-circle"></i> <span>${h}</span></li>`).join('');
 
     modal.innerHTML = `
         <div class="project-modal-card">
-            <button class="modal-close-btn" aria-label="Fermer"><i class="fas fa-times"></i></button>
+            <button class="modal-close-btn" aria-label="${closeLabel}"><i class="fas fa-times"></i></button>
             <div class="modal-top-bar">
                 <div class="modal-icon-badge">
                     <i class="${data.icon}"></i>
@@ -517,14 +666,14 @@ function openProjectModal(projectId) {
             <p class="modal-desc">${data.context}</p>
 
             <div class="modal-section-title">
-                <i class="fas fa-layer-group"></i> Technologies & Outils
+                <i class="fas fa-layer-group"></i> ${stackTitle}
             </div>
             <div class="modal-tech-list">
                 ${techPills}
             </div>
 
             <div class="modal-section-title">
-                <i class="fas fa-award"></i> Points Clés & Innovations Techniques
+                <i class="fas fa-award"></i> ${highlightsTitle}
             </div>
             <ul class="modal-highlights">
                 ${highlights}
@@ -567,7 +716,11 @@ function initCopyActions() {
             const textToCopy = el.dataset.copy;
             if (navigator.clipboard) {
                 navigator.clipboard.writeText(textToCopy).then(() => {
-                    showToast(`${textToCopy} copié dans le presse-papier !`);
+                    const currentLang = localStorage.getItem('preferredLanguage') || 'fr';
+                    const msg = currentLang === 'en'
+                        ? `${textToCopy} copied to clipboard!`
+                        : `${textToCopy} copié dans le presse-papier !`;
+                    showToast(msg);
                 });
             }
         });
