@@ -6,11 +6,11 @@
  * inspired by Computer Vision (LiDAR, Structure from Motion, Depth Scanning & Neural Fields).
  *
  * Features:
- *  - 3D Dynamic Vision Point Cloud (3,600 harmonic spatial sample points)
- *  - Elevation-based color mapping (Spectral depth gradient)
+ *  - 3D Dynamic Vision Point Cloud (64 x 64 = 4,096 harmonic spatial sample points)
+ *  - Wave displacement and elevation-based color mapping computed on the GPU (vertex shader)
  *  - Parallax perspective orbit linked smoothly to pointer motion
- *  - Smooth waypoint transitions between portfolio tabs (via GSAP or lerp)
- *  - High-performance buffer geometry with zero overhead (60-120 FPS)
+ *  - Smooth waypoint transitions between portfolio tabs (via GSAP)
+ *  - Static single frame when the OS asks for reduced motion
  *  - Dark (Obsidian / Sapphire) & Light (Architectural / Steel Blue) adaptive modes
  */
 
@@ -32,6 +32,15 @@ class Portfolio3D {
         this.mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
         this.currentTab = 'profile';
         this.clock = new THREE.Clock();
+        this.reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        this.isAnimating = false;
+
+        // Shared with the point cloud shader (see initPointCloud)
+        this.waveUniforms = {
+            uTime: { value: 0 },
+            uColorLow: { value: new THREE.Color() },
+            uColorHigh: { value: new THREE.Color() }
+        };
 
         this.initThree();
         this.initPointCloud();
@@ -40,7 +49,21 @@ class Portfolio3D {
         this.setColorMode(this.colorMode);
 
         this.animate = this.animate.bind(this);
-        requestAnimationFrame(this.animate);
+        this.startOrRenderOnce();
+        this.reducedMotion.addEventListener?.('change', () => this.startOrRenderOnce());
+    }
+
+    // Animate continuously, or draw one still frame when reduced motion is requested
+    startOrRenderOnce() {
+        if (this.reducedMotion.matches) {
+            this.isAnimating = false;
+            this.mouse = { x: 0, y: 0, targetX: 0, targetY: 0 };
+            this.waveUniforms.uTime.value = 0;
+            this.render();
+        } else if (!this.isAnimating) {
+            this.isAnimating = true;
+            requestAnimationFrame(this.animate);
+        }
     }
 
     /* -------------------------------------------------------------
@@ -96,9 +119,9 @@ class Portfolio3D {
         this.gridZ = 64;
         const totalPoints = this.gridX * this.gridZ;
 
-        this.positions = new Float32Array(totalPoints * 3);
-        this.colors = new Float32Array(totalPoints * 3);
-        this.baseCoordinates = new Float32Array(totalPoints * 2);
+        // Flat grid uploaded once; the vertex shader animates height and color every frame
+        const positions = new Float32Array(totalPoints * 3);
+        const colors = new Float32Array(totalPoints * 3).fill(1);
 
         const stepX = 0.72;
         const stepZ = 0.72;
@@ -111,25 +134,17 @@ class Portfolio3D {
                 const x = i * stepX - offsetX;
                 const z = j * stepZ - offsetZ;
 
-                this.positions[idx * 3] = x;
-                this.positions[idx * 3 + 1] = 0;
-                this.positions[idx * 3 + 2] = z;
-
-                this.baseCoordinates[idx * 2] = x;
-                this.baseCoordinates[idx * 2 + 1] = z;
-
-                // Neutral base color
-                this.colors[idx * 3] = 0.25;
-                this.colors[idx * 3 + 1] = 0.5;
-                this.colors[idx * 3 + 2] = 0.95;
+                positions[idx * 3] = x;
+                positions[idx * 3 + 1] = 0;
+                positions[idx * 3 + 2] = z;
 
                 idx++;
             }
         }
 
         this.pointCloudGeometry = new THREE.BufferGeometry();
-        this.pointCloudGeometry.setAttribute('position', new THREE.BufferAttribute(this.positions, 3));
-        this.pointCloudGeometry.setAttribute('color', new THREE.BufferAttribute(this.colors, 3));
+        this.pointCloudGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+        this.pointCloudGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
 
         this.pointCloudMaterial = new THREE.PointsMaterial({
             size: window.innerWidth < 768 ? 1.4 : 1.7,
@@ -141,7 +156,29 @@ class Portfolio3D {
             depthWrite: false
         });
 
+        // Same harmonic waves as the former CPU loop, now evaluated per vertex on the GPU.
+        // The color is a linear blend between the low and high elevation tints.
+        this.pointCloudMaterial.onBeforeCompile = (shader) => {
+            Object.assign(shader.uniforms, this.waveUniforms);
+            shader.vertexShader = shader.vertexShader
+                .replace('#include <common>', `#include <common>
+                    uniform float uTime;
+                    uniform vec3 uColorLow;
+                    uniform vec3 uColorHigh;`)
+                .replace('#include <begin_vertex>', `#include <begin_vertex>
+                    float distFromCenter = length(position.xz);
+                    float wave1 = sin(position.x * 0.18 + uTime * 0.8) * cos(position.z * 0.18 + uTime * 0.6) * 1.6;
+                    float wave2 = sin(distFromCenter * 0.28 - uTime * 1.1) * 1.1;
+                    float wave3 = cos((position.x + position.z) * 0.12 + uTime * 0.4) * 0.8;
+                    transformed.y = wave1 + wave2 + wave3;
+                    #ifdef USE_COLOR
+                        vColor = mix(uColorLow, uColorHigh, clamp((transformed.y + 2.2) / 4.4, 0.0, 1.0));
+                    #endif`);
+        };
+
         this.pointCloud = new THREE.Points(this.pointCloudGeometry, this.pointCloudMaterial);
+        // Bounds are computed from the flat grid, not the displaced one
+        this.pointCloud.frustumCulled = false;
         this.pointCloud.position.set(0, -3.5, -4);
         this.pointCloud.rotation.x = 0.45;
         this.scene.add(this.pointCloud);
@@ -205,12 +242,6 @@ class Portfolio3D {
                 camRot: { x: -0.58, y: 0, z: 0 },
                 meshRotX: 0.65,
                 meshRotY: -0.15
-            },
-            interests: {
-                camPos: { x: 4, y: 10, z: 29 },
-                camRot: { x: -0.28, y: -0.12, z: 0 },
-                meshRotX: 0.38,
-                meshRotY: 0.2
             }
         };
     }
@@ -220,7 +251,7 @@ class Portfolio3D {
         this.currentTab = tabId;
         const target = this.waypoints[tabId];
 
-        if (window.gsap) {
+        if (window.gsap && !this.reducedMotion.matches) {
             window.gsap.to(this.camera.position, {
                 x: target.camPos.x,
                 y: target.camPos.y,
@@ -239,6 +270,7 @@ class Portfolio3D {
             this.camera.position.set(target.camPos.x, target.camPos.y, target.camPos.z);
             this.pointCloud.rotation.x = target.meshRotX;
             this.pointCloud.rotation.y = target.meshRotY;
+            if (!this.isAnimating) this.render();
         }
     }
 
@@ -257,6 +289,7 @@ class Portfolio3D {
             if (this.pointCloudMaterial) {
                 this.pointCloudMaterial.size = window.innerWidth < 768 ? 1.4 : 1.7;
             }
+            if (!this.isAnimating) this.render();
         });
 
         window.addEventListener('mousemove', (e) => {
@@ -301,62 +334,34 @@ class Portfolio3D {
             this.bgStars.material.color.setHex(isLight ? 0x94a3b8 : 0x475569);
             this.bgStars.material.opacity = isLight ? 0.25 : 0.4;
         }
+
+        // Elevation tints (RGB at the lowest and highest points of the wave)
+        if (isLight) {
+            // Light mode: Deep royal cobalt -> vibrant blue -> muted slate
+            this.waveUniforms.uColorLow.value.setRGB(0.12, 0.35, 0.85);
+            this.waveUniforms.uColorHigh.value.setRGB(0.34, 0.70, 0.99);
+        } else {
+            // Dark mode: Deep sapphire blue -> electric indigo -> soft violet-ice
+            this.waveUniforms.uColorLow.value.setRGB(0.18, 0.35, 0.95);
+            this.waveUniforms.uColorHigh.value.setRGB(0.63, 0.77, 1.0);
+        }
+
+        if (this.renderer && !this.isAnimating) this.render();
     }
 
     /* -------------------------------------------------------------
      * MAIN ANIMATION LOOP
      * ----------------------------------------------------------- */
     animate() {
+        if (!this.isAnimating) return;
         requestAnimationFrame(this.animate);
 
         const time = this.clock.getElapsedTime();
+        this.waveUniforms.uTime.value = time;
 
         // Smooth mouse damping
         this.mouse.x += (this.mouse.targetX - this.mouse.x) * 0.05;
         this.mouse.y += (this.mouse.targetY - this.mouse.y) * 0.05;
-
-        // Update Point Cloud Elevation and Depth Gradient
-        if (this.pointCloudGeometry && this.positions && this.colors) {
-            const posAttr = this.pointCloudGeometry.attributes.position;
-            const colAttr = this.pointCloudGeometry.attributes.color;
-            const isLight = this.colorMode === 'light';
-
-            let idx = 0;
-            const count = this.gridX * this.gridZ;
-
-            for (let i = 0; i < count; i++) {
-                const x = this.baseCoordinates[i * 2];
-                const z = this.baseCoordinates[i * 2 + 1];
-
-                // Continuous harmonious wave simulation (inspired by signal processing & depth maps)
-                const distFromCenter = Math.sqrt(x * x + z * z);
-                const wave1 = Math.sin(x * 0.18 + time * 0.8) * Math.cos(z * 0.18 + time * 0.6) * 1.6;
-                const wave2 = Math.sin(distFromCenter * 0.28 - time * 1.1) * 1.1;
-                const wave3 = Math.cos((x + z) * 0.12 + time * 0.4) * 0.8;
-
-                const y = wave1 + wave2 + wave3;
-                this.positions[i * 3 + 1] = y;
-
-                // Color gradient mapped to height (LiDAR spectral mapping)
-                // Normalize y between [-2.5, 2.5]
-                const normY = THREE.MathUtils.clamp((y + 2.2) / 4.4, 0, 1);
-
-                if (isLight) {
-                    // Light mode: Deep royal cobalt -> vibrant blue -> muted slate
-                    this.colors[i * 3] = 0.12 + normY * 0.22;       // R
-                    this.colors[i * 3 + 1] = 0.35 + normY * 0.35;   // G
-                    this.colors[i * 3 + 2] = 0.85 + normY * 0.14;   // B
-                } else {
-                    // Dark mode: Deep sapphire blue -> electric indigo -> soft violet-ice
-                    this.colors[i * 3] = 0.18 + normY * 0.45;       // R
-                    this.colors[i * 3 + 1] = 0.35 + normY * 0.42;   // G
-                    this.colors[i * 3 + 2] = 0.95 + normY * 0.05;   // B
-                }
-            }
-
-            posAttr.needsUpdate = true;
-            colAttr.needsUpdate = true;
-        }
 
         // Gentle interactive tilt linked to pointer
         if (this.pointCloud) {
@@ -369,6 +374,10 @@ class Portfolio3D {
             this.bgStars.rotation.y = time * 0.02;
         }
 
+        this.render();
+    }
+
+    render() {
         this.renderer.render(this.scene, this.camera);
     }
 }

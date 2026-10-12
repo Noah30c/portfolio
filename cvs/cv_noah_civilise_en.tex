@@ -59,7 +59,7 @@ Specialized in \textbf{Image Processing, Computer Vision and AI} \separator \tex
 \raggedleft
 % L'option trim prend 4 valeurs : gauche, bas, droite, haut.
 % Ajuste ces valeurs (en cm ou pt) pour rogner selon ton besoin.
-\includegraphics[trim=4.5cm 6cm 4.5cm 4cm, clip, width=2.7cm]{../images/moi-3.jpg}
+\includegraphics[width=2.7cm]{../images/cv-photo.jpg}
 \end{minipage}
 
 \vspace{0.1cm}
@@ -113,8 +113,8 @@ BackToBasics, EPITA
 \section*{Technical Projects}
 
 \noindent
-\textbf{Automatic License Plate Recognition (ALPR)} \hfill \textit{C++, Python, OpenCV, ML} \\
-"From scratch" development of an ALPR pipeline without Deep Learning. Prototyping (Python) and low-level porting (C++) for optimization (MyCV library, Random Forest, CI/CD). Processing < 380ms with 93\% accuracy.
+\textbf{Automatic License Plate Recognition (ALPR)} \hfill \textit{C++17, Python, OpenCV, Random Forest} \\
+Pair project locating license plates in Full HD images without Deep Learning: contrast filtering, Sobel, Otsu and morphology, then HOG descriptors classified by a Random Forest. Python prototype ported to C++17 (14\% faster) and reimplementation of the OpenCV operations used (MyCV). 86\% precision on UFPR-ALPR.
 
 
 \noindent
@@ -123,8 +123,8 @@ Distributed dermatological diagnosis aid application (ABCDE rule). Computer visi
 
 
 \noindent
-\textbf{GStreamer Filter (CUDA)} \hfill \textit{C++, CUDA, GStreamer} \\
-GPGPU optimization of a motion detection video filter. Real-time processing pipeline with CUDA acceleration (CUDA Graphs, Pinned memory).
+\textbf{GPU Motion Detection (CUDA)} \hfill \textit{C++, CUDA, GStreamer, Nsight} \\
+CUDA port of a GStreamer motion detection filter: 129 FPS versus 5.3 FPS on CPU ($\times$24). Tiled shared memory, warp-aligned blocks and Nsight profiling.
 
 
 \noindent

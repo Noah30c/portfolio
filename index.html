@@ -4,13 +4,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Noah Civilise | Ingénieur en IA, Vision par ordinateur et Traitement d'image</title>
-    <meta name="description" content="Portfolio interactif de Noah Civilise - Étudiant en 5ᵉ année à EPITA (GPA 4.0), spécialisé en IA, Vision par ordinateur et Traitement d'image.">
+    <title>Noah Civilise · Élève-ingénieur en IA et vision par ordinateur</title>
+    <meta name="description" content="Portfolio de Noah Civilise, élève-ingénieur en 5ᵉ année à EPITA (majeure IMAGE) : IA, vision par ordinateur, traitement d'image et calcul GPU. Recherche un stage de fin d'études à partir de février 2027.">
     <meta name="author" content="Noah Civilise">
+    <meta name="theme-color" content="#090d16">
+
+    <!-- Icons -->
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+    <!-- Link previews (LinkedIn, Slack, X...) -->
+    <meta property="og:type" content="profile">
+    <meta property="og:title" content="Noah Civilise · Élève-ingénieur en IA et vision par ordinateur">
+    <meta property="og:description" content="5ᵉ année à EPITA, majeure IMAGE. Vision par ordinateur, IA et calcul GPU. Stage de fin d'études recherché à partir de février 2027 (Bordeaux ou Paris).">
+    <meta property="og:image" content="https://raw.githubusercontent.com/Noah30c/portfolio/main/images/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Noah Civilise, élève-ingénieur en IA et vision par ordinateur">
+    <meta property="og:locale" content="fr_FR">
+    <meta property="og:locale:alternate" content="en_US">
+    <meta property="profile:first_name" content="Noah">
+    <meta property="profile:last_name" content="Civilise">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Noah Civilise",
+        "jobTitle": "Élève-ingénieur en IA et vision par ordinateur",
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "EPITA" },
+        "knowsAbout": ["Computer Vision", "Image Processing", "Artificial Intelligence", "CUDA", "WebXR"],
+        "sameAs": ["https://www.linkedin.com/in/noah-civilise", "https://github.com/Noah30c"]
+    }
+    </script>
 
     <!-- Stylesheets -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Scripts (deferred: they run in order once the document is parsed) -->
+    <script src="js/vendor/three.min.js" defer></script>
+    <script src="js/vendor/gsap.min.js" defer></script>
+    <script src="js/three-scene.js" defer></script>
+    <script src="js/i18n.js" defer></script>
+    <script src="js/projects-data.js" defer></script>
+    <script src="js/experience-data.js" defer></script>
+    <script src="js/script.js" defer></script>
 </head>
 
 <body>
@@ -48,9 +91,9 @@
                 </button>
 
                 <!-- Language Switcher -->
-                <div class="language-selector">
-                    <button id="fr-btn" class="lang-btn active">FR</button>
-                    <button id="en-btn" class="lang-btn">EN</button>
+                <div class="language-selector" role="group" aria-label="Langue / Language">
+                    <button id="fr-btn" class="lang-btn active" lang="fr" aria-label="Français" aria-pressed="true">FR</button>
+                    <button id="en-btn" class="lang-btn" lang="en" aria-label="English" aria-pressed="false">EN</button>
                 </div>
             </div>
         </div>
@@ -60,42 +103,38 @@
     <main class="cockpit-wrapper">
         <div class="cockpit-container">
             <!-- Hub Navigation Tabs -->
-            <nav class="hub-nav-bar" role="tablist">
-                <button class="hub-tab active" data-tab="profile" role="tab" aria-selected="true">
-                    <i class="fas fa-user"></i>
+            <nav class="hub-nav-bar" role="tablist" aria-label="Sections">
+                <button class="hub-tab active" data-tab="profile" role="tab" id="tab-profile" aria-controls="panel-profile" aria-selected="true" tabindex="0">
+                    <i class="fas fa-user" aria-hidden="true"></i>
                     <span data-i18n="nav.profile">Profil</span>
                 </button>
-                <button class="hub-tab" data-tab="projects" role="tab" aria-selected="false">
-                    <i class="fas fa-layer-group"></i>
+                <button class="hub-tab" data-tab="projects" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1">
+                    <i class="fas fa-layer-group" aria-hidden="true"></i>
                     <span data-i18n="nav.projects">Projets</span>
                 </button>
-                <button class="hub-tab" data-tab="experience" role="tab" aria-selected="false">
-                    <i class="fas fa-briefcase"></i>
+                <button class="hub-tab" data-tab="experience" role="tab" id="tab-experience" aria-controls="panel-experience" aria-selected="false" tabindex="-1">
+                    <i class="fas fa-briefcase" aria-hidden="true"></i>
                     <span data-i18n="nav.experience">Expérience</span>
                 </button>
-                <button class="hub-tab" data-tab="education" role="tab" aria-selected="false">
-                    <i class="fas fa-graduation-cap"></i>
+                <button class="hub-tab" data-tab="education" role="tab" id="tab-education" aria-controls="panel-education" aria-selected="false" tabindex="-1">
+                    <i class="fas fa-graduation-cap" aria-hidden="true"></i>
                     <span data-i18n="nav.education">Formation</span>
                 </button>
-                <button class="hub-tab" data-tab="skills" role="tab" aria-selected="false">
-                    <i class="fas fa-layer-group"></i>
+                <button class="hub-tab" data-tab="skills" role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">
+                    <i class="fas fa-screwdriver-wrench" aria-hidden="true"></i>
                     <span data-i18n="nav.skills">Compétences</span>
-                </button>
-                <button class="hub-tab" data-tab="interests" role="tab" aria-selected="false">
-                    <i class="fas fa-compass"></i>
-                    <span data-i18n="nav.interests">Centres d'intérêt</span>
                 </button>
             </nav>
 
             <!-- Panels Viewport -->
             <div class="hub-viewport">
                 <!-- ================= PANEL 1: PROFIL & BIO ================= -->
-                <div id="panel-profile" class="hub-panel active" role="tabpanel">
+                <div id="panel-profile" class="hub-panel active" role="tabpanel" aria-labelledby="tab-profile">
                     <div class="profile-cockpit-layout">
                         <!-- Left Avatar & Metrics -->
                         <div class="profile-card-left">
                             <a href="https://www.linkedin.com/in/noah-civilise" target="_blank" rel="noopener noreferrer" class="profile-avatar-wrap" title="Voir mon profil LinkedIn (nouvel onglet)" data-i18n-title="profile.avatar.title">
-                                <img src="images/moi-3.jpg" alt="Noah Civilise">
+                                <img src="images/avatar.jpg" alt="Noah Civilise" width="140" height="140" fetchpriority="high">
                                 <span class="avatar-linkedin-badge" aria-label="Profil LinkedIn">
                                     <i class="fab fa-linkedin-in"></i>
                                 </span>
@@ -125,7 +164,7 @@
                         <!-- Right Presentation -->
                         <div class="profile-content-right">
                             <h1>Noah Civilise</h1>
-                            <div class="profile-role" data-i18n="hero.badge">Ingénieur en IA, Vision par ordinateur et traitement d'image</div>
+                            <div class="profile-role" data-i18n="hero.badge">Élève-ingénieur en IA, vision par ordinateur et traitement d'image</div>
                             <div class="profile-sub" data-i18n="hero.subtitle">
                                 Intelligence Artificielle • Vision par Ordinateur • Traitement d'Image • Rendu & GPU
                             </div>
@@ -144,14 +183,14 @@
                                     <i class="fas fa-briefcase"></i>
                                     <span data-i18n="hero.cta.exp">Mon parcours</span>
                                 </button>
-                                <button class="btn-cv btn-cv-preview" data-preview-pdf="cvs/CV_Noah_Civilise_FR.pdf" data-title-fr="CV Français — Noah Civilise" data-title-en="French Resume — Noah Civilise" title="Aperçu du CV Français">
-                                    <i class="fas fa-file-pdf"></i>
-                                    <span data-i18n="hero.cv.fr">Aperçu CV (FR)</span>
-                                </button>
-                                <button class="btn-cv btn-cv-preview" data-preview-pdf="cvs/CV_Noah_Civilise_EN.pdf" data-title-fr="English CV — Noah Civilise" data-title-en="English Resume — Noah Civilise" title="Preview English Resume">
-                                    <i class="fas fa-file-pdf"></i>
-                                    <span data-i18n="hero.cv.en">Aperçu CV (EN)</span>
-                                </button>
+                                <a class="btn-cv btn-cv-preview" href="cvs/CV_Noah_Civilise_FR.pdf" target="_blank" rel="noopener" data-preview-pdf data-title-fr="CV Français — Noah Civilise" data-title-en="French Resume — Noah Civilise">
+                                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                                    <span data-i18n="hero.cv.fr">CV (FR)</span>
+                                </a>
+                                <a class="btn-cv btn-cv-preview" href="cvs/CV_Noah_Civilise_EN.pdf" target="_blank" rel="noopener" data-preview-pdf data-title-fr="CV anglais — Noah Civilise" data-title-en="English Resume — Noah Civilise">
+                                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                                    <span data-i18n="hero.cv.en">CV (EN)</span>
+                                </a>
                             </div>
 
                             <!-- Fast Contact Bar -->
@@ -175,277 +214,68 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Outside of code (formerly the Interests tab) -->
+                    <section class="profile-interests" aria-labelledby="profile-interests-title">
+                        <h2 class="profile-interests-title" id="profile-interests-title" data-i18n="profile.interests.title">En dehors du code</h2>
+                        <div class="profile-interests-grid">
+                            <article class="interest-item">
+                                <span class="interest-icon"><i class="fas fa-biking" aria-hidden="true"></i></span>
+                                <div>
+                                    <h3 data-i18n="interests.bmx.title">BMX</h3>
+                                    <p data-i18n="interests.bmx">Pratique en compétition, co-fondateur d'une association sportive pour les voyages de groupe et échanges culturels.</p>
+                                </div>
+                            </article>
+                            <article class="interest-item">
+                                <span class="interest-icon"><i class="fas fa-globe-americas" aria-hidden="true"></i></span>
+                                <div>
+                                    <h3 data-i18n="interests.travel.title">Voyages & Culture</h3>
+                                    <p data-i18n="interests.travel">Échange universitaire à San Sebastián en 2024 et voyages de groupe organisés avec mon association de BMX.</p>
+                                </div>
+                            </article>
+                            <article class="interest-item">
+                                <span class="interest-icon"><i class="fas fa-flag-checkered" aria-hidden="true"></i></span>
+                                <div>
+                                    <h3 data-i18n="interests.motorsports.title">Sports Mécaniques</h3>
+                                    <p data-i18n="interests.motorsports">Passionné de MotoGP et Formule 1 (télémétrie, aérodynamique et ingénierie de pointe).</p>
+                                </div>
+                            </article>
+                        </div>
+                    </section>
                 </div>
 
-                <!-- ================= PANEL 2: PROJETS (CAROUSEL) ================= -->
-                <div id="panel-projects" class="hub-panel" role="tabpanel" hidden>
+                <!-- ================= PANEL 2: PROJETS (GRID, rendered from js/projects-data.js) ================= -->
+                <div id="panel-projects" class="hub-panel" role="tabpanel" aria-labelledby="tab-projects" hidden>
+                    <div id="projects-overview">
                     <div class="panel-header">
                         <h2><i class="fas fa-layer-group"></i> <span data-i18n="projects.title">Projets & Réalisations</span></h2>
                         <span class="panel-badge" data-i18n="panel.badge.projects">RÉALISATIONS</span>
                     </div>
 
-                    <!-- Category Filters -->
-                    <div class="projects-header-controls">
-                        <div class="projects-filter-bar">
-                            <button class="filter-btn active" data-filter="all" data-i18n="projects.filter.all">Tous les projets (9)</button>
-                            <button class="filter-btn" data-filter="ai-vision" data-i18n="projects.filter.ai">IA & Vision</button>
-                            <button class="filter-btn" data-filter="webxr-3d" data-i18n="projects.filter.vr">WebXR & Rendu</button>
-                            <button class="filter-btn" data-filter="systems" data-i18n="projects.filter.sys">Systèmes & C++</button>
+                    <section class="projects-group" aria-labelledby="projects-featured-title">
+                        <div class="projects-group-head">
+                            <h3 id="projects-featured-title" data-i18n="projects.featured">Projets phares</h3>
+                            <span class="projects-group-note" data-i18n="projects.featuredNote">IA, vision et calcul GPU</span>
                         </div>
+                        <div id="projects-featured" class="projects-grid is-featured"></div>
+                    </section>
+
+                    <section class="projects-group" aria-labelledby="projects-others-title">
+                        <div class="projects-group-head">
+                            <h3 id="projects-others-title" data-i18n="projects.others">Autres projets</h3>
+                            <span class="projects-group-note" data-i18n="projects.othersNote">Systèmes, compilation et logiciel</span>
+                        </div>
+                        <div id="projects-others" class="projects-grid is-compact"></div>
+                    </section>
                     </div>
 
-                    <!-- 3D Spatial Carousel Stage -->
-                    <div class="carousel-3d-stage">
-                        <!-- Navigation Arrows -->
-                        <button id="carousel-prev" class="carousel-arrow-btn" aria-label="Projet précédent" data-i18n-aria="carousel.prev">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <button id="carousel-next" class="carousel-arrow-btn" aria-label="Projet suivant" data-i18n-aria="carousel.next">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
-
-                        <!-- Cylindrical 3D Ring with Project Cards -->
-                        <div class="carousel-3d-ring">
-                            <!-- 1. ALPR -->
-                            <div class="carousel-3d-card" data-project-id="alpr" data-category="ai-vision systems">
-                                <div>
-                                    <div class="card-top-row">
-                                        <div class="card-icon-box"><i class="fas fa-car"></i></div>
-                                        <span class="card-category-badge">Vision & C++</span>
-                                    </div>
-                                    <h3 data-i18n="projects.alpr.title">Automatic License Plate Recognition</h3>
-                                    <div class="card-metric-highlight" data-i18n="projects.alpr.metric">&lt; 380ms • 93% d'exactitude</div>
-                                    <div class="card-tech-pills">
-                                        <span>C++</span>
-                                        <span>OpenCV</span>
-                                        <span>Random Forest</span>
-                                        <span>CI/CD</span>
-                                    </div>
-                                    <p class="card-summary" data-i18n="projects.alpr.desc">
-                                        Pipeline from scratch de détection de plaques sans Deep Learning. Prototypage Python et portage C++ optimisé.
-                                    </p>
-                                </div>
-                                <div class="card-inspect-hint">
-                                    <span data-i18n="projects.carousel.viewDetails">Inspecter le projet</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-
-                            <!-- 2. DermScan -->
-                            <div class="carousel-3d-card" data-project-id="dermscan" data-category="ai-vision">
-                                <div>
-                                    <div class="card-top-row">
-                                        <div class="card-icon-box"><i class="fas fa-heartbeat"></i></div>
-                                        <span class="card-category-badge">Medical AI</span>
-                                    </div>
-                                    <h3 data-i18n="projects.dermscan.title">DermScan (IA Médicale)</h3>
-                                    <div class="card-metric-highlight" data-i18n="projects.dermscan.metric">Sensibilité &gt; 85% • Règle ABCDE</div>
-                                    <div class="card-tech-pills">
-                                        <span>Python</span>
-                                        <span>OpenCV</span>
-                                        <span>FastAPI</span>
-                                        <span>Docker</span>
-                                    </div>
-                                    <p class="card-summary" data-i18n="projects.dermscan.desc">
-                                        Application d'aide au diagnostic dermatologique. Pipeline vision et ML explicable via modèles experts.
-                                    </p>
-                                </div>
-                                <div class="card-inspect-hint">
-                                    <span data-i18n="projects.carousel.viewDetails">Inspecter le projet</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-
-                            <!-- 3. CUDA GStreamer -->
-                            <div class="carousel-3d-card" data-project-id="gpgpu" data-category="ai-vision systems">
-                                <div>
-                                    <div class="card-top-row">
-                                        <div class="card-icon-box"><i class="fas fa-microchip"></i></div>
-                                        <span class="card-category-badge">GPGPU & CUDA</span>
-                                    </div>
-                                    <h3 data-i18n="projects.gpgpu.title">Filtre GStreamer (CUDA)</h3>
-                                    <div class="card-metric-highlight" data-i18n="projects.gpgpu.metric">CUDA Graphs • Pinned Mem</div>
-                                    <div class="card-tech-pills">
-                                        <span>C++</span>
-                                        <span>CUDA</span>
-                                        <span>GStreamer</span>
-                                        <span>Zero-Copy</span>
-                                    </div>
-                                    <p class="card-summary" data-i18n="projects.gpgpu.desc">
-                                        Optimisation GPGPU d'un filtre vidéo de détection de mouvement. Traitement flux temps réel accéléré par CUDA.
-                                    </p>
-                                </div>
-                                <div class="card-inspect-hint">
-                                    <span data-i18n="projects.carousel.viewDetails">Inspecter le projet</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-
-                            <!-- 4. FPS -->
-                            <div class="carousel-3d-card" data-project-id="fps3d" data-category="webxr-3d systems">
-                                <div>
-                                    <div class="card-top-row">
-                                        <div class="card-icon-box"><i class="fas fa-gamepad"></i></div>
-                                        <span class="card-category-badge" data-i18n="projects.category.unity">Moteur Unity</span>
-                                    </div>
-                                    <h3 data-i18n="projects.3d.title">Jeu Multijoueur FPS (Unity)</h3>
-                                    <div class="card-metric-highlight" data-i18n="projects.3d.metric">Physique Temps Réel • Sync Réseau UDP</div>
-                                    <div class="card-tech-pills">
-                                        <span>C#</span>
-                                        <span>C++</span>
-                                        <span>Unity</span>
-                                        <span>Networking</span>
-                                    </div>
-                                    <p class="card-summary" data-i18n="projects.3d.desc">
-                                        FPS multijoueur sous Unity avec modélisation d'environnements, animations de personnages et synchronisation réseau.
-                                    </p>
-                                </div>
-                                <div class="card-inspect-hint">
-                                    <span data-i18n="projects.carousel.viewDetails">Inspecter le projet</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-
-                            <!-- 5. Compilateur Tiger -->
-                            <div class="carousel-3d-card" data-project-id="tiger" data-category="systems">
-                                <div>
-                                    <div class="card-top-row">
-                                        <div class="card-icon-box"><i class="fas fa-code-branch"></i></div>
-                                        <span class="card-category-badge">Compilers</span>
-                                    </div>
-                                    <h3 data-i18n="projects.tiger.title">Compilateur Tiger (LLVM)</h3>
-                                    <div class="card-metric-highlight" data-i18n="projects.tiger.metric">LLVM IR • Optimisations AST</div>
-                                    <div class="card-tech-pills">
-                                        <span>C++</span>
-                                        <span>LLVM IR</span>
-                                        <span>Flex</span>
-                                        <span>Bison</span>
-                                    </div>
-                                    <p class="card-summary" data-i18n="projects.tiger.desc">
-                                        Compilateur complet pour le langage objet Tiger : analyse lexico-syntaxique, typage et génération LLVM IR.
-                                    </p>
-                                </div>
-                                <div class="card-inspect-hint">
-                                    <span data-i18n="projects.carousel.viewDetails">Inspecter le projet</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-
-                            <!-- 6. 42SH -->
-                            <div class="carousel-3d-card" data-project-id="shell42" data-category="systems">
-                                <div>
-                                    <div class="card-top-row">
-                                        <div class="card-icon-box"><i class="fas fa-terminal"></i></div>
-                                        <span class="card-category-badge">Unix POSIX</span>
-                                    </div>
-                                    <h3 data-i18n="projects.42sh.title">Interpréteur Unix (42SH)</h3>
-                                    <div class="card-metric-highlight" data-i18n="projects.42sh.metric">POSIX • Job Control & AST</div>
-                                    <div class="card-tech-pills">
-                                        <span>C</span>
-                                        <span>POSIX</span>
-                                        <span>AST</span>
-                                        <span>Git</span>
-                                    </div>
-                                    <p class="card-summary" data-i18n="projects.42sh.desc">
-                                        Shell Unix POSIX complet en C : parsing AST, gestion de jobs et processus, redirections et pipelines.
-                                    </p>
-                                </div>
-                                <div class="card-inspect-hint">
-                                    <span data-i18n="projects.carousel.viewDetails">Inspecter le projet</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-
-                            <!-- 7. EpiBazaar -->
-                            <div class="carousel-3d-card" data-project-id="bazaar" data-category="systems">
-                                <div>
-                                    <div class="card-top-row">
-                                        <div class="card-icon-box"><i class="fas fa-network-wired"></i></div>
-                                        <span class="card-category-badge">Microservices</span>
-                                    </div>
-                                    <h3 data-i18n="projects.bazaar.title">EpiBazaar</h3>
-                                    <div class="card-metric-highlight" data-i18n="projects.bazaar.metric">Streaming Kafka • Quarkus</div>
-                                    <div class="card-tech-pills">
-                                        <span>Java</span>
-                                        <span>Quarkus</span>
-                                        <span>Kafka</span>
-                                        <span>REST</span>
-                                    </div>
-                                    <p class="card-summary" data-i18n="projects.bazaar.desc">
-                                        Backend distribué pour simulation économique. Microservices avec Quarkus, Hibernate et streaming Apache Kafka.
-                                    </p>
-                                </div>
-                                <div class="card-inspect-hint">
-                                    <span data-i18n="projects.carousel.viewDetails">Inspecter le projet</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-
-                            <!-- 8. Covoiturage -->
-                            <div class="carousel-3d-card" data-project-id="carpool" data-category="systems">
-                                <div>
-                                    <div class="card-top-row">
-                                        <div class="card-icon-box"><i class="fas fa-route"></i></div>
-                                        <span class="card-category-badge">Java Desktop</span>
-                                    </div>
-                                    <h3 data-i18n="projects.carpool.title">Application de Covoiturage</h3>
-                                    <div class="card-metric-highlight" data-i18n="projects.carpool.metric">Temps réel • Géolocalisation</div>
-                                    <div class="card-tech-pills">
-                                        <span>Java</span>
-                                        <span>Scene Builder</span>
-                                        <span>Realtime</span>
-                                    </div>
-                                    <p class="card-summary" data-i18n="projects.carpool.desc">
-                                        Plateforme de covoiturage avec géolocalisation, alertes interactives et interface dynamique en Java.
-                                    </p>
-                                </div>
-                                <div class="card-inspect-hint">
-                                    <span data-i18n="projects.carousel.viewDetails">Inspecter le projet</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-
-                            <!-- 9. OCR Sudoku -->
-                            <div class="carousel-3d-card" data-project-id="ocr" data-category="ai-vision systems">
-                                <div>
-                                    <div class="card-top-row">
-                                        <div class="card-icon-box"><i class="fas fa-brain"></i></div>
-                                        <span class="card-category-badge">Neural Net</span>
-                                    </div>
-                                    <h3 data-i18n="projects.ocr.title">OCR & Résolution de Sudoku</h3>
-                                    <div class="card-metric-highlight" data-i18n="projects.ocr.metric">Neural Net en C • Traitement d'Image</div>
-                                    <div class="card-tech-pills">
-                                        <span>C</span>
-                                        <span>Neural Net</span>
-                                        <span>Image Proc</span>
-                                    </div>
-                                    <p class="card-summary" data-i18n="projects.ocr.desc">
-                                        Reconnaissance optique de caractères et résolution automatique de grilles avec réseau de neurones en C.
-                                    </p>
-                                </div>
-                                <div class="card-inspect-hint">
-                                    <span data-i18n="projects.carousel.viewDetails">Inspecter le projet</span>
-                                    <i class="fas fa-arrow-right"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Status Bar & Dots -->
-                    <div class="carousel-status-bar">
-                        <div id="carousel-counter" class="carousel-counter">
-                            <span class="count-num">01 / 09</span> • <strong>Automatic License Plate Recognition</strong>
-                        </div>
-                        <div id="carousel-dots" class="carousel-dots-list"></div>
-                        <div class="carousel-drag-hint">
-                            <i class="fas fa-arrows-alt-h"></i>
-                            <span data-i18n="projects.carousel.hint">Faites glisser ou naviguez avec les flèches pour faire défiler • Cliquez au centre pour inspecter</span>
-                        </div>
-                    </div>
+                    <!-- One page per project, deep-linkable as #projects/<id> (filled by js/script.js) -->
+                    <article id="project-page" class="case-study" hidden></article>
                 </div>
 
                 <!-- ================= PANEL 3: EXPÉRIENCE ================= -->
-                <div id="panel-experience" class="hub-panel" role="tabpanel" hidden>
+                <div id="panel-experience" class="hub-panel" role="tabpanel" aria-labelledby="tab-experience" hidden>
+                    <div id="experience-overview">
                     <div class="panel-header">
                         <h2><i class="fas fa-briefcase"></i> <span data-i18n="experience.title">Expérience Professionnelle</span></h2>
                         <span class="panel-badge" data-i18n="panel.badge.experience">PARCOURS</span>
@@ -459,7 +289,7 @@
                                     <div class="exp-role-title" data-i18n="experience.vr.title">Projet de Fin d'Études (PFEE) – Ingénieur Réalité Virtuelle</div>
                                     <div class="exp-company"><i class="fas fa-building"></i> <span data-i18n="experience.vr.company">Dassault Systèmes</span></div>
                                 </div>
-                                <span class="exp-period" data-i18n="experience.vr.period">Fév. 2026 – Fév. 2027</span>
+                                <span class="exp-period" data-i18n="experience.vr.period">Fév. 2026 – aujourd'hui</span>
                             </div>
                             <div class="exp-focus" data-i18n="experience.vr.subtitle">
                                 Conception d'une Minimap WebXR interactive pour maquettes 3D industrielles complexes.
@@ -487,21 +317,27 @@
                                 <span class="exp-period" data-i18n="experience.bpce.period">Sept. 2025 – Janv. 2026</span>
                             </div>
                             <div class="exp-focus" data-i18n="experience.bpce.subtitle">
-                                Pipeline RAG from scratch, fiabilisation MLOps et automatisation d'analyses financières.
+                                Pipeline RAG sur des bilans PDF, tableau de bord Power BI et contrôle automatique des factures par LLM.
                             </div>
                             <ul class="exp-bullets">
-                                <li data-i18n="experience.bpce.item1">Architecture <strong>RAG & LLM</strong> from scratch sur des centaines de bilans PDF (SentenceTransformer, Qdrant, Pydantic).</li>
-                                <li data-i18n="experience.bpce.item2">Fiabilisation MLOps : validation stricte des données et suivi des métriques de confiance (<strong>77.1%</strong>) sur Streamlit.</li>
-                                <li data-i18n="experience.bpce.item3">Automatisation NLP de contrôles bilans/Excel (<strong>&gt;60% de gain de temps</strong>) et orchestration Dataiku.</li>
+                                <li data-i18n="experience.bpce.item1">Pipeline <strong>RAG & LLM</strong> sur plusieurs centaines de bilans PDF (SentenceTransformer, Qdrant, Pydantic) : extraction du SIREN, du nom et de la date de clôture.</li>
+                                <li data-i18n="experience.bpce.item2">Sorties du LLM validées par Pydantic et contrôle du SIREN par l'algorithme de Luhn ; score de confiance moyen de <strong>77,1 %</strong> suivi dans Streamlit.</li>
+                                <li data-i18n="experience.bpce.item3">Contrôle automatique des factures PDF face au reporting Excel par LLM (<strong>plus de 60 % de temps gagné</strong>), livré en exécutable autonome.</li>
+                                <li data-i18n="experience.bpce.item4">Tableau de bord <strong>Power BI</strong> (modèle en étoile, mesures DAX) pour suivre les règles d'octroi de cautions.</li>
                             </ul>
                             <div class="exp-tags">
                                 <span class="tech-tag">Python</span>
                                 <span class="tech-tag">RAG / LLM</span>
                                 <span class="tech-tag">Qdrant</span>
-                                <span class="tech-tag">MLOps</span>
-                                <span class="tech-tag">Dataiku</span>
+                                <span class="tech-tag">Pydantic</span>
                                 <span class="tech-tag">Streamlit</span>
+                                <span class="tech-tag">Power BI</span>
+                                <span class="tech-tag">PyInstaller</span>
                             </div>
+                            <button type="button" class="exp-detail-btn" id="experience-btn-bpce" data-detail-id="bpce">
+                                <span data-i18n="experience.bpce.details">Lire le détail du stage</span>
+                                <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                            </button>
                         </div>
 
                         <!-- EPITA BackToBasics -->
@@ -528,10 +364,14 @@
                             </div>
                         </div>
                     </div>
+                    </div>
+
+                    <!-- One page per detailed experience, deep-linkable as #experience/<id> (filled by js/script.js) -->
+                    <article id="experience-page" class="case-study" hidden></article>
                 </div>
 
                 <!-- ================= PANEL 4: FORMATION ================= -->
-                <div id="panel-education" class="hub-panel" role="tabpanel" hidden>
+                <div id="panel-education" class="hub-panel" role="tabpanel" aria-labelledby="tab-education" hidden>
                     <div class="panel-header">
                         <h2><i class="fas fa-graduation-cap"></i> <span data-i18n="education.title">Formation Académique</span></h2>
                         <span class="panel-badge" data-i18n="panel.badge.education">DIPLÔME</span>
@@ -543,7 +383,7 @@
                             <span class="edu-date">2022–2027</span>
                             <h3 data-i18n="education.epita.title">EPITA – École d'ingénieurs en informatique</h3>
                             <p class="edu-desc" data-i18n="education.epita.desc">
-                                5ᵉ année – Majeure IMAGE (Traitement d’images, vision par ordinateur, deep learning, IA, calcul GPU).
+                                5ᵉ année – Majeure IMAGE (traitement d'images, vision par ordinateur, deep learning, IA, calcul GPU) et mineure Finance de marché.
                             </p>
                             <div class="edu-grade" data-i18n="education.epita.grade">GPA : 4.0 / 4.0</div>
                             <div class="edu-location"><i class="fas fa-map-marker-alt"></i> <span data-i18n="education.epita.location">Le Kremlin-Bicêtre, France</span></div>
@@ -570,123 +410,88 @@
                 </div>
 
                 <!-- ================= PANEL 5: COMPÉTENCES ================= -->
-                <div id="panel-skills" class="hub-panel" role="tabpanel" hidden>
+                <div id="panel-skills" class="hub-panel" role="tabpanel" aria-labelledby="tab-skills" hidden>
                     <div class="panel-header">
-                        <h2><i class="fas fa-layer-group"></i> <span data-i18n="skills.title">Compétences & Technologies</span></h2>
+                        <h2><i class="fas fa-screwdriver-wrench" aria-hidden="true"></i> <span data-i18n="skills.title">Compétences & Technologies</span></h2>
                         <span class="panel-badge" data-i18n="panel.badge.skills">EXPERTISE</span>
                     </div>
 
                     <div class="skills-compact-grid">
-                        <!-- Langages -->
                         <div class="skill-category-card">
-                            <h3><i class="fas fa-code"></i> <span data-i18n="skills.prog">Langages de programmation</span></h3>
+                            <h3><i class="fas fa-code" aria-hidden="true"></i> <span data-i18n="skills.prog">Langages de programmation</span></h3>
                             <div class="skill-items-wrap">
-                                <span class="skill-chip"><i class="fas fa-code"></i> C++</span>
-                                <span class="skill-chip"><i class="fab fa-python"></i> Python</span>
-                                <span class="skill-chip"><i class="fas fa-microchip"></i> CUDA</span>
-                                <span class="skill-chip"><i class="fas fa-code"></i> C</span>
-                                <span class="skill-chip"><i class="fab fa-js"></i> TypeScript</span>
-                                <span class="skill-chip"><i class="fab fa-java"></i> Java</span>
-                                <span class="skill-chip"><i class="fas fa-code"></i> C#</span>
-                                <span class="skill-chip"><i class="fas fa-database"></i> SQL</span>
-                                <span class="skill-chip"><i class="fas fa-terminal"></i> Bash</span>
+                                <span class="skill-chip"><i class="fas fa-code" aria-hidden="true"></i> C++</span>
+                                <span class="skill-chip"><i class="fab fa-python" aria-hidden="true"></i> Python</span>
+                                <span class="skill-chip"><i class="fas fa-microchip" aria-hidden="true"></i> CUDA</span>
+                                <span class="skill-chip"><i class="fas fa-code" aria-hidden="true"></i> C</span>
+                                <span class="skill-chip"><i class="fab fa-js" aria-hidden="true"></i> TypeScript</span>
+                                <span class="skill-chip"><i class="fab fa-java" aria-hidden="true"></i> Java</span>
+                                <span class="skill-chip"><i class="fas fa-code" aria-hidden="true"></i> C#</span>
+                                <span class="skill-chip"><i class="fas fa-database" aria-hidden="true"></i> SQL</span>
+                                <span class="skill-chip"><i class="fas fa-terminal" aria-hidden="true"></i> Bash</span>
                             </div>
                         </div>
 
-                        <!-- 3D / Vision / IA -->
                         <div class="skill-category-card">
-                            <h3><i class="fas fa-vr-cardboard"></i> <span data-i18n="skills.tools">3D, Vision & IA</span></h3>
+                            <h3><i class="fas fa-eye" aria-hidden="true"></i> <span data-i18n="skills.vision">Vision & IA</span></h3>
                             <div class="skill-items-wrap">
-                                <span class="skill-chip"><i class="fas fa-cube"></i> Three.js / WebXR</span>
-                                <span class="skill-chip"><i class="fas fa-eye"></i> OpenCV</span>
-                                <span class="skill-chip"><i class="fas fa-brain"></i> PyTorch / Scikit-Learn</span>
-                                <span class="skill-chip"><i class="fas fa-database"></i> Qdrant</span>
-                                <span class="skill-chip"><i class="fas fa-project-diagram"></i> LangChain / RAG</span>
-                                <span class="skill-chip"><i class="fas fa-gamepad"></i> Unity 3D</span>
-                                <span class="skill-chip"><i class="fas fa-bolt"></i> Vite</span>
-                                <span class="skill-chip"><i class="fas fa-chart-line"></i> Power BI (DAX)</span>
+                                <span class="skill-chip"><i class="fas fa-eye" aria-hidden="true"></i> OpenCV</span>
+                                <span class="skill-chip"><i class="fas fa-brain" aria-hidden="true"></i> PyTorch</span>
+                                <span class="skill-chip"><i class="fas fa-brain" aria-hidden="true"></i> Scikit-Learn</span>
+                                <span class="skill-chip"><i class="fas fa-crosshairs" aria-hidden="true"></i> YOLO</span>
+                                <span class="skill-chip"><i class="fas fa-project-diagram" aria-hidden="true"></i> LangChain / RAG</span>
+                                <span class="skill-chip"><i class="fas fa-database" aria-hidden="true"></i> Qdrant</span>
                             </div>
                         </div>
 
-                        <!-- MLOps & Méthodes -->
                         <div class="skill-category-card">
-                            <h3><i class="fas fa-cogs"></i> <span data-i18n="skills.methods">Méthodologies & MLOps</span></h3>
+                            <h3><i class="fas fa-cube" aria-hidden="true"></i> <span data-i18n="skills.gpu">3D & GPU</span></h3>
                             <div class="skill-items-wrap">
-                                <span class="skill-chip"><i class="fab fa-docker"></i> Docker</span>
-                                <span class="skill-chip"><i class="fab fa-git-alt"></i> Git / GitHub / GitLab</span>
-                                <span class="skill-chip"><i class="fas fa-stream"></i> Streamlit</span>
-                                <span class="skill-chip"><i class="fas fa-infinity"></i> CI/CD Pipeline</span>
-                                <span class="skill-chip"><i class="fas fa-tasks"></i> Agile / Scrum</span>
+                                <span class="skill-chip"><i class="fas fa-cube" aria-hidden="true"></i> Three.js / WebXR</span>
+                                <span class="skill-chip"><i class="fas fa-shapes" aria-hidden="true"></i> OpenGL / GLSL</span>
+                                <span class="skill-chip"><i class="fas fa-film" aria-hidden="true"></i> GStreamer</span>
+                                <span class="skill-chip"><i class="fas fa-gamepad" aria-hidden="true"></i> Unity 3D</span>
+                                <span class="skill-chip"><i class="fas fa-bolt" aria-hidden="true"></i> Vite</span>
                             </div>
                         </div>
 
-                        <!-- Testing -->
                         <div class="skill-category-card">
-                            <h3><i class="fas fa-vial"></i> <span data-i18n="skills.testing">Testing & Qualité</span></h3>
+                            <h3><i class="fas fa-cogs" aria-hidden="true"></i> <span data-i18n="skills.methods">Outils & MLOps</span></h3>
                             <div class="skill-items-wrap">
-                                <span class="skill-chip"><i class="fas fa-check-circle"></i> <span data-i18n="skills.chip.unittests">Tests unitaires C/C++</span></span>
-                                <span class="skill-chip"><i class="fas fa-check-circle"></i> Pytest</span>
-                                <span class="skill-chip"><i class="fas fa-check-circle"></i> JUnit</span>
-                                <span class="skill-chip"><i class="fas fa-check-circle"></i> <span data-i18n="skills.chip.ci">Intégration continue</span></span>
+                                <span class="skill-chip"><i class="fab fa-docker" aria-hidden="true"></i> Docker</span>
+                                <span class="skill-chip"><i class="fas fa-server" aria-hidden="true"></i> FastAPI</span>
+                                <span class="skill-chip"><i class="fas fa-envelope-open-text" aria-hidden="true"></i> RabbitMQ</span>
+                                <span class="skill-chip"><i class="fab fa-react" aria-hidden="true"></i> React</span>
+                                <span class="skill-chip"><i class="fab fa-git-alt" aria-hidden="true"></i> Git / GitHub / GitLab</span>
+                                <span class="skill-chip"><i class="fas fa-hammer" aria-hidden="true"></i> CMake</span>
+                                <span class="skill-chip"><i class="fas fa-infinity" aria-hidden="true"></i> CI/CD</span>
+                                <span class="skill-chip"><i class="fas fa-stream" aria-hidden="true"></i> Streamlit</span>
+                                <span class="skill-chip"><i class="fas fa-chart-line" aria-hidden="true"></i> Power BI (DAX)</span>
+                                <span class="skill-chip"><i class="fas fa-tasks" aria-hidden="true"></i> Agile / Scrum</span>
                             </div>
                         </div>
 
-                        <!-- Langues -->
                         <div class="skill-category-card">
-                            <h3><i class="fas fa-language"></i> <span data-i18n="skills.languages">Langues</span></h3>
+                            <h3><i class="fas fa-vial" aria-hidden="true"></i> <span data-i18n="skills.testing">Testing & Qualité</span></h3>
                             <div class="skill-items-wrap">
-                                <span class="skill-chip"><i class="fas fa-flag"></i> <span data-i18n="skills.chip.french">Français (natif)</span></span>
-                                <span class="skill-chip"><i class="fas fa-flag"></i> <span data-i18n="skills.chip.english">Anglais (TOEIC 900/990)</span></span>
-                                <span class="skill-chip"><i class="fas fa-flag"></i> <span data-i18n="skills.chip.spanish">Espagnol (B1)</span></span>
+                                <span class="skill-chip"><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="skills.chip.unittests">Tests unitaires C/C++</span></span>
+                                <span class="skill-chip"><i class="fas fa-check-circle" aria-hidden="true"></i> Pytest</span>
+                                <span class="skill-chip"><i class="fas fa-check-circle" aria-hidden="true"></i> JUnit</span>
+                                <span class="skill-chip"><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="skills.chip.ci">Intégration continue</span></span>
                             </div>
                         </div>
 
-                        <!-- Soft Skills -->
                         <div class="skill-category-card">
-                            <h3><i class="fas fa-users"></i> <span data-i18n="skills.soft">Soft Skills</span></h3>
+                            <h3><i class="fas fa-language" aria-hidden="true"></i> <span data-i18n="skills.languages">Langues</span></h3>
                             <div class="skill-items-wrap">
-                                <span class="skill-chip"><i class="fas fa-sync-alt"></i> <span data-i18n="skills.chip.adaptability">Adaptabilité</span></span>
-                                <span class="skill-chip"><i class="fas fa-users"></i> <span data-i18n="skills.chip.teamwork">Travail d'équipe</span></span>
-                                <span class="skill-chip"><i class="fas fa-user-cog"></i> <span data-i18n="skills.chip.autonomy">Autonomie</span></span>
-                                <span class="skill-chip"><i class="fas fa-puzzle-piece"></i> <span data-i18n="skills.chip.problemsolving">Résolution de problèmes</span></span>
+                                <span class="skill-chip"><i class="fas fa-flag" aria-hidden="true"></i> <span data-i18n="skills.chip.french">Français (natif)</span></span>
+                                <span class="skill-chip"><i class="fas fa-flag" aria-hidden="true"></i> <span data-i18n="skills.chip.english">Anglais (TOEIC 900/990)</span></span>
+                                <span class="skill-chip"><i class="fas fa-flag" aria-hidden="true"></i> <span data-i18n="skills.chip.spanish">Espagnol (B1)</span></span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- ================= PANEL 6: INTÉRÊTS ================= -->
-                <div id="panel-interests" class="hub-panel" role="tabpanel" hidden>
-                    <div class="panel-header">
-                        <h2><i class="fas fa-compass"></i> <span data-i18n="interests.title">Centres d'Intérêt</span></h2>
-                        <span class="panel-badge" data-i18n="panel.badge.interests">ENGAGEMENT</span>
-                    </div>
-
-                    <div class="interests-grid">
-                        <div class="interest-card">
-                            <div class="interest-icon-circle"><i class="fas fa-biking"></i></div>
-                            <h3 data-i18n="interests.bmx.title">BMX</h3>
-                            <p data-i18n="interests.bmx">
-                                Pratique en compétition, co-fondateur d'une association sportive pour les voyages de groupe et échanges culturels.
-                            </p>
-                        </div>
-
-                        <div class="interest-card">
-                            <div class="interest-icon-circle"><i class="fas fa-globe-americas"></i></div>
-                            <h3 data-i18n="interests.travel.title">Voyages & Culture</h3>
-                            <p data-i18n="interests.travel">
-                                Exploration internationale, ouverture d'esprit et curiosité intellectuelle.
-                            </p>
-                        </div>
-
-                        <div class="interest-card">
-                            <div class="interest-icon-circle"><i class="fas fa-flag-checkered"></i></div>
-                            <h3 data-i18n="interests.motorsports.title">Sports Mécaniques</h3>
-                            <p data-i18n="interests.motorsports">
-                                Passionné de MotoGP et Formule 1 (télémétrie, aérodynamique et ingénierie de pointe).
-                            </p>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </main>
@@ -698,12 +503,33 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="js/vendor/three.min.js"></script>
-    <script src="js/vendor/gsap.min.js"></script>
-    <script src="js/three-scene.js"></script>
-    <script src="js/i18n.js"></script>
-    <script src="js/script.js"></script>
+    <!-- Resume preview dialog (desktop only; other devices open the PDF directly) -->
+    <dialog id="pdf-dialog" class="pdf-dialog" aria-labelledby="pdf-dialog-title">
+        <div class="pdf-modal-container">
+            <div class="pdf-modal-header">
+                <div class="pdf-modal-title-wrap">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <h2 class="pdf-modal-title" id="pdf-dialog-title"></h2>
+                </div>
+                <div class="pdf-modal-actions">
+                    <a href="cvs/CV_Noah_Civilise_FR.pdf" download class="pdf-action-btn pdf-download-btn">
+                        <i class="fas fa-download" aria-hidden="true"></i>
+                        <span data-i18n="pdf.download">Télécharger</span>
+                    </a>
+                    <a href="cvs/CV_Noah_Civilise_FR.pdf" target="_blank" rel="noopener" class="pdf-action-btn pdf-external-btn">
+                        <i class="fas fa-external-link-alt" aria-hidden="true"></i>
+                        <span data-i18n="pdf.newTab">Nouvel onglet</span>
+                    </a>
+                    <button type="button" class="pdf-modal-close-btn" data-close-dialog aria-label="Fermer l'aperçu" data-i18n-aria="pdf.close">
+                        <i class="fas fa-times" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="pdf-modal-body">
+                <iframe class="pdf-iframe" title="" src="about:blank"></iframe>
+            </div>
+        </div>
+    </dialog>
 </body>
 
 </html>
