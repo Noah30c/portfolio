@@ -2,6 +2,8 @@
 
 Portfolio bilingue (FR / EN) d'élève-ingénieur en **IA, vision par ordinateur et traitement d'image** (EPITA, majeure IMAGE). Site statique en HTML, CSS et JavaScript, sans étape de build, avec un fond **Three.js** animé.
 
+En ligne : https://civilise-noah.onrender.com
+
 ---
 
 ## Fonctionnalités
