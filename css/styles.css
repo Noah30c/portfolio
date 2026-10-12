@@ -834,6 +834,19 @@ body.light-mode .contact-chip:hover {
     overflow: hidden;
 }
 
+/* An odd number of featured projects: the last card spans the row, image beside the text */
+@media (min-width: 769px) {
+    .projects-grid.is-featured > .project-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        flex-direction: row;
+    }
+    .projects-grid.is-featured > .project-card:last-child:nth-child(odd) .project-card-media {
+        flex: 0 0 50%;
+        border-bottom: none;
+        border-right: 1px solid var(--border-color);
+    }
+}
+
 .project-card-media {
     aspect-ratio: 16 / 9;
     border-bottom: 1px solid var(--border-color);

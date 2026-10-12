@@ -62,9 +62,9 @@ const translations = {
 
         "projects.title": "Projets & Réalisations",
         "projects.featured": "Projets phares",
-        "projects.featuredNote": "IA, vision et calcul GPU",
+        "projects.featuredNote": "IA, vision, imagerie médicale et rendu GPU",
         "projects.others": "Autres projets",
-        "projects.othersNote": "Systèmes, compilation et logiciel",
+        "projects.othersNote": "Vision, systèmes, compilation et logiciel",
         "projects.details": "Voir le détail",
         "projects.detailsShort": "Détail",
         "projects.caseStudy": "Lire l'étude de cas",
@@ -184,9 +184,9 @@ const translations = {
 
         "projects.title": "Projects",
         "projects.featured": "Featured projects",
-        "projects.featuredNote": "AI, vision & GPU computing",
+        "projects.featuredNote": "AI, vision, medical imaging & GPU rendering",
         "projects.others": "Other projects",
-        "projects.othersNote": "Systems, compilers & software",
+        "projects.othersNote": "Vision, systems, compilers & software",
         "projects.details": "View details",
         "projects.detailsShort": "Details",
         "projects.caseStudy": "Read the case study",

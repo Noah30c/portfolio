@@ -402,9 +402,11 @@ function barsHtml(bars) {
     const pct = (v) => `${(v / bars.max) * 100}%`;
     const labelled = new Set(bars.labelled || []);
     const n = bars.items.length;
-    const gridlines = bars.ticks.map(v => `<span class="bars-gridline" style="left: ${pct(v)}"></span>`).join('');
+    // A tick is a number, or { value, label } when the axis shows another unit (e.g. AUC from 0 to 1)
+    const tickList = bars.ticks.map(v => (typeof v === 'object' ? v : { value: v, label: String(v) }));
+    const gridlines = tickList.map(tk => `<span class="bars-gridline" style="left: ${pct(tk.value)}"></span>`).join('');
     const target = bars.target ? `<span class="bars-target" style="left: ${pct(bars.target.value)}"></span>` : '';
-    const ticks = bars.ticks.map(v => `<span class="bars-tick" style="left: ${pct(v)}">${v}</span>`).join('');
+    const ticks = tickList.map(tk => `<span class="bars-tick" style="left: ${pct(tk.value)}">${escapeHtml(tk.label)}</span>`).join('');
 
     // Every cell is placed explicitly so the overlay (grid + target line) can span all bar rows
     const rows = bars.items.map((item, i) => {
