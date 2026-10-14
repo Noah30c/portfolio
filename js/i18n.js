@@ -39,6 +39,8 @@ const translations = {
         "experience.vr.subtitle": "Conception d'une Minimap WebXR interactive pour maquettes 3D industrielles complexes.",
         "experience.vr.item1": "Développement WebXR fluide à <strong>90 FPS</strong> (Three.js, TypeScript, Vite) pour l'exploration de maquettes CAO.",
         "experience.vr.item2": "Algorithmes de <strong>World Detection</strong> (détection d'étages, volumes de collision) et calculs asynchrones via <strong>WebWorkers</strong>.",
+        "experience.vr.item3": "Remplacement de la minimap 2D par une <strong>maquette 3D</strong> du bâtiment fixée dans le champ de vision, reconstruite en <strong>24 ms</strong>.",
+        "experience.vr.details": "Voir le projet VR Minimap",
 
         "experience.bpce.title": "Data Science & Generative AI Intern",
         "experience.bpce.company": "Groupe BPCE (CEGC)",
@@ -62,7 +64,7 @@ const translations = {
 
         "projects.title": "Projets & Réalisations",
         "projects.featured": "Projets phares",
-        "projects.featuredNote": "IA, vision, imagerie médicale et rendu GPU",
+        "projects.featuredNote": "IA, vision, imagerie médicale, rendu GPU et VR",
         "projects.others": "Autres projets",
         "projects.othersNote": "Vision, systèmes, compilation et logiciel",
         "projects.details": "Voir le détail",
@@ -161,6 +163,8 @@ const translations = {
         "experience.vr.subtitle": "Design of an interactive WebXR VR Minimap for complex industrial CAD scenes.",
         "experience.vr.item1": "Smooth <strong>90 FPS</strong> WebXR development (Three.js, TypeScript, Vite) for engineering model visualization.",
         "experience.vr.item2": "3D <strong>World Detection</strong> algorithms (floor detection, collision boundaries) with async compute offloaded to <strong>WebWorkers</strong>.",
+        "experience.vr.item3": "Replaced the 2D minimap with a <strong>3D model</strong> of the building anchored in the field of view, rebuilt in <strong>24 ms</strong>.",
+        "experience.vr.details": "View the VR Minimap project",
 
         "experience.bpce.title": "Data Science & Generative AI Intern",
         "experience.bpce.company": "Groupe BPCE (CEGC)",
@@ -184,7 +188,7 @@ const translations = {
 
         "projects.title": "Projects",
         "projects.featured": "Featured projects",
-        "projects.featuredNote": "AI, vision, medical imaging & GPU rendering",
+        "projects.featuredNote": "AI, vision, medical imaging, GPU rendering & VR",
         "projects.others": "Other projects",
         "projects.othersNote": "Vision, systems, compilers & software",
         "projects.details": "View details",

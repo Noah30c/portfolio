@@ -15,7 +15,7 @@ En ligne : https://civilise-noah.onrender.com
 2. **Projets en grille** :
    - « Projets phares » (IA, vision, GPU) avec captures, puis « Autres projets » en liste compacte.
    - Une page par projet, avec un lien direct (`#projects/alpr`, `#projects/gpgpu`…), un bouton de retour et la navigation vers le projet précédent ou suivant. Le bouton retour du navigateur fonctionne aussi.
-   - Cinq projets ont une étude de cas complète (ALPR, détection de mouvement sur GPU, DermScan, suivi d'une tumeur avec ITK/VTK, rendu d'eau OpenGL) : contraintes, pipeline étape par étape en images, résultats chiffrés, graphiques et limites.
+   - Six projets ont une étude de cas complète (ALPR, détection de mouvement sur GPU, DermScan, suivi d'une tumeur avec ITK/VTK, rendu d'eau OpenGL, VR Minimap) : contraintes, pipeline étape par étape en images, résultats chiffrés, graphiques et limites.
    - Tout le contenu des projets (FR et EN) se trouve dans [`js/projects-data.js`](js/projects-data.js).
    - Le stage au Groupe BPCE a lui aussi sa page détaillée (`#experience/bpce`) : contexte, chronologie, pipeline RAG, tableau de bord Power BI, contrôle automatique des factures. Son contenu se trouve dans [`js/experience-data.js`](js/experience-data.js). Aucune capture interne n'y est publiée.
 

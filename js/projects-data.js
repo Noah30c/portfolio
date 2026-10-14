@@ -1375,6 +1375,291 @@ const PROJECTS = [
         }
     },
     {
+        id: 'vrminimap',
+        featured: true,
+        icon: 'fas fa-vr-cardboard',
+        cover: 'images/projects/vrminimap/cover.jpg',
+        hero: { src: 'images/projects/vrminimap/hero.webp', w: 1600, h: 900 },
+        stack: ['TypeScript', 'Three.js', 'WebXR', 'three-mesh-bvh', 'Vite'],
+        repo: null,
+        figures: {
+            startScreen: { src: 'images/projects/vrminimap/start-screen.png', w: 1600, h: 900, caption: {
+                fr: 'Écran de départ : choix du modèle GLB et d\'une carte sauvegardée, ou calcul dans la scène.',
+                en: 'Start screen: pick a GLB model and a saved map, or build the map in the scene.' } },
+            histogram: { src: 'images/projects/vrminimap/height-histogram.jpg', w: 808, h: 1368, caption: {
+                fr: 'Histogramme des hauteurs des impacts de rayons. Chaque pic retenu devient un étage.',
+                en: 'Height histogram of ray hits. Each retained peak becomes a floor.' } },
+            floorsOverlay: { src: 'images/projects/vrminimap/floors-overlay.jpg', w: 1600, h: 1097, caption: {
+                fr: 'Overlay de debug, modèle masqué : les 5 niveaux détectés, une couleur par étage, avec leurs murs.',
+                en: 'Debug overlay, model hidden: the 5 detected levels, one color per floor, with their walls.' } },
+            floorPlans: { src: 'images/projects/vrminimap/floor-plans-2d.jpg', w: 2000, h: 400, wide: true, caption: {
+                fr: 'Les 5 étages dessinés par la minimap 2D de l\'équipe : une couleur par pièce, couloirs en beige, escaliers hachurés en orange.',
+                en: 'The 5 floors drawn by the team\'s 2D minimap: one color per room, corridors in beige, stairs hatched in orange.' } },
+            stairsOverlay: { src: 'images/projects/vrminimap/stairs-overlay.png', w: 1600, h: 1067, caption: {
+                fr: 'Escaliers détectés, modèle masqué : 3 relient deux étages (orange), 11 restent non résolus (gris).',
+                en: 'Detected stairs, model hidden: 3 link two floors (orange), 11 stay unresolved (grey).' } },
+            backgroundBuild: { src: 'images/projects/vrminimap/background-build.jpg', w: 1600, h: 900, caption: {
+                fr: 'Calcul en arrière-plan : barre de progression, mode édition et histogramme. La scène reste utilisable.',
+                en: 'Background build: progress bar, edit mode and histogram. The scene stays usable.' } },
+            floorPlan: { src: 'images/projects/vrminimap/floor-plan-2d.png', w: 1600, h: 1600, caption: {
+                fr: 'Avant : la minimap 2D de l\'équipe (étage 0), affichée sur la manette gauche.',
+                en: 'Before: the team\'s 2D minimap (floor 0), shown on the left controller.' } },
+            minimapCloseup: { src: 'images/projects/vrminimap/minimap-3d-closeup.jpg', w: 1600, h: 1387, caption: {
+                fr: 'Après : la maquette 3D de l\'étage 1. Une dalle par cellule marchable, murs translucides, marqueur du joueur en rouge.',
+                en: 'After: the 3D model of floor 1. One slab per walkable cell, translucent walls, red player marker.' } },
+            minimapFloors: { src: 'images/projects/vrminimap/minimap-3d-floors.jpg', w: 2000, h: 347, wide: true, caption: {
+                fr: 'La maquette n\'affiche que l\'étage actif : étages 0 à 4, de gauche à droite.',
+                en: 'The model only shows the active floor: floors 0 to 4, left to right.' } },
+            minimapPanel: { src: 'images/projects/vrminimap/minimap-3d-panel.jpg', w: 1600, h: 900, caption: {
+                fr: 'Onglet « Minimap 3D » du mode édition : position, inclinaison et taille réglables en direct.',
+                en: '"3D Minimap" tab of the edit mode: live position, tilt and size.' } }
+        },
+        fr: {
+            title: 'VR Minimap · Dassault Systèmes',
+            category: 'WebXR · Géométrie 3D',
+            team: 'PFEE avec Dassault Systèmes · 5 mois',
+            metric: '5 étages cartographiés en 8,7 s',
+            summary: 'Projet de fin d\'études avec Dassault Systèmes : une application WebXR qui calcule la carte d\'un bâtiment 3D par lancer de rayons et l\'affiche dans le casque. J\'ai remplacé la minimap 2D par une maquette 3D fixée dans le champ de vision.',
+            stats: [
+                { value: '8,7 s', label: 'calcul complet de la carte, 9,4 M de triangles' },
+                { value: '−22,8 %', label: 'de rayons avec le raycast adaptatif' },
+                { value: '24 ms', label: 'pour reconstruire la maquette 3D' },
+                { value: '0,8 %', label: 'de triangles ajoutés par la maquette' }
+            ],
+            sections: [
+                { title: 'Contexte et contraintes', blocks: [
+                    { p: 'Projet de fin d\'études (PFEE) de l\'EPITA, réalisé avec Dassault Systèmes. Nous avons construit une application qui charge un bâtiment 3D au format GLB et en déduit la carte, sans plan fourni. La carte s\'affiche ensuite en minimap dans un casque VR, directement dans le navigateur.' },
+                    { p: 'L\'historique Git compte 6 contributeurs sur 5 mois. Ma part, en fin de projet : la minimap 3D et son intégration.' },
+                    { list: [
+                        '**WebXR dans le navigateur** : la page est servie en HTTPS sur le réseau local et ouverte dans le navigateur du casque.',
+                        '**Modèles lourds** : le modèle de test pèse 496,6 Mo et compte 9,4 millions de triangles.',
+                        '**Aucun plan fourni** : étages, murs, pièces et escaliers sont déduits de la géométrie.',
+                        '**Fluidité en VR** : le calcul rend la main au navigateur toutes les 8 ms en VR, toutes les 30 ms sur bureau.',
+                        '**Unités incertaines** : glTF devrait être en mètres. Une heuristique ramène la hauteur du modèle entre 2 et 30 m.'
+                    ] },
+                    { note: 'Modèle de test : « apartment 2 4F～7F in japan » par makoto_jww (Sketchfab), licence CC BY 4.0.' }
+                ] },
+                { title: 'Architecture', blocks: [
+                    { flow: ['Modèle GLB', 'Raycast vertical', 'Histogramme des hauteurs', 'Grilles marchables', 'Murs', 'Pièces', 'Escaliers', 'Minimap 3D'] },
+                    { p: 'Nous faisons tout dans le navigateur, en TypeScript avec Three.js. La carte est une grille de 10 cm par étage, avec un masque de murs sur 4 bits par cellule. Elle se sauvegarde en JSON, liée à son modèle par le SHA-1 du fichier.' },
+                    { p: 'Le calcul tourne sur le thread principal, découpé en tranches. On peut le relancer ou l\'annuler en se déplaçant dans la scène. 19 paramètres, répartis en 5 catégories, se règlent en direct sur bureau comme en VR.' }
+                ] },
+                { title: 'Les étapes en détail', blocks: [
+                    { steps: [
+                        { title: 'Chargement du modèle', tag: '496,6 Mo · SHA-1', blocks: [
+                            { p: 'Un plugin Vite liste les modèles et les cartes déjà calculées. Le client télécharge le GLB, calcule son SHA-1, puis le parse. Une carte sauvegardée n\'est reprise que si ce SHA-1 correspond.' },
+                            { p: 'Tous les exports glTF ne respectent pas le mètre. Une heuristique corrige l\'échelle par puissance de 10 : ×0,01 sur le modèle de test.' },
+                            { figures: ['startScreen'] }
+                        ] },
+                        { title: 'Raycast vertical adaptatif', tag: '18 231 rayons', blocks: [
+                            { p: 'La scène est découpée en carrés de 4 × 4 cellules de 10 cm. Un rayon vertical part du centre de chaque carré. S\'il touche une surface horizontale, le carré est divisé en quatre. Si le centre rate, les 4 coins sont testés avant d\'abandonner la zone.' },
+                            { p: 'Chaque mesh reçoit un BVH (`three-mesh-bvh`). Un rayon n\'interroge que les meshes dont il traverse la boîte englobante. Sur le modèle de test : 18 231 rayons en 3 passes au lieu de 23 622, et 134 261 impacts.' }
+                        ] },
+                        { title: 'Étages par histogramme', tag: '6 pics · 5 étages', blocks: [
+                            { p: 'Les hauteurs des impacts sont regroupées par tranches de 15 cm. Chaque maximum local assez dense devient un étage candidat. Deux pics distants de moins de 40 cm fusionnent en sous-niveaux.' },
+                            { p: 'Une ouverture morphologique par reconstruction retire le bruit sans couper couloirs, portes et escaliers. Sur le modèle de test, le 6e pic (31 impacts) est écarté comme bruit.' },
+                            { figures: ['histogram', 'floorsOverlay'] }
+                        ] },
+                        { title: 'Murs et pièces', tag: '23 pièces · 22 couloirs', blocks: [
+                            { p: 'Pour chaque cellule marchable, 4 rayons horizontaux de 12,5 cm partent à 1 m du sol. Une surface presque verticale compte comme un mur. Les amas de moins de 3 cellules sont retirés.' },
+                            { p: 'Les pièces viennent d\'une transformée de distance et d\'une croissance de germes, une forme légère de watershed. Un passage de moins de 1 m sépare deux pièces. Une région étroite et allongée devient un couloir.' },
+                            { figures: ['floorPlans'] }
+                        ] },
+                        { title: 'Escaliers', tag: '14 détectés · 3 résolus', blocks: [
+                            { p: 'Une croissance part du bord de chaque étage et des surfaces juste au-dessus du sol. Elle accepte au plus 0,17 m de montée par cellule, soit une pente de 60°. Elle ne redescend jamais et s\'arrête sur l\'étage du dessus.' },
+                            { p: 'Les morceaux distants de moins de 30 cm fusionnent. Sur le modèle de test : 14 connecteurs, dont 3 relient deux étages.' },
+                            { figures: ['stairsOverlay'] }
+                        ] },
+                        { title: 'Calcul en arrière-plan', tag: '8 ms en VR', blocks: [
+                            { p: 'Le calcul rend la main au navigateur à intervalles fixes : 8 ms en VR, 30 ms sur bureau. Une nouvelle demande annule le calcul en cours. Le mode édition montre la progression, l\'histogramme et les paramètres.' },
+                            { figures: ['backgroundBuild'] }
+                        ] },
+                        { title: 'Minimap 3D (ma contribution)', tag: '24 ms · 14 cm', blocks: [
+                            { p: 'Avant, l\'équipe affichait une minimap 2D sur une texture tenue par la manette gauche. Je l\'ai remplacée par une maquette 3D fixée dans le champ de vision : les mains restent libres.' },
+                            { p: 'Chaque cellule marchable devient un pavé de 10 triangles, chaque bit de mur un quad vertical. La maquette est mise à l\'échelle pour que le bâtiment mesure 14 cm, sur un socle avec une flèche nord. Seul l\'étage actif s\'affiche. Pendant un changement d\'étage, l\'étage visé passe en orange.' },
+                            { p: 'Un marqueur rouge suit la position du casque et la direction du regard, sans sortir du socle. J\'ai ajouté un onglet de réglage en direct : position, inclinaison, taille, 3 positions pré-réglées et copie des valeurs.' },
+                            { p: 'J\'ai ensuite fusionné ma branche avec `dev` et résolu les conflits dans 5 fichiers. La maquette se reconstruit à chaque nouvelle carte calculée en arrière-plan.' },
+                            { figures: ['floorPlan', 'minimapCloseup', 'minimapFloors', 'minimapPanel'] }
+                        ] }
+                    ] }
+                ] },
+                { title: 'Choix techniques et difficultés', blocks: [
+                    { list: [
+                        '**BVH et pré-filtrage par boîte** : d\'après un commentaire du code, interroger toute la scène coûtait environ 2 ms par rayon. Chaque rayon ne teste plus que les meshes qu\'il traverse.',
+                        '**Ouverture par reconstruction** : une ouverture simple efface aussi les passages plus étroits que le disque. Nous rendons leur forme entière aux zones qui survivent à l\'ouverture.',
+                        '**Escaliers par croissance bornée** : une montée maximale par cellule laisse passer les paliers, mais pas un saut à hauteur de meuble.',
+                        '**Pas de worker** : une branche ajoutait un worker pour le raycast. Elle n\'a pas été fusionnée, et le calcul reste découpé sur le thread principal.',
+                        '**Spawn différé** : la pose du casque n\'est pas connue au début de la session. Nous plaçons le joueur à la première image suivie.',
+                        '**Maquette en HUD** : elle reste visible sans lever la main. Elle s\'affiche ou se masque avec le clic du stick gauche, car Y et X servent à monter et descendre.'
+                    ] }
+                ] },
+                { title: 'Résultats', blocks: [
+                    { table: {
+                        caption: 'Modèle de test (9 408 894 triangles), réglages par défaut, Chrome 155 headless avec GPU, Apple M5. Durées en secondes, rendu de la scène compris ; le total inclut toutes les étapes.',
+                        columns: ['Calcul', 'BVH', 'Raycast', 'Murs', 'Escaliers', 'Total'],
+                        rows: [
+                            ['1 · premier lancement', '1,49', '1,31', '3,64', '2,06', '8,69'],
+                            ['2 · rechargement', '1,49', '0,96', '3,99', '2,10', '8,71'],
+                            ['3 · relance, BVH en cache', '< 0,01', '0,77', '4,06', '2,12', '7,13']
+                        ],
+                        highlightRow: 0
+                    } },
+                    { bars: { title: 'Durée par étape, calcul 1 (s)', max: 4, ticks: [0, 1, 2, 3, 4], labelled: [0, 1, 4, 6],
+                              items: [
+                                  { label: 'BVH', value: 1.49, display: '1,49 s' },
+                                  { label: 'Raycast', value: 1.31, display: '1,31 s' },
+                                  { label: 'Histogramme', value: 0.004, display: '0,004 s' },
+                                  { label: 'Grilles', value: 0.096, display: '0,096 s' },
+                                  { label: 'Murs', value: 3.64, display: '3,64 s' },
+                                  { label: 'Pièces', value: 0.076, display: '0,076 s' },
+                                  { label: 'Escaliers', value: 2.06, display: '2,06 s' }
+                              ] } },
+                    { list: [
+                        'Les trois calculs donnent la même carte : 5 étages, 23 pièces, 22 couloirs et 14 escaliers.',
+                        'Murs et escaliers prennent 66 % du premier calcul.',
+                        'Le raycast adaptatif lance 22,8 % de rayons en moins qu\'une grille complète.',
+                        'La maquette se construit en 25 ms et se reconstruit en 24 ms (médianes sur 7 essais, CPU seul).',
+                        'L\'étage affiché ajoute 76 696 triangles à la scène, soit 0,8 % de ceux du modèle.'
+                    ] },
+                    { note: 'Limite : toutes les mesures sont faites sur bureau. Je n\'ai aucun chiffre de FPS en casque.' }
+                ] },
+                { title: 'Limites', blocks: [
+                    { list: [
+                        'Aucun test automatisé : la détection se vérifie à l\'œil, avec l\'overlay de debug.',
+                        '11 escaliers sur 14 restent non résolus sur le modèle de test. L\'arrêt sur les murs et la projection vers l\'étage suivant sont désactivés dans le code.',
+                        'Le changement d\'étage téléporte au point d\'apparition de l\'étage voisin. La navigation sur plusieurs étages reste à faire.',
+                        'La maquette ne fusionne pas les cellules voisines. Elle construit tous les étages pour n\'en afficher qu\'un.',
+                        'Hors de l\'emprise du bâtiment, le marqueur reste bloqué au bord du socle.',
+                        'Depuis la fusion, la progression du calcul n\'apparaît dans le casque qu\'en mode édition.',
+                        'Le calcul tourne sur le thread principal.'
+                    ] }
+                ] }
+            ]
+        },
+        en: {
+            title: 'VR Minimap · Dassault Systèmes',
+            category: 'WebXR · 3D geometry',
+            team: 'PFEE with Dassault Systèmes · 5 months',
+            metric: '5 floors mapped in 8.7 s',
+            summary: 'Final-year project with Dassault Systèmes: a WebXR app that maps a 3D building with ray casting and shows the map in the headset. I replaced the 2D minimap with a 3D model anchored in the field of view.',
+            stats: [
+                { value: '8.7 s', label: 'full map build, 9.4 M triangles' },
+                { value: '−22.8%', label: 'rays with adaptive ray casting' },
+                { value: '24 ms', label: 'to rebuild the 3D model' },
+                { value: '0.8%', label: 'extra triangles from the 3D model' }
+            ],
+            sections: [
+                { title: 'Context and constraints', blocks: [
+                    { p: 'EPITA final-year project (PFEE), carried out with Dassault Systèmes. We built an app that loads a 3D building in GLB format and derives its map, with no floor plan provided. The map then shows as a minimap in a VR headset, straight from the browser.' },
+                    { p: 'The Git history has 6 contributors over 5 months. My part, at the end of the project: the 3D minimap and its integration.' },
+                    { list: [
+                        '**WebXR in the browser**: the page is served over HTTPS on the local network and opened in the headset browser.',
+                        '**Heavy models**: the test model weighs 496.6 MB and has 9.4 million triangles.',
+                        '**No floor plan**: floors, walls, rooms and stairs are derived from the geometry.',
+                        '**Smooth VR**: the build yields to the browser every 8 ms in VR, every 30 ms on desktop.',
+                        '**Uncertain units**: glTF should use meters. A heuristic brings the model height between 2 and 30 m.'
+                    ] },
+                    { note: 'Test model: "apartment 2 4F～7F in japan" by makoto_jww (Sketchfab), CC BY 4.0 license.' }
+                ] },
+                { title: 'Architecture', blocks: [
+                    { flow: ['GLB model', 'Vertical ray casting', 'Height histogram', 'Walkable grids', 'Walls', 'Rooms', 'Stairs', '3D minimap'] },
+                    { p: 'We do everything in the browser, in TypeScript with Three.js. The map is a 10 cm grid per floor, with a 4-bit wall mask per cell. It is saved as JSON and tied to its model by the file SHA-1.' },
+                    { p: 'The build runs on the main thread, split into slices. It can be restarted or cancelled while moving in the scene. 19 parameters, in 5 categories, can be tuned live on desktop and in VR.' }
+                ] },
+                { title: 'Steps in detail', blocks: [
+                    { steps: [
+                        { title: 'Model loading', tag: '496.6 MB · SHA-1', blocks: [
+                            { p: 'A Vite plugin lists the models and the maps already built. The client downloads the GLB, hashes it with SHA-1, then parses it. A saved map is only reused if this SHA-1 matches.' },
+                            { p: 'Not every glTF export uses meters. A heuristic fixes the scale by a power of 10: ×0.01 on the test model.' },
+                            { figures: ['startScreen'] }
+                        ] },
+                        { title: 'Adaptive vertical ray casting', tag: '18,231 rays', blocks: [
+                            { p: 'The scene is split into squares of 4 × 4 cells of 10 cm. A vertical ray starts from the center of each square. If it hits a horizontal surface, the square is split in four. If the center misses, the 4 corners are tested before the area is dropped.' },
+                            { p: 'Each mesh gets a BVH (`three-mesh-bvh`). A ray only queries the meshes whose bounding box it crosses. On the test model: 18,231 rays in 3 passes instead of 23,622, and 134,261 hits.' }
+                        ] },
+                        { title: 'Floors from a histogram', tag: '6 peaks · 5 floors', blocks: [
+                            { p: 'Hit heights are binned in 15 cm slices. Each dense enough local maximum becomes a candidate floor. Peaks less than 40 cm apart merge into sub-levels.' },
+                            { p: 'A morphological opening by reconstruction removes noise without cutting corridors, doors and stairs. On the test model, the 6th peak (31 hits) is dropped as noise.' },
+                            { figures: ['histogram', 'floorsOverlay'] }
+                        ] },
+                        { title: 'Walls and rooms', tag: '23 rooms · 22 corridors', blocks: [
+                            { p: 'For each walkable cell, 4 horizontal rays of 12.5 cm start 1 m above the floor. A nearly vertical surface counts as a wall. Clusters smaller than 3 cells are removed.' },
+                            { p: 'Rooms come from a distance transform and seeded growth, a light form of watershed. An opening narrower than 1 m splits two rooms. A narrow, elongated region becomes a corridor.' },
+                            { figures: ['floorPlans'] }
+                        ] },
+                        { title: 'Stairs', tag: '14 found · 3 resolved', blocks: [
+                            { p: 'A flood starts from the edge of each floor and from surfaces just above it. It accepts at most 0.17 m of rise per cell, a 60° slope. It never goes down and stops on the floor above.' },
+                            { p: 'Pieces less than 30 cm apart are merged. On the test model: 14 connectors, 3 of which link two floors.' },
+                            { figures: ['stairsOverlay'] }
+                        ] },
+                        { title: 'Background build', tag: '8 ms in VR', blocks: [
+                            { p: 'The build yields to the browser at fixed intervals: 8 ms in VR, 30 ms on desktop. A new request cancels the running build. The edit mode shows the progress, the histogram and the parameters.' },
+                            { figures: ['backgroundBuild'] }
+                        ] },
+                        { title: '3D minimap (my contribution)', tag: '24 ms · 14 cm', blocks: [
+                            { p: 'The team used to show a 2D minimap on a texture held by the left controller. I replaced it with a 3D model anchored in the field of view, so both hands stay free.' },
+                            { p: 'Each walkable cell becomes a 10-triangle box, each wall bit a vertical quad. The model is scaled so the building is 14 cm long, on a base with a north arrow. Only the active floor is shown. During a floor change, the target floor turns orange.' },
+                            { p: 'A red marker follows the headset position and gaze direction, and stays within the base. I added a live tuning tab: position, tilt, size, 3 presets and a copy-values button.' },
+                            { p: 'I then merged my branch with `dev` and resolved conflicts in 5 files. The model is rebuilt each time a new map is built in the background.' },
+                            { figures: ['floorPlan', 'minimapCloseup', 'minimapFloors', 'minimapPanel'] }
+                        ] }
+                    ] }
+                ] },
+                { title: 'Technical choices and challenges', blocks: [
+                    { list: [
+                        '**BVH and box pre-filtering**: according to a code comment, querying the whole scene cost about 2 ms per ray. Each ray now only tests the meshes it crosses.',
+                        '**Opening by reconstruction**: a plain opening also erases passages narrower than the disk. We restore the full shape of the areas that survive the opening.',
+                        '**Stairs by bounded flood**: a maximum rise per cell lets landings through, but not a jump to furniture height.',
+                        '**No worker**: one branch added a worker for ray casting. It was not merged, and the build stays sliced on the main thread.',
+                        '**Deferred spawn**: the headset pose is unknown when the session starts. We place the player on the first tracked frame.',
+                        '**HUD model**: it stays visible without raising a hand. It is toggled with the left stick click, as Y and X move the player up and down.'
+                    ] }
+                ] },
+                { title: 'Results', blocks: [
+                    { table: {
+                        caption: 'Test model (9,408,894 triangles), default settings, headless Chrome 155 with GPU, Apple M5. Durations in seconds, scene rendering included; the total covers every step.',
+                        columns: ['Build', 'BVH', 'Ray casting', 'Walls', 'Stairs', 'Total'],
+                        rows: [
+                            ['1 · first launch', '1.49', '1.31', '3.64', '2.06', '8.69'],
+                            ['2 · page reload', '1.49', '0.96', '3.99', '2.10', '8.71'],
+                            ['3 · restart, cached BVH', '< 0.01', '0.77', '4.06', '2.12', '7.13']
+                        ],
+                        highlightRow: 0
+                    } },
+                    { bars: { title: 'Duration per step, build 1 (s)', max: 4, ticks: [0, 1, 2, 3, 4], labelled: [0, 1, 4, 6],
+                              items: [
+                                  { label: 'BVH', value: 1.49, display: '1.49 s' },
+                                  { label: 'Ray casting', value: 1.31, display: '1.31 s' },
+                                  { label: 'Histogram', value: 0.004, display: '0.004 s' },
+                                  { label: 'Grids', value: 0.096, display: '0.096 s' },
+                                  { label: 'Walls', value: 3.64, display: '3.64 s' },
+                                  { label: 'Rooms', value: 0.076, display: '0.076 s' },
+                                  { label: 'Stairs', value: 2.06, display: '2.06 s' }
+                              ] } },
+                    { list: [
+                        'The three builds produce the same map: 5 floors, 23 rooms, 22 corridors and 14 stairs.',
+                        'Walls and stairs take 66% of the first build.',
+                        'Adaptive ray casting fires 22.8% fewer rays than a full grid.',
+                        'The 3D model builds in 25 ms and rebuilds in 24 ms (medians over 7 runs, CPU only).',
+                        'The displayed floor adds 76,696 triangles to the scene, 0.8% of the model\'s.'
+                    ] },
+                    { note: 'Limitation: all measurements are on desktop. I have no FPS figure in the headset.' }
+                ] },
+                { title: 'Limitations', blocks: [
+                    { list: [
+                        'No automated tests: detection is checked by eye, with the debug overlay.',
+                        '11 of the 14 stairs stay unresolved on the test model. Stopping at walls and projecting to the next floor are disabled in the code.',
+                        'Changing floors teleports to the spawn point of the next floor. Navigating several floors at once is still to do.',
+                        'The 3D model does not merge neighboring cells. It builds every floor to show only one.',
+                        'Outside the building footprint, the marker stays stuck on the edge of the base.',
+                        'Since the merge, build progress only shows in the headset in edit mode.',
+                        'The build runs on the main thread.'
+                    ] }
+                ] }
+            ]
+        }
+    },
+    {
         id: 'ocr',
         featured: false,
         icon: 'fas fa-brain',

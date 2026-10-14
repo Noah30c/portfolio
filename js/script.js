@@ -125,7 +125,18 @@ function applyRoute() {
         return;
     }
     const known = document.getElementById(`panel-${tab}`);
-    window.switchTab(known ? tab : 'profile', { updateHash: false });
+    const target = known ? tab : 'profile';
+    // Leaving a detail page opened from another tab (browser back): hide it, refocus its link
+    Object.keys(DETAIL_VIEWS).forEach(key => {
+        if (key !== target) resetDetailView(key);
+    });
+    window.switchTab(target, { updateHash: false });
+    if (detailOrigin && !itemId) {
+        if (detailOrigin.tab === target && detailOrigin.button) {
+            document.getElementById(detailOrigin.button)?.focus({ preventScroll: true });
+        }
+        detailOrigin = null;
+    }
     if (known && DETAIL_VIEWS[tab]) {
         if (itemId && DETAIL_VIEWS[tab].items().some(item => item.id === itemId)) {
             showDetailPage(tab, itemId);
@@ -169,6 +180,7 @@ function initCockpitTabs() {
 
         if (updateHash) {
             // A tab click always lands on the tab itself (its overview, not a detail page)
+            detailOrigin = null;
             if (DETAIL_VIEWS[tabId]) showOverview(tabId);
             history.replaceState(null, '', `#${tabId}`);
         }
@@ -213,6 +225,15 @@ function initCockpitTabs() {
  * ----------------------------------------------------------- */
 function initDetailViews() {
     renderProjects();
+
+    // Links from another tab to a project page (e.g. the PFEE card in Experience)
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('[data-open-project]');
+        if (!link) return;
+        const fromTab = link.closest('.hub-panel')?.id.replace('panel-', '') || null;
+        window.switchTab('projects', { updateHash: false });
+        openDetailPage('projects', link.dataset.openProject, { originTab: fromTab, originButton: link.id });
+    });
 
     Object.keys(DETAIL_VIEWS).forEach(tabKey => {
         const panel = document.getElementById(`panel-${tabKey}`);
@@ -311,12 +332,17 @@ function compactCardHtml(project, lang) {
  * 5. DETAIL PAGES (case studies, deep-linkable as #<tab>/<id>)
  * ----------------------------------------------------------- */
 let overviewScrollY = 0;
+// Tab and button a detail page was opened from, when it is not the page's own tab
+let detailOrigin = null;
 
 // History entries pushed when a detail page opens carry this marker (it survives reloads)
 const DETAIL_STATE = { portfolioDetail: true };
 
-function openDetailPage(tabKey, itemId, { replace = false } = {}) {
+function openDetailPage(tabKey, itemId, { replace = false, originTab = null, originButton = null } = {}) {
     if (!DETAIL_VIEWS[tabKey].items().some(item => item.id === itemId)) return;
+    if (!replace) {
+        detailOrigin = originTab && originTab !== tabKey ? { tab: originTab, button: originButton } : null;
+    }
     if (replace) {
         history.replaceState(history.state, '', `#${tabKey}/${itemId}`);
     } else {
@@ -328,6 +354,7 @@ function openDetailPage(tabKey, itemId, { replace = false } = {}) {
 
 function closeDetailPage(tabKey) {
     const pushedByUs = Boolean(history.state && history.state.portfolioDetail);
+    const returnTab = detailOrigin ? detailOrigin.tab : tabKey;
     // Update the view right away: some embedded previews never deliver the popstate event
     showOverview(tabKey);
     if (pushedByUs) {
@@ -335,11 +362,22 @@ function closeDetailPage(tabKey) {
         history.back(); // drops the entry pushed on open; the popstate that follows is a no-op
         // Previews that ignore back(): fix the address so a reload does not reopen the page
         setTimeout(() => {
-            if (window.location.hash === detailHash) history.replaceState(null, '', `#${tabKey}`);
+            if (window.location.hash === detailHash) history.replaceState(null, '', `#${returnTab}`);
         }, 400);
     } else {
-        history.replaceState(null, '', `#${tabKey}`);
+        history.replaceState(null, '', `#${returnTab}`);
     }
+}
+
+// Hide a tab's detail page without moving the scroll or the focus (used when the route leaves it)
+function resetDetailView(tabKey) {
+    const view = DETAIL_VIEWS[tabKey];
+    const page = document.getElementById(view.page);
+    const overview = document.getElementById(view.overview);
+    if (!page || !overview || page.hidden) return;
+    page.hidden = true;
+    overview.hidden = false;
+    page.dataset.currentId = '';
 }
 
 function setDetailTitle(tabKey, itemId) {
@@ -379,7 +417,15 @@ function showOverview(tabKey) {
 
     if (wasOpen) {
         window.scrollTo({ top: overviewScrollY, behavior: 'auto' });
-        if (lastItem) document.getElementById(view.opener(lastItem))?.focus({ preventScroll: true });
+        if (detailOrigin) {
+            // Opened from another tab: go back there and refocus the link that opened the page
+            const origin = detailOrigin;
+            detailOrigin = null;
+            window.switchTab(origin.tab, { updateHash: false });
+            if (origin.button) document.getElementById(origin.button)?.focus({ preventScroll: true });
+        } else if (lastItem) {
+            document.getElementById(view.opener(lastItem))?.focus({ preventScroll: true });
+        }
     }
 }
 
@@ -560,7 +606,7 @@ function renderDetailPage(tabKey, itemId) {
     page.innerHTML = `
         <div class="case-topbar">
             <button type="button" class="case-back" data-detail-back>
-                <i class="fas fa-arrow-left" aria-hidden="true"></i> ${escapeHtml(t(view.backKey))}
+                <i class="fas fa-arrow-left" aria-hidden="true"></i> ${escapeHtml(t(detailOrigin ? DETAIL_VIEWS[detailOrigin.tab]?.backKey || view.backKey : view.backKey))}
             </button>
             ${hasPager ? `<span class="case-counter">${String(index + 1).padStart(2, '0')} / ${String(items.length).padStart(2, '0')}</span>` : ''}
         </div>
