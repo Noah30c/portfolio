@@ -1993,6 +1993,34 @@ body.light-mode .exp-card:hover {
     margin-bottom: 6px;
 }
 
+/* Company logo in a white tile so brand colors read the same in dark and light mode */
+.exp-identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.exp-logo {
+    flex: 0 0 auto;
+    width: 108px;
+    height: 52px;
+    display: grid;
+    place-items: center;
+    padding: 8px 12px;
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+}
+
+.exp-logo img {
+    display: block;
+    max-width: 84px;
+    max-height: 36px;
+    width: auto;
+    height: auto;
+}
+
 .exp-role-title {
     font-size: 1.08rem;
     color: var(--text-white);
@@ -2413,6 +2441,19 @@ body.light-mode kbd {
 }
 
 @media (max-width: 768px) {
+    .exp-identity {
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .exp-logo {
+        width: 76px;
+        height: 40px;
+        padding: 6px 8px;
+    }
+    .exp-logo img {
+        max-width: 60px;
+        max-height: 28px;
+    }
     .hub-viewport {
         padding: 20px 16px;
     }

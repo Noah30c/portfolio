@@ -44,7 +44,7 @@ js/experience-data.js   Pages détaillées des expériences (FR / EN)
 js/script.js            Onglets, grille et pages des projets et expériences, thème, aperçu du CV
 js/three-scene.js       Fond Three.js (nuage de points en shader)
 js/vendor/              three.min.js (r128) et gsap.min.js (3.12.5)
-images/                 Photo de profil, photo du CV, captures des projets, image de partage
+images/                 Photo de profil, photo du CV, captures des projets, logos des expériences, image de partage
 cvs/                    Sources LaTeX des CV (FR / EN) et PDF compilés
 ```
 
